@@ -7,6 +7,14 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.PneumaticsCommandInBack;
+import frc.robot.commands.PneumaticsCommandInFront;
+import frc.robot.commands.PneumaticsCommandOutBack;
+import frc.robot.commands.PneumaticsCommandOutFront;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -39,4 +47,19 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
+
+  Joystick rightStick = new Joystick(5);//not real port or side, TBD
+  Button buttonFront = new JoystickButton(rightStick, 1);//not real button #, TBD
+  Button buttonBack = new JoystickButton(rightStick, 2);//not real button #, TBD
+  
+  public OI(){
+    buttonFront.whileHeld(new PneumaticsCommandOutFront());
+    buttonFront.whenReleased(new PneumaticsCommandInFront());
+
+    buttonBack.whileHeld(new PneumaticsCommandOutBack());
+    buttonBack.whenReleased(new PneumaticsCommandInBack());
+
+  }
+  
+  
 }

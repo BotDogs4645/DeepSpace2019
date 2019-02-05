@@ -31,17 +31,31 @@ public class Pneumatics extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void out() {
+    public void outFront() {
     	solenoid1.set(DoubleSolenoid.Value.kForward);
     	solenoid2.set(DoubleSolenoid.Value.kForward);
-    	SmartDashboard.putString("Pnuematics","Out");
+    	SmartDashboard.putString("Pnuematics Front","Out");
+    }
+
+    public void outBack()
+    {
+        solenoid3.set(DoubleSolenoid.Value.kForward);
+    	solenoid4.set(DoubleSolenoid.Value.kForward);
+    	SmartDashboard.putString("Pnuematics Back","Out");
     }
     
-    public void in() 
+    public void inFront() 
     {
     	solenoid1.set(DoubleSolenoid.Value.kReverse);
     	solenoid2.set(DoubleSolenoid.Value.kReverse);
-    	SmartDashboard.putString("Pnuematics","In");
+    	SmartDashboard.putString("Pnuematics Front","In");
+    }
+
+    public void inBack() 
+    {
+    	solenoid3.set(DoubleSolenoid.Value.kReverse);
+    	solenoid4.set(DoubleSolenoid.Value.kReverse);
+    	SmartDashboard.putString("Pnuematics Back","In");
     }
     
     public void rest() {
