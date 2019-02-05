@@ -33,7 +33,7 @@ public class EncoderTest extends Subsystem {
 
     public void turnToAngle(int angleOfTurn) { /* new edits */
         double circumferenceOfRobot = 57.76; //units are in centimeter
-        double distance = (double)(circumferenceOfRobot * (angleOfTurn/360)); //gets the distance needed to turn
+        double distance = (double)(circumferenceOfRobot * (angleOfTurn/360)); //gets the distance needed to turn a specified angle
         goStraight(distance);
     }
 
