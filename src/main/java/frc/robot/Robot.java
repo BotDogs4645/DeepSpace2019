@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.subsystems.EncoderTest;
 import frc.robot.subsystems.TankDrive;
 
 /**
@@ -23,6 +24,7 @@ import frc.robot.subsystems.TankDrive;
  */
 public class Robot extends TimedRobot {
   public static TankDrive tankDriveSubsystem = new TankDrive();
+  public static EncoderTest encoderSub = new EncoderTest();
   public static OI oi;
 
   Command autonomousCommand;
