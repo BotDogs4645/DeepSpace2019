@@ -51,8 +51,8 @@ public class OI {
   Joystick rightStick = new Joystick(5);//not real port or side, TBD
   Button buttonnFOut = new JoystickButton(rightStick, 1);//not real button #, TBD
   Button buttonFIn = new JoystickButton(rightStick, 2);//not real button #, TBD
-  Button buttonBOut = new JoystickButton(rightStick, 2);//not real button #, TBD
-  Button buttonBIn = new JoystickButton(rightStick, 2);//not real button #, TBD
+  Button buttonBOut = new JoystickButton(rightStick, 3);//not real button #, TBD
+  Button buttonBIn = new JoystickButton(rightStick, 4);//not real button #, TBD
   public OI(){
     buttonnFOut.whenPressed(new PneumaticsCommandOutFront());
     buttonFIn.whenPressed(new PneumaticsCommandInFront());
