@@ -14,20 +14,21 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveCommand;
 import frc.robot.OI;
+import frc.robot.Robot;
 
 public class TankDrive extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
  
-  public WPI_TalonSRX topLeft = new WPI_TalonSRX(16); //ports subject to change
-  public WPI_TalonSRX middleLeft = new WPI_TalonSRX(15); 
-  public WPI_TalonSRX rearLeft = new WPI_TalonSRX(14); 
+  public WPI_TalonSRX topLeft = new WPI_TalonSRX(3); //ports subject to change (16)
+  public WPI_TalonSRX middleLeft = new WPI_TalonSRX(4); //15
+  public WPI_TalonSRX rearLeft = new WPI_TalonSRX(10); //14
 
   SpeedControllerGroup leftSide = new SpeedControllerGroup(topLeft, middleLeft, rearLeft);
 
-  public WPI_TalonSRX topRight = new WPI_TalonSRX(12); //ports subject to change'
-  public WPI_TalonSRX middleRight = new WPI_TalonSRX(13); 
-  public WPI_TalonSRX rearRight = new WPI_TalonSRX(10); 
+  public WPI_TalonSRX topRight = new WPI_TalonSRX(5); //ports subject to change' (12)
+  public WPI_TalonSRX middleRight = new WPI_TalonSRX(13); //13
+  public WPI_TalonSRX rearRight = new WPI_TalonSRX(1); //10
 
   SpeedControllerGroup rightSide = new SpeedControllerGroup(topRight, middleRight, rearRight);
 
@@ -81,9 +82,31 @@ public class TankDrive extends Subsystem {
     difDrive.tankDrive(leftSpeed, rightSpeed);
   }
 
-  public void driveWithConstant() { // to be utilized when button 3 is pressed on Left Joystick (joyLeft)
-    double leftSpeed = 0.4;
-    double rightSpeed = 0.4;
+  public void driveForward() { // to be utilized when button 3 is pressed on Left Joystick (joyLeft)
+    double leftSpeed = 0.5;
+    double rightSpeed = 0.5;
+    difDrive.tankDrive(leftSpeed, rightSpeed);
+
+    SmartDashboard.putNumber("Front Left Motor:", topLeft.get());
+    SmartDashboard.putNumber("Middle Left Motor:", middleLeft.get());
+    SmartDashboard.putNumber("Rear Left Motor:", rearLeft.get());
+
+    SmartDashboard.putNumber("Front Right Motor:", topRight.get());
+    SmartDashboard.putNumber("Middle Right Motor:", middleRight.get());
+    SmartDashboard.putNumber("Rear Right Motor:", rearRight.get());
+  }
+
+  public void driveToAngle(double angle) { // to be utilized when button 3 is pressed on Left Joystick (joyLeft)
+    double leftSpeed, rightSpeed;
+    //the speedcontroller changes depending on what angle
+    if(angle < 180.0) { //denotes it turning right. left side tank drive speed will be faster.
+      leftSpeed = 0.6;
+      rightSpeed = 0.5;
+    }
+    else { //denotes it turning left. right side tank drive will be faster
+      rightSpeed = 0.6;
+      leftSpeed = 0.5;
+    }
     difDrive.tankDrive(leftSpeed, rightSpeed);
 
     SmartDashboard.putNumber("Front Left Motor:", topLeft.get());

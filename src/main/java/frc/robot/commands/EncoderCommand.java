@@ -12,15 +12,13 @@ public class EncoderCommand extends Command {
     @Override
     protected void initialize() {
         Robot.encoderSub.talon.setSelectedSensorPosition(0);
-
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
         SmartDashboard.putNumber("Position", Robot.encoderSub.getPosition() );
-        Robot.encoderSub.goStraight(10); //Parameter is a placeholder
-
+        Robot.encoderSub.goStraight(10); //Parameter is a placeholder = 10 inch
     }
 
     @Override
