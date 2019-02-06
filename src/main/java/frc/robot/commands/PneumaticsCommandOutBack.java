@@ -20,7 +20,7 @@ public class PneumaticsCommandOutBack extends Command
     protected void execute()
     {
 
-        Robot.pneumaticsOb.outBack();
+        //Robot.pneumaticsOb.outBack();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -32,14 +32,14 @@ public class PneumaticsCommandOutBack extends Command
     // Called once after isFinished returns true
     protected void end()
     {
-        Robot.pneumaticsOb.inBack();
+        //Robot.pneumaticsOb.inBack();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted()
     {
-        Robot.pneumaticsOb.inBack();
+       // Robot.pneumaticsOb.inBack();
     }
 
 

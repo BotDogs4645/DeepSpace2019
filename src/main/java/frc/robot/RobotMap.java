@@ -30,10 +30,11 @@ public class RobotMap {
 	public static int rightPiston1 = 2;
   public static int rightPiston2 = 3;
   
+  /*
   public static int rightPiston3= 50;//isn't real port, need to be decided
   public static int rightPiston4= 51;//isn't real port, need to be decided
 
   public static int leftPiston3= 52;//isn't real port, need to be decided
   public static int leftPiston4= 53; //isn't real port, need to be decided
-
+*/
 }

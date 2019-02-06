@@ -24,8 +24,8 @@ public class Pneumatics extends Subsystem {
 	
 		DoubleSolenoid solenoid1 = new DoubleSolenoid(RobotMap.leftPiston1, RobotMap.leftPiston2);
         DoubleSolenoid solenoid2 = new DoubleSolenoid(RobotMap.rightPiston1, RobotMap.rightPiston2);
-        DoubleSolenoid solenoid3= new DoubleSolenoid(RobotMap.rightPiston3, RobotMap.rightPiston4);
-        DoubleSolenoid solenoid4= new DoubleSolenoid(RobotMap.leftPiston3, RobotMap.leftPiston4);
+        //DoubleSolenoid solenoid3= new DoubleSolenoid(RobotMap.rightPiston3, RobotMap.rightPiston4);
+        //DoubleSolenoid solenoid4= new DoubleSolenoid(RobotMap.leftPiston3, RobotMap.leftPiston4);
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -37,12 +37,14 @@ public class Pneumatics extends Subsystem {
     	SmartDashboard.putString("Pnuematics Front","Out");
     }
 
+    /*
     public void outBack()
     {
         solenoid3.set(DoubleSolenoid.Value.kForward);
     	solenoid4.set(DoubleSolenoid.Value.kForward);
     	SmartDashboard.putString("Pnuematics Back","Out");
     }
+    */
     
     public void inFront() 
     {
@@ -51,12 +53,14 @@ public class Pneumatics extends Subsystem {
     	SmartDashboard.putString("Pnuematics Front","In");
     }
 
+    /*
     public void inBack() 
     {
     	solenoid3.set(DoubleSolenoid.Value.kReverse);
     	solenoid4.set(DoubleSolenoid.Value.kReverse);
     	SmartDashboard.putString("Pnuematics Back","In");
     }
+    */
     
     public void rest() {
     	solenoid1.set(DoubleSolenoid.Value.kOff);
