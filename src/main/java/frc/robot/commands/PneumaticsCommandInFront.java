@@ -14,7 +14,7 @@ public class PneumaticsCommandInFront extends Command
 {
     public PneumaticsCommandInFront()
     {
-       // requires(Robot.pneumaticsOb);
+       requires(Robot.pneumaticsOb);
     }
 
     // Called just before this Command runs the first time
@@ -22,7 +22,7 @@ public class PneumaticsCommandInFront extends Command
     {
 
     }
-
+ 
     // Called repeatedly when this Command is scheduled to run
     protected void execute()
     {
