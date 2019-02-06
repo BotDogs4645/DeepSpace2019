@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveCommand;
 import frc.robot.OI;
-import frc.robot.Robot;
 
 public class TankDrive extends Subsystem {
   // Put methods for controlling this subsystem

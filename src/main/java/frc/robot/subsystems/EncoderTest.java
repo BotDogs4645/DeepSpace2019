@@ -28,20 +28,19 @@ public class EncoderTest extends Subsystem {
         if (getPosition() >= units) //determines if the raw sensor units thus far equates to that of specified distance. if so, stop moving
             Robot.tankDriveSubsystem.stop(); //stops all motors
     }
-
-    public void turn(double distance, double angle) { 
-        double rotations = distance / (6 * Math.PI); 
-        double units = 400 * rotations;
-        Robot.tankDriveSubsystem.driveToAngle(angle); // depending on the angle, the speeds of the left/right sides of the tank drive will differ
-        if (getPosition() >= units) 
-            Robot.tankDriveSubsystem.stop(); 
+    
+    public void turnToAngle(double distance, double angle) { //where 15.24 is the circumference of the wheels and distance is in in
+        double rotations = distance / (6 * Math.PI); //gets the number of times the wheel needs to rotate to reach a specified distance (in) (rotations = distance/circumference)
+        double units = 400 * rotations; // gets the total number of raw sensor units correlated with specified distance
+        Robot.tankDriveSubsystem.driveToAngle(angle); //Drives with 0.5 speed
+        if (getPosition() >= units) //determines if the raw sensor units thus far equates to that of specified distance. if so, stop moving
+            Robot.tankDriveSubsystem.stop(); //stops all motors
     }
 
-    public void distanceToAngle(double angle) { //using encoder
-        double circumferenceOfRobot = 22.74; //units are in centimeter
-        double distance = (double)(circumferenceOfRobot * (angle/360)); //gets the distance needed to turn
-        turn(distance, angle); //to turn, one side of the tankDrive must go faster than the opposing side. 
-        /* 90 degrees clockwise = 270 degrees cc*/
+    public void turnToAngle(double angleOfTurn) { /* new edits */
+        double circumferenceOfRobot = 57.76; //units are in centimeter
+        double distance = (double)(circumferenceOfRobot * (angleOfTurn/360)); //gets the distance needed to turn a specified angle
+        turnToAngle(distance, angleOfTurn);;
     }
 
     @Override
