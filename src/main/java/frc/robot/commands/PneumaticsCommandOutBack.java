@@ -7,7 +7,7 @@ public class PneumaticsCommandOutBack extends Command
 {
     public PneumaticsCommandOutBack()
     {
-       // requires(Robot.pneumaticsOb);
+        requires(Robot.pneumaticsOb);
     }
 
     // Called just before this Command runs the first time

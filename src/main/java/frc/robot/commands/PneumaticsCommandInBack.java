@@ -7,7 +7,7 @@ public class PneumaticsCommandInBack extends Command
 {
     public PneumaticsCommandInBack()
     {
-       // requires(Robot.pneumaticsOb);
+       requires(Robot.pneumaticsOb);
     }
 
     // Called just before this Command runs the first time

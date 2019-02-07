@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-//import frc.robot.commands.PneumaticsCommandInFront;
+import frc.robot.commands.PneumaticsCommandInFront;
 import frc.robot.subsystems.Pneumatics;
 
 /**
@@ -36,7 +36,11 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_oi = new OI();
+
    // m_chooser.setDefaultOption("Default Auto", new Command());
+
+    //m_chooser.setDefaultOption("Default Auto", new Command());
+
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
   }
