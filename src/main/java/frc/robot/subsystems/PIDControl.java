@@ -35,9 +35,9 @@ public class PIDControl extends PIDSubsystem {
     talon.setSensorPhase(true);
     talon.setStatusFramePeriod(StatusFrameEnhanced.Status_2_Feedback0, 1, 10);
     talon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
-    setSetpoint(distance);      // Sets where the PID controller should move the system
-    setPercentTolerance(5);
-    enable(); // Enables the PID controller.
+    encoderPID.setSetpoint(distance);      // Sets where the PID controller should move the system
+    encoderPID.setPercentTolerance(5);
+    encoderPID.enable(); // Enables the PID controller.
   }
 
   @Override
@@ -51,18 +51,13 @@ public class PIDControl extends PIDSubsystem {
   }
 
   public void goStraight() { //where 6 is the diameter of the wheels and distance is in in
-    double i = 0;
-    double d = 0;
-    double lastError = 0;
     double rotations = getSetpoint() / (6 * Math.PI); //gets the number of times the wheel needs to rotate to reach a specified distance (in) (rotations = distance/circumference)
     double units = 400 * rotations; // gets the total number of raw sensor units correlated with specified distance
     Robot.tankDriveSubsystem.driveForward(); //Drives with 0.5 speed
     double p = units - getPosition(); //Represents p, how far we are from the setPosition
-    i += p; // Represents the sum of all error values
-    d = p - lastError;
-    lastError = p;
-    /*if (getPosition() >= units) //determines if the raw sensor units thus far equates to that of specified distance. if so, stop moving
-        Robot.tankDriveSubsystem.stop(); //stops all motors */
+    if (encoderPID.onTarget()) {
+      Robot.tankDriveSubsystem.stop();
+    }
         
   }
 

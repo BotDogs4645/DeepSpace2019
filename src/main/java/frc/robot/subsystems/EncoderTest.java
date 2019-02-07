@@ -17,6 +17,11 @@ public class EncoderTest extends Subsystem {
         talon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
     }
 
+    @Override
+    protected void initDefaultCommand() {
+        setDefaultCommand(new EncoderCommand());
+    }
+
     public double getPosition() {
         return (double)talon.getSelectedSensorPosition();    
     }
@@ -43,9 +48,6 @@ public class EncoderTest extends Subsystem {
         turnToAngle(distance, angleOfTurn);;
     }
 
-    @Override
-    protected void initDefaultCommand() {
-        setDefaultCommand(new EncoderCommand());
-    }
+
 
 }
