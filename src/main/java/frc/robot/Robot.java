@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -14,6 +15,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Motor;
+import frc.robot.subsystems.Ultrasonic;
+import frc.robot.subsystems.ColorSensor;
+import frc.robot.subsystems.Encoder;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,6 +33,11 @@ public class Robot extends TimedRobot {
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
+  public static final ColorSensor kColorSensor = new ColorSensor();
+  public static final Motor kMotor = new Motor();
+  public static final Encoder kEncoder = new Encoder();
+  public static final Ultrasonic kDistenceSenor = new Ultrasonic();
+  
 
   /**
    * This function is run when the robot is first started up and should be
