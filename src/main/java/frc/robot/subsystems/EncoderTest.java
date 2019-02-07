@@ -45,7 +45,7 @@ public class EncoderTest extends Subsystem {
 
     @Override
     protected void initDefaultCommand() {
-        setDefaultCommand(new EncoderCommand());
+        //setDefaultCommand(new EncoderCommand());
     }
 
 }
