@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.EncoderTest;
 import frc.robot.subsystems.Gyroscope;
+import frc.robot.subsystems.PIDControl;
 import frc.robot.subsystems.TankDrive;
 
 /**
@@ -27,6 +28,7 @@ public class Robot extends TimedRobot {
   public static TankDrive tankDriveSubsystem = new TankDrive();
   public static EncoderTest encoderSub = new EncoderTest();
   public static Gyroscope gyroSub = new Gyroscope();
+  public static PIDControl pidSub = new PIDControl(10);//place holder for distance
   public static OI oi;
 
   Command autonomousCommand;

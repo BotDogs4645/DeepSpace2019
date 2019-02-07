@@ -17,6 +17,7 @@ public class EncoderTest extends Subsystem {
         talon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0, 10);
     }
 
+
     public double getPosition() {
         return (double)talon.getSelectedSensorPosition();    
     }
