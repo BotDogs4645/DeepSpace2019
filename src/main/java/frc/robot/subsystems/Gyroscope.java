@@ -25,7 +25,7 @@ public class Gyroscope extends Subsystem {
 
   @Override
   public void initDefaultCommand() { 
-    setDefaultCommand(new GoToAngle(10,11,10));
+    //setDefaultCommand(new GoToAngle(10,11,10));
   }
   public void stop() {
     Robot.gyroSub.stop();
