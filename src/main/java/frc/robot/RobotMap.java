@@ -25,16 +25,16 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
   //pneumatics
 	public static int leftPiston1 = 0;
-	public static int leftPiston2 = 1;
+	public static int leftPiston2 = 2;
 
-	public static int rightPiston1 = 0;
-  public static int rightPiston2 = 1;
+	public static int rightPiston1 = 1;
+  public static int rightPiston2 = 3;
   
   
-  public static int rightPiston3= 0;//isn't real port, need to be decided
-  public static int rightPiston4= 1;//isn't real port, need to be decided
+  public static int rightPiston3= 4;//isn't real port, need to be decided
+  public static int rightPiston4= 6;//isn't real port, need to be decided
 
-  public static int leftPiston3= 2;//isn't real port, need to be decided
-  public static int leftPiston4= 3; //isn't real port, need to be decided
+  public static int leftPiston3= 5;//isn't real port, need to be decided
+  public static int leftPiston4= 7; //isn't real port, need to be decided
 
 }

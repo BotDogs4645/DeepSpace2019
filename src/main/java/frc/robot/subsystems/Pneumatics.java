@@ -21,10 +21,10 @@ public class Pneumatics extends Subsystem {
     // here. Call these from Commands.
 	//Creates solenoid object
 	
-		DoubleSolenoid solenoid1 = new DoubleSolenoid(RobotMap.leftPiston1, RobotMap.leftPiston2);
-        DoubleSolenoid solenoid2 = new DoubleSolenoid(RobotMap.rightPiston1, RobotMap.rightPiston2);
-        DoubleSolenoid solenoid3= new DoubleSolenoid(RobotMap.rightPiston3, RobotMap.rightPiston4);
-        DoubleSolenoid solenoid4= new DoubleSolenoid(RobotMap.leftPiston3, RobotMap.leftPiston4);
+		DoubleSolenoid solenoid1 = new DoubleSolenoid(RobotMap.leftPiston1, RobotMap.rightPiston1);
+        DoubleSolenoid solenoid2 = new DoubleSolenoid(RobotMap.leftPiston2, RobotMap.rightPiston2);
+        DoubleSolenoid solenoid3= new DoubleSolenoid(RobotMap.leftPiston3, RobotMap.rightPiston3);
+        DoubleSolenoid solenoid4= new DoubleSolenoid(RobotMap.rightPiston4, RobotMap.rightPiston4);
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -40,12 +40,7 @@ public class Pneumatics extends Subsystem {
     
 
     
-    public void outBack()
-    {
-        solenoid3.set(DoubleSolenoid.Value.kForward);
-    	solenoid4.set(DoubleSolenoid.Value.kForward);
-    	SmartDashboard.putString("Pnuematics Back","Out");
-    }
+    
     
     
     
@@ -56,7 +51,12 @@ public class Pneumatics extends Subsystem {
     	SmartDashboard.putString("Pnuematics Front","In");
     }
     
-
+public void outBack()
+    {
+        solenoid3.set(DoubleSolenoid.Value.kForward);
+    	solenoid4.set(DoubleSolenoid.Value.kForward);
+    	SmartDashboard.putString("Pnuematics Back","Out");
+    }
     
     public void inBack() 
     {
@@ -67,8 +67,8 @@ public class Pneumatics extends Subsystem {
     
     
     public void rest() {
-    	solenoid3.set(DoubleSolenoid.Value.kOff);
-    	solenoid4.set(DoubleSolenoid.Value.kOff);
+    	//solenoid3.set(DoubleSolenoid.Value.kOff);
+    	//solenoid4.set(DoubleSolenoid.Value.kOff);
     }
 
 }
