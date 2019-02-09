@@ -9,8 +9,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ArmJointSetTarget extends Command {
-  public ArmJointSetTarget() {
+public class SetTargets extends Command {
+  public SetTargets() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }

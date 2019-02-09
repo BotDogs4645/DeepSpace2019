@@ -11,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Add your docs here.
@@ -30,6 +31,7 @@ public class ElbowJoint extends PIDSubsystem {
     super("ElbowJoint", 1, 2, 3);
     setPercentTolerance(5);
     getPIDController().setContinuous(false);
+    
     
     // Use these to get going:
     // setSetpoint() - Sets where the PID controller should move the system
@@ -60,7 +62,6 @@ public class ElbowJoint extends PIDSubsystem {
   }
 
   public void setTargetPosition(double pHeight) {
-    setSetpoint(pHeight);
     double y = 42.875 - pHeight;
     double r = 47.75;
     double x = Math.sqrt((Math.pow(r,2)) - (Math.pow(y, 2)));  
@@ -68,6 +69,8 @@ public class ElbowJoint extends PIDSubsystem {
     double restAngle = Math.acos(42.875 / r);
     double portion = (totalAngle - restAngle) / (2 * Math.PI);
     double arcLength = portion * (95.5 * Math.PI); //Calculate arc length in inches
+    SmartDashboard.putNumber("Arc Length", arcLength);
+    setSetpoint(arcLength);
     
   }
 
