@@ -20,11 +20,15 @@ public class Pneumatics extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	//Creates solenoid object
-	
-		DoubleSolenoid solenoid1 = new DoubleSolenoid(RobotMap.leftPiston1, RobotMap.rightPiston1);
-        DoubleSolenoid solenoid2 = new DoubleSolenoid(RobotMap.leftPiston2, RobotMap.rightPiston2);
-        DoubleSolenoid solenoid3= new DoubleSolenoid(RobotMap.leftPiston3, RobotMap.rightPiston3);
-        DoubleSolenoid solenoid4= new DoubleSolenoid(RobotMap.rightPiston4, RobotMap.rightPiston4);
+    
+        //back left piston
+		DoubleSolenoid solenoid1 = new DoubleSolenoid(RobotMap.backLeftPiston1, RobotMap.backLeftPiston2);
+        //back right piston
+        DoubleSolenoid solenoid2 = new DoubleSolenoid(RobotMap.backRightPiston1, RobotMap.backRightPiston2);
+        //front left piston
+        DoubleSolenoid solenoid3= new DoubleSolenoid(RobotMap.frontLeftPiston3, RobotMap.frontLeftPiston4);
+        //front right piston
+        DoubleSolenoid solenoid4= new DoubleSolenoid(RobotMap.frontRightPiston3, RobotMap.frontRightPiston4);
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -33,35 +37,29 @@ public class Pneumatics extends Subsystem {
     
     
     public void outFront() {
-    	solenoid1.set(DoubleSolenoid.Value.kForward);
-    	solenoid2.set(DoubleSolenoid.Value.kForward);
+    	solenoid3.set(DoubleSolenoid.Value.kForward);
+    	solenoid4.set(DoubleSolenoid.Value.kForward);
     	SmartDashboard.putString("Pnuematics Front","Out");
     }
-    
 
-    
-    
-    
-    
-    
     public void inFront() 
     {
-    	solenoid1.set(DoubleSolenoid.Value.kReverse);
-    	solenoid2.set(DoubleSolenoid.Value.kReverse);
+    	solenoid3.set(DoubleSolenoid.Value.kReverse);
+    	solenoid4.set(DoubleSolenoid.Value.kReverse);
     	SmartDashboard.putString("Pnuematics Front","In");
     }
     
 public void outBack()
     {
-        solenoid3.set(DoubleSolenoid.Value.kForward);
-    	solenoid4.set(DoubleSolenoid.Value.kForward);
+        solenoid1.set(DoubleSolenoid.Value.kForward);
+    	solenoid2.set(DoubleSolenoid.Value.kForward);
     	SmartDashboard.putString("Pnuematics Back","Out");
     }
     
     public void inBack() 
     {
-    	solenoid3.set(DoubleSolenoid.Value.kReverse);
-    	solenoid4.set(DoubleSolenoid.Value.kReverse);
+    	solenoid1.set(DoubleSolenoid.Value.kReverse);
+    	solenoid2.set(DoubleSolenoid.Value.kReverse);
     	SmartDashboard.putString("Pnuematics Back","In");
     }
     

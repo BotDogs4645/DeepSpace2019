@@ -24,17 +24,19 @@ public class RobotMap {
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
   //pneumatics
-	public static int leftPiston1 = 0;
-	public static int leftPiston2 = 2;
 
-	public static int rightPiston1 = 1;
-  public static int rightPiston2 = 3;
+  //PDP side is the front side
+	public static int backLeftPiston1 = 0;
+	public static int backLeftPiston2 = 1;
+
+	public static int backRightPiston1 = 2;
+  public static int backRightPiston2 = 3;
   
   
-  public static int rightPiston3= 4;//isn't real port, need to be decided
-  public static int rightPiston4= 6;//isn't real port, need to be decided
+  public static int frontRightPiston3= 4;//isn't real port, need to be decided
+  public static int frontRightPiston4= 6;//isn't real port, need to be decided
 
-  public static int leftPiston3= 5;//isn't real port, need to be decided
-  public static int leftPiston4= 7; //isn't real port, need to be decided
+  public static int frontLeftPiston3= 5;//isn't real port, need to be decided
+  public static int frontLeftPiston4= 7; //isn't real port, need to be decided
 
 }
