@@ -8,12 +8,14 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.PneumaticsCommandInBack;
 import frc.robot.commands.PneumaticsCommandInFront;
 import frc.robot.commands.PneumaticsCommandOutBack;
 import frc.robot.commands.PneumaticsCommandOutFront;
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -48,6 +50,7 @@ public class OI {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
 
+
   Joystick rightStick = new Joystick(0);//not real port or side, TBD
  
   Button buttonnFOut = new JoystickButton(rightStick, 6);//not real button #, TBD
@@ -73,3 +76,8 @@ public class OI {
   
   
 }
+=======
+  public static Joystick joyLeft = new Joystick(0); // port subject to change
+  public static Joystick joyRight = new Joystick(1);
+}
+
