@@ -9,6 +9,8 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.robot.commands.MoveByUltrasonic;
+
 
 /**
  * Add your docs here.
@@ -18,11 +20,13 @@ public class Ultrasonic extends Subsystem {
   // here. Call these from Commands.
 
   AnalogInput distanceSensor = new AnalogInput(1);
+  //AnalogInput distanceSensor = new AnalogInput(RobotMap.ULTRASONIC);
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new MoveByUltrasonic(.5));
   }
 
   public double getDistance()

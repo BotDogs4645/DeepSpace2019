@@ -13,9 +13,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.commands.Autonomous;
 import frc.robot.subsystems.Motor;
+import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.Ultrasonic;
 import frc.robot.subsystems.ColorSensor;
 import frc.robot.subsystems.Encoder;
@@ -28,7 +28,6 @@ import frc.robot.subsystems.Encoder;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static OI m_oi;
 
   Command m_autonomousCommand;
@@ -37,7 +36,7 @@ public class Robot extends TimedRobot {
   public static final Motor kMotor = new Motor();
   public static final Encoder kEncoder = new Encoder();
   public static final Ultrasonic kDistenceSenor = new Ultrasonic();
-  
+  public static final Pneumatics kPneumatics = new Pneumatics();
 
   /**
    * This function is run when the robot is first started up and should be
@@ -46,8 +45,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_oi = new OI();
-    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-    // chooser.addOption("My Auto", new MyAutoCommand());
+    m_chooser.setDefaultOption("Auto", new Autonomous());
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 

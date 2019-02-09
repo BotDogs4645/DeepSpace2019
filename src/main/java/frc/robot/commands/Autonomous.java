@@ -8,6 +8,9 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.DriverStation;
+import frc.robot.Robot;
+
 
 public class Autonomous extends CommandGroup {
   /**
@@ -30,9 +33,15 @@ public class Autonomous extends CommandGroup {
     // e.g. if Command1 requires chassis, and Command2 requires arm,
     // a CommandGroup containing them would require both the chassis and the
     // arm.
-    addSequential(new MoveByColor(true, .5));
+
+    DriverStation driver = DriverStation.getInstance();
+    
+    //addSequential(new MoveByColor(true, .5));
+    addSequential(new MoveByEncoder(1, .5));//input actual distance once we get it
     addSequential(new MoveByEncoder(1, .5));//input actual distance once we get it 
-    addSequential(new TurnByEncoder(-90));
+    if(driver.getLocation() == 1){
+      addSequential(new TurnByEncoder(-90));
+    }
     //addSequential(new MoveByEncoder());
     addSequential(new PistonOutput());
     addSequential(new MoveByEncoder(1, -.5));//input actual distance once we get it 

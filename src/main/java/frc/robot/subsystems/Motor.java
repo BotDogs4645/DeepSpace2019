@@ -18,7 +18,7 @@ public class Motor extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  public WPI_TalonSRX motor = new WPI_TalonSRX(10);
+  public WPI_TalonSRX motor = new WPI_TalonSRX(15);
 
   @Override
   public void initDefaultCommand() {

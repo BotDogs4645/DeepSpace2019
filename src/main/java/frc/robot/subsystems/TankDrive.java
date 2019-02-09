@@ -20,13 +20,21 @@ public class TankDrive extends Subsystem {
   public WPI_TalonSRX topLeft = new WPI_TalonSRX(3); //ports subject to change (16)
   public WPI_TalonSRX middleLeft = new WPI_TalonSRX(4); //15
   public WPI_TalonSRX rearLeft = new WPI_TalonSRX(10); //14
-
+  /*
+  public WPI_TalonSRX topLeft = new WPI_TalonSRX(RobotMap.TANK_DRIVE_TOP_LEFT); //ports subject to change (16)
+  public WPI_TalonSRX middleLeft = new WPI_TalonSRX(RobotMap.TANK_DRIVE_MIDDLE_LEFT); 
+  public WPI_TalonSRX rearLeft = new WPI_TalonSRX(RobotMap.TANK_DRIVE_REAR_LEFT);
+  */
   SpeedControllerGroup leftSide = new SpeedControllerGroup(topLeft, middleLeft, rearLeft);
 
   public WPI_TalonSRX topRight = new WPI_TalonSRX(5); //ports subject to change' (12)
   public WPI_TalonSRX middleRight = new WPI_TalonSRX(13); //13
   public WPI_TalonSRX rearRight = new WPI_TalonSRX(1); //10
-
+  /*
+  public WPI_TalonSRX topRight = new WPI_TalonSRX(RobotMap.TANK_DRIVE_TOP_RIGHT); //ports subject to change (16)
+  public WPI_TalonSRX middleRight = new WPI_TalonSRX(RobotMap.TANK_DRIVE_MIDDLE_RIGHT); 
+  public WPI_TalonSRX rearRight = new WPI_TalonSRX(RobotMap.TANK_DRIVE_REAR_RIGHT);
+  */
   SpeedControllerGroup rightSide = new SpeedControllerGroup(topRight, middleRight, rearRight);
 
   DifferentialDrive difDrive = new DifferentialDrive(leftSide, rightSide);

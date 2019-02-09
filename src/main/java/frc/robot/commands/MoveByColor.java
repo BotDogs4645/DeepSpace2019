@@ -27,17 +27,19 @@ public class MoveByColor extends Command {
   @Override
   protected void initialize() {
     Robot.kMotor.move(speed);
+    Robot.kColorSensor.setAcive();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    final int[] colors = Robot.kColorSensor.getColor();
+    int[] colors = Robot.kColorSensor.getColor();
     if(black){
       if(colors[3] == 0){
         return true;
@@ -61,5 +63,6 @@ public class MoveByColor extends Command {
   @Override
   protected void interrupted() {
     Robot.kMotor.stop();
+
   }
 }

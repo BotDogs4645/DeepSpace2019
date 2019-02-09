@@ -1,7 +1,7 @@
 package frc.robot.subsystems;
 
 import frc.robot.commands.DetectColor;
-
+import frc.robot.commands.MoveByColor;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -58,6 +58,6 @@ public class ColorSensor extends Subsystem {
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
-		setDefaultCommand(new DetectColor());
+		//setDefaultCommand(new MoveByColor(true,.5));
 	}
 }
