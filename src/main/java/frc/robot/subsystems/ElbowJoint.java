@@ -58,4 +58,17 @@ public class ElbowJoint extends PIDSubsystem {
     // e.g. yourMotor.set(output);
     armJointMotorLeft.set(output);
   }
+
+  public void setTargetPosition(double pHeight) {
+    setSetpoint(pHeight);
+    double y = 42.875 - pHeight;
+    double r = 47.75;
+    double x = Math.sqrt((Math.pow(r,2)) - (Math.pow(y, 2)));  
+    double totalAngle = Math.asin(x/r);
+    double restAngle = Math.acos(42.875 / r);
+    double portion = (totalAngle - restAngle) / (2 * Math.PI);
+    double arcLength = portion * (95.5 * Math.PI); //Calculate arc length in inches
+    
+  }
+
 }
