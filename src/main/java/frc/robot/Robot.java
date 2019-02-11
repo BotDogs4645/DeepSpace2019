@@ -19,6 +19,7 @@ import frc.robot.subsystems.Pneumatics;
 import frc.robot.subsystems.Ultrasonic;
 import frc.robot.subsystems.ColorSensor;
 import frc.robot.subsystems.Encoder;
+import frc.robot.subsystems.Gyro;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -37,6 +38,7 @@ public class Robot extends TimedRobot {
   public static final Encoder kEncoder = new Encoder();
   public static final Ultrasonic kDistenceSenor = new Ultrasonic();
   public static final Pneumatics kPneumatics = new Pneumatics();
+  public static final Gyro kGyro = new Gyro();
 
   /**
    * This function is run when the robot is first started up and should be

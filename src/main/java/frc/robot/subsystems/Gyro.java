@@ -24,6 +24,9 @@ public class Gyro extends Subsystem {
   public void reset() {
     gyro.reset();
   } 
+  public double getAngle(){
+    return gyro.getAngle();
+  }
 
   @Override
   public void initDefaultCommand() { 

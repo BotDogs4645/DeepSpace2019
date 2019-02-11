@@ -36,20 +36,37 @@ public class Autonomous extends CommandGroup {
 
     DriverStation driver = DriverStation.getInstance();
     
+
+
     //addSequential(new MoveByColor(true, .5));
     addSequential(new MoveByEncoder(1, .5));//input actual distance once we get it
+    addSequential(new FixPoition());
     addSequential(new MoveByEncoder(1, .5));//input actual distance once we get it 
     if(driver.getLocation() == 1){
+      addSequential(new TurnByEncoder(90));
+    }else{
       addSequential(new TurnByEncoder(-90));
     }
-    //addSequential(new MoveByEncoder());
+    //addSequential(new MoveByEncoder()); if to close to cargoship
     addSequential(new PistonOutput());
     addSequential(new MoveByEncoder(1, -.5));//input actual distance once we get it 
-    addSequential(new TurnByEncoder(90));
-    addSequential(new MoveByColor(false, -.5));
-    addSequential(new TurnByEncoder(90));
+    if(driver.getLocation() == 1){
+      addSequential(new TurnByEncoder(90));
+    }else{
+      addSequential(new TurnByEncoder(-90));
+    }
+    addSequential(new MoveByEncoder(1, .5));//input actual distance once we get it
+    if(driver.getLocation() == 1){
+      addSequential(new TurnByEncoder(90));
+    }else{
+      addSequential(new TurnByEncoder(-90));
+    }
     addSequential(new MoveByUltrasonic(.5));
-    addSequential(new TurnByEncoder(90));
+    if(driver.getLocation() == 1){
+      addSequential(new TurnByEncoder(-90));
+    }else{
+      addSequential(new TurnByEncoder(90));
+    }
     addSequential(new MoveByUltrasonic(.5));
   }
 }
