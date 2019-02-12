@@ -15,8 +15,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.commands.PneumaticsCommandInFront;
+import frc.robot.subsystems.IntakePneumatics;
 import frc.robot.subsystems.Pneumatics;
-import frc.robot.subsystems.PneumaticsA;
 import frc.robot.subsystems.TankDrive;
 
 
@@ -31,7 +31,7 @@ public class Robot extends TimedRobot {
   public static Pneumatics pneumaticsOb = new Pneumatics();
   public static OI m_oi;
   public static TankDrive tankDriveSubsystem = new TankDrive();
-  public static PneumaticsA pneumaticsSubsystem = new PneumaticsA();
+  public static IntakePneumatics pneumaticsSubsystem = new IntakePneumatics();
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();

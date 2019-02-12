@@ -51,12 +51,13 @@ public class OI {
   // button.whenReleased(new ExampleCommand());
 
 
-  Joystick rightStick = new Joystick(0);//not real port or side, TBD
+  public static Joystick joyLeft = new Joystick(0); // port subject to change
+  public static Joystick joyRight = new Joystick(1);
  
-  Button buttonnFOut = new JoystickButton(rightStick, 6);//not real button #, TBD
-  Button buttonFIn = new JoystickButton(rightStick, 7);//not real button #, TBD
-  Button buttonBOut = new JoystickButton(rightStick, 4);//not real button #, TBD
-  Button buttonBIn = new JoystickButton(rightStick, 2);//not real button #, TBD
+  Button buttonnFOut = new JoystickButton(joyRight, 6);//not real button #, TBD
+  Button buttonFIn = new JoystickButton(joyRight, 7);//not real button #, TBD
+  Button buttonBOut = new JoystickButton(joyRight, 4);//not real button #, TBD
+  Button buttonBIn = new JoystickButton(joyRight, 2);//not real button #, TBD
   
 /*
   Button buttonnFOut = new JoystickButton(rightStick, 5);//not real button #, TBD
@@ -65,6 +66,7 @@ public class OI {
   Button buttonBIn = new JoystickButton(rightStick, 4);//not real button #, TBD
 */
   public OI(){
+
 
     buttonnFOut.whenPressed(new PneumaticsCommandOutFront());
     buttonFIn.whenPressed(new PneumaticsCommandInFront());

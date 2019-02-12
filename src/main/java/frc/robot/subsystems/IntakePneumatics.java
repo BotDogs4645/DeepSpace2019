@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
 
-public class PneumaticsA extends Subsystem {
+public class IntakePneumatics extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
