@@ -23,4 +23,21 @@ public class RobotMap {
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
+  //pneumatics
+
+  //PDP side is the front side
+	public static int backLeftPiston1 = 0;
+	public static int backLeftPiston2 = 1;
+
+	public static int backRightPiston1 = 2;
+  public static int backRightPiston2 = 3;
+  
+  
+  public static int frontRightPiston3= 4;//isn't real port, need to be decided
+  public static int frontRightPiston4= 6;//isn't real port, need to be decided
+
+  public static int frontLeftPiston3= 5;//isn't real port, need to be decided
+  public static int frontLeftPiston4= 7; //isn't real port, need to be decided
+  
+
 }
