@@ -79,14 +79,10 @@ public class ElbowJoint extends PIDSubsystem {
   public void setTargetPosition(double pHeight) {
     double y = 42.875 - pHeight;
     double r = 47.75;
-    double x = Math.sqrt((Math.pow(r,2)) - (Math.pow(y, 2)));  
-    double totalAngle = Math.asin(x/r);
-    double restAngle = Math.acos(42.875 / r);
-    double portion = (totalAngle - restAngle) / (2 * Math.PI);
-    double arcLength = portion * (95.5 * Math.PI); //Calculate arc length in inches
+    double angle = Math.acos(y/r) - Math.acos(42.875/r);
+    double arcLength = (angle / (2 * Math.PI)) * (95.5 * Math.PI);
     SmartDashboard.putNumber("Arc Length", arcLength);
     setSetpoint(arcLength);
-    
   }
 
   @Override
