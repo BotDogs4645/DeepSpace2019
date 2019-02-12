@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.Autonomous;
 import frc.robot.subsystems.Motor;
 import frc.robot.subsystems.Pneumatics;
+import frc.robot.subsystems.TankDrive;
 import frc.robot.subsystems.Ultrasonic;
 import frc.robot.subsystems.ColorSensor;
 import frc.robot.subsystems.Encoder;
@@ -33,6 +34,7 @@ public class Robot extends TimedRobot {
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
+  public static final TankDrive kTankDrive = new TankDrive();
   public static final ColorSensor kColorSensor = new ColorSensor();
   public static final Motor kMotor = new Motor();
   public static final Encoder kEncoder = new Encoder();

@@ -36,10 +36,10 @@ public class RobotMap {
   public static int TANK_DRIVE_REAR_RIGHT;
   //pneumatics
   
-  public static int RIGHT_PISTON_1;
-  public static int RIGHT_PISTON_2;
+  public static int RIGHT_PISTON_FRONT;
+  public static int LEFT_PISTON_FRONT;
 
-  public static int LEFT_PISTON_1;
-  public static int LEFT_PISTON_2;
+  public static int RIGHT_PISTON_BACK;
+  public static int LEFT_PISTON_BACK;
   //
 }

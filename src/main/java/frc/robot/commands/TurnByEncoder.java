@@ -12,16 +12,19 @@ import frc.robot.Robot;
 
 public class TurnByEncoder extends Command {
   private double degrees;
+  private double stopPoint;
   public TurnByEncoder(double pDegrees) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     degrees = pDegrees;
-    requires(Robot.kMotor);
+    requires(Robot.kEncoder);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    stopPoint = Robot.kEncoder.turnToAngle(degrees);
+
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -32,17 +35,23 @@ public class TurnByEncoder extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
+    if (Robot.kEncoder.getPosition() >= stopPoint){ 
+      Robot.kTankDrive.stop(); 
+      return true;
+    }
     return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.kTankDrive.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    Robot.kTankDrive.stop();
   }
 }

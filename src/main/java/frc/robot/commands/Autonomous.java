@@ -39,9 +39,9 @@ public class Autonomous extends CommandGroup {
 
 
     //addSequential(new MoveByColor(true, .5));
-    addSequential(new MoveByEncoder(1, .5));//input actual distance once we get it
-    addSequential(new FixPoition());
-    addSequential(new MoveByEncoder(1, .5));//input actual distance once we get it 
+    addSequential(new MoveByEncoder(1));//input actual distance once we get it
+    addSequential(new FixPosition());
+    addSequential(new MoveByEncoder(1));//input actual distance once we get it 
     if(driver.getLocation() == 1){
       addSequential(new TurnByEncoder(90));
     }else{
@@ -49,13 +49,13 @@ public class Autonomous extends CommandGroup {
     }
     //addSequential(new MoveByEncoder()); if to close to cargoship
     addSequential(new PistonOutput());
-    addSequential(new MoveByEncoder(1, -.5));//input actual distance once we get it 
+    addSequential(new MoveByEncoder(1));//input actual distance once we get it 
     if(driver.getLocation() == 1){
       addSequential(new TurnByEncoder(90));
     }else{
       addSequential(new TurnByEncoder(-90));
     }
-    addSequential(new MoveByEncoder(1, .5));//input actual distance once we get it
+    addSequential(new MoveByEncoder(1));//input actual distance once we get it
     if(driver.getLocation() == 1){
       addSequential(new TurnByEncoder(90));
     }else{

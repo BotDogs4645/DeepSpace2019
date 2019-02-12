@@ -10,49 +10,43 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class MoveByEncoder extends Command {
-  private double distance;
-  private double startPosition;
-
-  public MoveByEncoder(double pDistance) {
+public class FixPosition extends Command {
+  public FixPosition() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    distance = pDistance;
-    requires(Robot.kEncoder);
     requires(Robot.kTankDrive);
+    requires(Robot.kEncoder);
+    requires(Robot.kGyro);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    startPosition = Robot.kEncoder.getPosition();
+    
+    double angleToTurn = -(Robot.kGyro.getAngle());
+    Robot.kEncoder.turnToAngle(angleToTurn);
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.kTankDrive.driveForward();
   }
+
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(distance <= (Robot.kEncoder.getPosition() - startPosition)){
-      //Robot.kTankDrive.stop();
-      return true;
-    }
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.kTankDrive.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.kTankDrive.stop();
   }
 }
