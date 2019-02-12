@@ -25,5 +25,7 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
 
   //JOYSTICKS
+  static int joyLeft=0;
+  static int joyRight=1;
   static int gamepadPort = 2;
 }

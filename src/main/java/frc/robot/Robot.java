@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.ElbowJoint;
+import frc.robot.subsystems.TankDrive;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,6 +24,8 @@ import frc.robot.subsystems.ElbowJoint;
  */
 public class Robot extends TimedRobot {
   public static ElbowJoint elbowJoint = new ElbowJoint();
+  public static TankDrive tankDriveSubsystem = new TankDrive();
+
   public static OI m_oi;
 
   Command m_autonomousCommand;
