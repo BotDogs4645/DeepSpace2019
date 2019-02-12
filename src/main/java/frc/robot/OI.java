@@ -76,7 +76,7 @@ public class OI {
   
   
 }
-=======
+
   public static Joystick joyLeft = new Joystick(0); // port subject to change
   public static Joystick joyRight = new Joystick(1);
 }
