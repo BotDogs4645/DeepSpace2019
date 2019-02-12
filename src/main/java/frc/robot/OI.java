@@ -8,8 +8,15 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.PneumaticsCommandInBack;
+import frc.robot.commands.PneumaticsCommandInFront;
+import frc.robot.commands.PneumaticsCommandOut;
+import frc.robot.commands.PneumaticsCommandOutBack;
+import frc.robot.commands.PneumaticsCommandOutFront;
+
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -43,12 +50,19 @@ public class OI {
   // Start the command when the button is released and let it run the command
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
+
+
+
   public static Joystick joyLeft = new Joystick(0); // port subject to change
   public static Joystick joyRight = new Joystick(1);
-  Button buttonnFOut = new JoystickButton(joyRight, 6);//not real button #, TBD
+  public static Joystick gamepad = new Joystick(2);
+ 
+
+  Button buttonFOut = new JoystickButton(joyRight, 6);//not real button #, TBD
   Button buttonFIn = new JoystickButton(joyRight, 7);//not real button #, TBD
   Button buttonBOut = new JoystickButton(joyRight, 4);//not real button #, TBD
   Button buttonBIn = new JoystickButton(joyRight, 2);//not real button #, TBD
+  Button intakeButton = new JoystickButton(gamepad, 1); //change later
   
 /*
   Button buttonnFOut = new JoystickButton(rightStick, 5);//not real button #, TBD
@@ -58,11 +72,15 @@ public class OI {
 */
   public OI(){
 
+    intakeButton.whileHeld(new  PneumaticsCommandOut());
+    buttonFOut.whenPressed(new PneumaticsCommandOutFront());
+    buttonFIn.whenPressed(new PneumaticsCommandInFront());
 
+    buttonBOut.whenPressed(new PneumaticsCommandOutBack());
+    buttonBIn.whenPressed(new PneumaticsCommandInBack());
 
   }
   
   
 }
-
 
