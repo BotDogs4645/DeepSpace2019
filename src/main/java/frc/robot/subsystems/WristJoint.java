@@ -8,17 +8,26 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import frc.robot.OI;
+
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 
 /**
  * Add your docs here.
  */
 public class WristJoint extends PIDSubsystem {
-  /**
-   * Add your docs here.
-   */
+  public WPI_TalonSRX wristMotorLeft = new WPI_TalonSRX(6);
+  public WPI_TalonSRX wristMotorRight = new WPI_TalonSRX(7);
+  public boolean wristMovingWithTrigger = false; 
+
   public WristJoint() {
     // Intert a subsystem name and PID values here
-    super("SubsystemName", 1, 2, 3);
+    super("WristJoint", 1, 2, 3);
+    setPercentTolerance(5);
+    getPIDController().setContinuous(false);
+    wristMotorLeft.follow(wristMotorRight);
+    enable();
     // Use these to get going:
     // setSetpoint() - Sets where the PID controller should move the system
     // to
@@ -29,6 +38,22 @@ public class WristJoint extends PIDSubsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+  }
+
+  public void moveWristWithTrigger() {
+    if (OI.gamepad.getPOV() == 90) {
+      wristMotorLeft.set(0.3);
+      wristMovingWithTrigger = true;
+    }
+    else if (OI.gamepad.getPOV() == 270) {
+      wristMotorLeft.set(0.3);
+      wristMovingWithTrigger = true;
+    }
+    else if (OI.gamepad.getPOV() == -1) {
+      wristMotorLeft.set(0);
+      wristMovingWithTrigger = false;
+      setSetpoint(wristMotorLeft.getSelectedSensorPosition());  
+    }   
   }
 
   @Override

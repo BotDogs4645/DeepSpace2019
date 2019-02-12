@@ -63,12 +63,12 @@ public class ElbowJoint extends PIDSubsystem {
       armMovingWithTrigger = true;
     }
 
-    else if(OI.gamepad.getPOV() == 180){
+    else if(OI.gamepad.getPOV() == 180) {
       armJointMotorLeft.set(0.3); //test whether (-0.3) makes it go up or down
       armMovingWithTrigger = true;
     }
 
-    else if(OI.gamepad.getPOV() == -1){
+    else if(OI.gamepad.getPOV() == -1) {
       armJointMotorLeft.set(0);
       armMovingWithTrigger = false;
       setSetpoint(armJointMotorLeft.getSelectedSensorPosition());
@@ -79,16 +79,12 @@ public class ElbowJoint extends PIDSubsystem {
   public void setTargetPosition(double pHeight) {
     double y = 42.875 - pHeight;
     double r = 47.75;
-    double x = Math.sqrt((Math.pow(r,2)) - (Math.pow(y, 2)));  
-    double totalAngle = Math.asin(x/r);
-    double restAngle = Math.acos(42.875 / r);
-    double portion = (totalAngle - restAngle) / (2 * Math.PI);
-    double arcLength = portion * (95.5 * Math.PI); //Calculate arc length in inches
-    SmartDashboard.putNumber("Arc Length", arcLength);
+    double angle = Math.acos(y/r) - Math.acos(42.875/r);
+    double arcLength = (angle/(2 * Math.PI)) * (95.5 * Math.PI);
     setSetpoint(arcLength);
+    SmartDashboard.putNumber("Arc length", arcLength);
     
-  }
-
+  }  
   @Override
   protected double returnPIDInput() {
     // Return your input value for the PID loop
