@@ -7,8 +7,6 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import frc.robot.OI;
 import frc.robot.RobotMap;
@@ -47,6 +45,11 @@ public class WristJoint extends PIDSubsystem {
       wristMovingWithTrigger = false;
       setSetpoint(RobotMap.wristJointMotorLeft.getSelectedSensorPosition());
     }
+  }
+
+  public void setTargetPosition(double angle) { //rotate by a certain angle
+    double arcLength = (angle / 360) * (16 * Math.PI);
+    setSetpoint(arcLength);
   }
 
   @Override

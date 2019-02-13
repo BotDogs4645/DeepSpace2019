@@ -7,14 +7,14 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.OI;
 import frc.robot.RobotMap;
 import frc.robot.commands.DriveCommand;
 
-public class TankDrive extends Subsystem {
+public class TankDrive extends PIDSubsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Command
 
@@ -23,6 +23,12 @@ public class TankDrive extends Subsystem {
   SpeedControllerGroup rightSide = new SpeedControllerGroup(RobotMap.topRight, RobotMap.middleRight, RobotMap.rearRight);
 
   DifferentialDrive difDrive = new DifferentialDrive(leftSide, rightSide);
+
+  public TankDrive() {
+    super("TankDrive", 1, 2, 3);
+    setPercentTolerance(5);
+    getPIDController().setContinuous(false);  
+  }
 
   @Override
   public void initDefaultCommand() {
@@ -95,6 +101,16 @@ public class TankDrive extends Subsystem {
     RobotMap.topRight.stopMotor();
     RobotMap.middleRight.stopMotor();
     RobotMap.rearRight.stopMotor();
+  }
+
+  @Override
+  protected double returnPIDInput() {
+    return 0;
+  }
+
+  @Override
+  protected void usePIDOutput(double output) {
+
   }
 }
   
