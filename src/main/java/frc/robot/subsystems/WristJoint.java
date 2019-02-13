@@ -50,7 +50,7 @@ public class WristJoint extends PIDSubsystem {
     }
   }
 
-  public void setTargetPosition(double angle) { //amount of angle to rotate in order to get to desired position
+  public void setTargetPosition(double angle) { //rotate by a certain angle
     double arcLength = (angle / 360) * (16 * Math.PI);
     setSetpoint(arcLength);
   }

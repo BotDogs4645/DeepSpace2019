@@ -7,15 +7,24 @@
 
 package frc.robot.commands;
 
+
+
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 public class SetTargets extends Command {
   public SetTargets() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.wristJointSub);
+    requires(Robot.elbowJoint);
     PIDController wristPID = Robot.wristJointSub.getPIDController();
+  }
+
+  public SetTargets(double elbowTarget, double wristTarget) {
+    Robot.elbowJoint.setTargetPosition(elbowTarget);
+    Robot.wristJointSub.setTargetPosition(wristTarget);
   }
 
   // Called just before this Command runs the first time
@@ -26,7 +35,11 @@ public class SetTargets extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    SmartDashboard.putNumber("Position", Robot.wristJointSub.wristJointMotorLeft.getSelectedSensorPosition());
+
   }
+
+
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
