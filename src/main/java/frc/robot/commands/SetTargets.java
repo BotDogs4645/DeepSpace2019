@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class SetTargets extends Command {
   public SetTargets(double elbowTarget, double wristTarget) {
@@ -32,7 +33,12 @@ public class SetTargets extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+<<<<<<< HEAD
     SmartDashboard.putNumber("Position", Robot.wristJointSub.wristJointMotorLeft.getSelectedSensorPosition());
+=======
+    SmartDashboard.putNumber("Position", RobotMap.wristJointMotorLeft.getSelectedSensorPosition());
+
+>>>>>>> 1e2e15dfa1382167a5b5eb30c414a2ea84e9bb18
   }
 
 
