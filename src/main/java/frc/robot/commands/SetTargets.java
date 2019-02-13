@@ -33,12 +33,8 @@ public class SetTargets extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-<<<<<<< HEAD
-    SmartDashboard.putNumber("Position", Robot.wristJointSub.wristJointMotorLeft.getSelectedSensorPosition());
-=======
     SmartDashboard.putNumber("Position", RobotMap.wristJointMotorLeft.getSelectedSensorPosition());
 
->>>>>>> 1e2e15dfa1382167a5b5eb30c414a2ea84e9bb18
   }
 
 
