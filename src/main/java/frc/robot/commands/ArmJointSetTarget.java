@@ -13,7 +13,7 @@ import frc.robot.Robot;
 public class ArmJointSetTarget extends Command {
   public ArmJointSetTarget() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.elbowJoint);
+    requires(Robot.elbowJointSub);
   }
 
   // Called just before this Command runs the first time

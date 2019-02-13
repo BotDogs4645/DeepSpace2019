@@ -24,7 +24,7 @@ import frc.robot.subsystems.WristJoint;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static ElbowJoint elbowJoint = new ElbowJoint();
+  public static ElbowJoint elbowJointSub = new ElbowJoint();
   public static WristJoint wristJointSub = new WristJoint();
   public static TankDrive tankDriveSubsystem = new TankDrive();
 

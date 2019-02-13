@@ -15,16 +15,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 public class SetTargets extends Command {
-  public SetTargets() {
+  public SetTargets(double elbowTarget, double wristTarget) {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.wristJointSub);
-    requires(Robot.elbowJoint);
-    PIDController wristPID = Robot.wristJointSub.getPIDController();
-  }
-
-  public SetTargets(double elbowTarget, double wristTarget) {
-    Robot.elbowJoint.setTargetPosition(elbowTarget);
+    requires(Robot.elbowJointSub);
+    Robot.elbowJointSub.setTargetPosition(elbowTarget);
     Robot.wristJointSub.setTargetPosition(wristTarget);
+    PIDController wristPID = Robot.wristJointSub.getPIDController();
   }
 
   // Called just before this Command runs the first time
@@ -36,7 +33,6 @@ public class SetTargets extends Command {
   @Override
   protected void execute() {
     SmartDashboard.putNumber("Position", Robot.wristJointSub.wristJointMotorLeft.getSelectedSensorPosition());
-
   }
 
 
