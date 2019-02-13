@@ -9,13 +9,14 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.OI;
 import frc.robot.commands.DriveCommand;
 
-public class TankDrive extends Subsystem {
+public class TankDrive extends PIDSubsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
  
@@ -32,6 +33,12 @@ public class TankDrive extends Subsystem {
   SpeedControllerGroup rightSide = new SpeedControllerGroup(topRight, middleRight, rearRight);
 
   DifferentialDrive difDrive = new DifferentialDrive(leftSide, rightSide);
+
+  public TankDrive() {
+    super("TankDrive", 1, 2, 3);
+    setPercentTolerance(5);
+    getPIDController().setContinuous(false);  
+  }
 
   @Override
   public void initDefaultCommand() {
@@ -104,6 +111,16 @@ public class TankDrive extends Subsystem {
     topRight.stopMotor();
     middleRight.stopMotor();
     rearRight.stopMotor();
+  }
+
+  @Override
+  protected double returnPIDInput() {
+    return 0;
+  }
+
+  @Override
+  protected void usePIDOutput(double output) {
+
   }
 }
   

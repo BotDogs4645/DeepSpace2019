@@ -16,8 +16,9 @@ import frc.robot.OI;
  * Add your docs here.
  */
 public class WristJoint extends PIDSubsystem {
+  
   public WPI_TalonSRX wristJointMotorLeft = new WPI_TalonSRX(6);
-  public WPI_TalonSRX wristJointMototRight = new WPI_TalonSRX(7);
+  public WPI_TalonSRX wristJointMotorRight = new WPI_TalonSRX(7);
   public boolean wristMovingWithTrigger = false;
 
   public WristJoint() {
@@ -25,7 +26,7 @@ public class WristJoint extends PIDSubsystem {
     super("WristJoint", 1, 2, 3);
     setPercentTolerance(5);
     getPIDController().setContinuous(false);
-    wristJointMotorLeft.follow(wristJointMototRight);
+    wristJointMotorLeft.follow(wristJointMotorRight);
     enable();
     // Use these to get going:
     // setSetpoint() - Sets where the PID controller should move the system
@@ -47,6 +48,11 @@ public class WristJoint extends PIDSubsystem {
       wristMovingWithTrigger = false;
       setSetpoint(wristJointMotorLeft.getSelectedSensorPosition());
     }
+  }
+
+  public void setTargetPosition(double angle) { //amount of angle to rotate in order to get to desired position
+    double arcLength = (angle / 360) * (16 * Math.PI);
+    setSetpoint(arcLength);
   }
 
   @Override

@@ -7,12 +7,15 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
+import frc.robot.Robot;
 
 public class SetTargets extends Command {
   public SetTargets() {
     // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+    requires(Robot.wristJointSub);
+    PIDController wristPID = Robot.wristJointSub.getPIDController();
   }
 
   // Called just before this Command runs the first time
