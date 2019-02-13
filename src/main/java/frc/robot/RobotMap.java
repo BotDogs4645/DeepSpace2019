@@ -26,6 +26,8 @@ public class RobotMap {
   //pneumatics
 
   //PDP side is the front side
+
+  //Pistons in PCM #1
 	public static int backLeftPiston1 = 0;
 	public static int backLeftPiston2 = 1;
 
@@ -39,11 +41,16 @@ public class RobotMap {
   public static int frontLeftPiston3= 6;//isn't real port, need to be decided
   public static int frontLeftPiston4= 7; //isn't real port, need to be decided 
   
-public static int leftPiston5 = 8;
-public static int leftPiston6 = 9;
 
-public static int rightPiston7 = 10;
-public static int rightPiston8 = 11;
+//Pistons in PCM #2
+public static int leftPiston5 = 1;
+public static int leftPiston6 = 2;
+
+public static int rightPiston7 = 3;
+public static int rightPiston8 = 4;
+
+public static int gearPiston7 = 5;
+public static int gearPiston8 = 6;
 
 public static int intakeMotorPort = 1;
 
