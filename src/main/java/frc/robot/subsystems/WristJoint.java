@@ -11,13 +11,13 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import frc.robot.OI;
+import frc.robot.RobotMap;
 
 /**
  * Add your docs here.
  */
 public class WristJoint extends PIDSubsystem {
-  public WPI_TalonSRX wristJointMotorLeft = new WPI_TalonSRX(6);
-  public WPI_TalonSRX wristJointMototRight = new WPI_TalonSRX(7);
+  
   public boolean wristMovingWithTrigger = false;
 
   public WristJoint() {
@@ -25,7 +25,7 @@ public class WristJoint extends PIDSubsystem {
     super("WristJoint", 1, 2, 3);
     setPercentTolerance(5);
     getPIDController().setContinuous(false);
-    wristJointMotorLeft.follow(wristJointMototRight);
+    RobotMap.wristJointMotorLeft.follow(RobotMap.wristJointMototRight);
     enable();
     // Use these to get going:
     // setSetpoint() - Sets where the PID controller should move the system
@@ -35,17 +35,17 @@ public class WristJoint extends PIDSubsystem {
 
   public void moveWristWithTrigger() {
     if (OI.gamepad.getPOV() == 90) {
-      wristJointMotorLeft.set(0.3);
+      RobotMap.wristJointMotorLeft.set(0.3);
       wristMovingWithTrigger = true;
     }
     else if (OI.gamepad.getPOV() == 270) {
-      wristJointMotorLeft.set(0.3);
+      RobotMap.wristJointMotorLeft.set(0.3);
       wristMovingWithTrigger = true;
     }
     else if (OI.gamepad.getPOV() == -1) {
-      wristJointMotorLeft.set(0);
+      RobotMap.wristJointMotorLeft.set(0);
       wristMovingWithTrigger = false;
-      setSetpoint(wristJointMotorLeft.getSelectedSensorPosition());
+      setSetpoint(RobotMap.wristJointMotorLeft.getSelectedSensorPosition());
     }
   }
 
