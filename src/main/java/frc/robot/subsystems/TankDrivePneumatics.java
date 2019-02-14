@@ -22,13 +22,17 @@ public class TankDrivePneumatics extends Subsystem {
 	//Creates solenoid object
     
         //back left piston
-		DoubleSolenoid solenoid1 = new DoubleSolenoid(1, RobotMap.backLeftPiston1, RobotMap.backLeftPiston2);
+        Solenoid solenoid1 = new Solenoid(1, RobotMap.backLeftPiston1);
+        //(1, RobotMap.backLeftPiston1, RobotMap.backLeftPiston2);
         //back right piston
-        DoubleSolenoid solenoid2 = new DoubleSolenoid(1, RobotMap.backRightPiston1, RobotMap.backRightPiston2);
+        Solenoid solenoid2 = new Solenoid(1, RobotMap.backRightPiston1);
+        //new Solenoid(1, RobotMap.backRightPiston1, RobotMap.backRightPiston2);
         //front left piston
         DoubleSolenoid solenoid3= new DoubleSolenoid(1, RobotMap.frontLeftPiston3, RobotMap.frontLeftPiston4);
+        //(1, RobotMap.frontLeftPiston3, RobotMap.frontLeftPiston4);
         //front right piston
         DoubleSolenoid solenoid4= new DoubleSolenoid(1, RobotMap.frontRightPiston3, RobotMap.frontRightPiston4);
+        //(1, RobotMap.frontRightPiston3, RobotMap.frontRightPiston4);
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -44,6 +48,7 @@ public class TankDrivePneumatics extends Subsystem {
 
     public void inFront() 
     {
+        
     	solenoid3.set(DoubleSolenoid.Value.kReverse);
     	solenoid4.set(DoubleSolenoid.Value.kReverse);
     	SmartDashboard.putString("Pnuematics Front","In");
@@ -51,15 +56,17 @@ public class TankDrivePneumatics extends Subsystem {
     
 public void outBack()
     {
-        solenoid1.set(DoubleSolenoid.Value.kForward);
-    	solenoid2.set(DoubleSolenoid.Value.kForward);
-    	SmartDashboard.putString("Pnuematics Back","Out");
+        
+        solenoid1.set(true);
+    	solenoid2.set(true);
+        SmartDashboard.putString("Pnuematics Back","Out");
+        
     }
     
     public void inBack() 
     {
-    	solenoid1.set(DoubleSolenoid.Value.kReverse);
-    	solenoid2.set(DoubleSolenoid.Value.kReverse);
+    	solenoid1.set(false);
+    	solenoid2.set(false);
     	SmartDashboard.putString("Pnuematics Back","In");
     }
     

@@ -20,6 +20,8 @@ import frc.robot.subsystems.IntakePneumatics;
 import frc.robot.subsystems.TankDrive;
 import frc.robot.subsystems.TankDriveGears;
 import frc.robot.subsystems.TankDrivePneumatics;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.CameraServer;
 
 
 /**
@@ -42,6 +44,9 @@ public class Robot extends TimedRobot {
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
+  UsbCamera deepSpaceCamera = CameraServer.getInstance().startAutomaticCapture(0);
+  //boolean resolutionSet = deepSpaceCamera.setResolution(5000, 300);
+  
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
