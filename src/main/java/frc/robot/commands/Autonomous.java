@@ -50,7 +50,8 @@ public class Autonomous extends CommandGroup {
     }
 
     //addSequential(new MoveByEncoder()); if to close to cargoship
-    // MAKE SURE ITS NOT T00 CLOSE TO THE CARGO SHIP. MIGHT BREAK SOMETHING IF SO
+    //Make sure the arm is inline with the was cargo ship
+    //MAKE SURE ITS NOT T00 CLOSE TO THE CARGO SHIP. MIGHT BREAK SOMETHING IF SO
     addSequential(new PistonOutput());
     addSequential(new MoveByEncoder(12));//input actual distance once we get it 
     if(driver.getLocation() == 1){
@@ -72,6 +73,18 @@ public class Autonomous extends CommandGroup {
     }
     addSequential(new MoveByUltrasonic());
     //*/
+
+    //CODE FOR TESTING
+    //test each line individually
+
     //addSequential(new MoveByUltrasonic());
+    //addSequential(new MoveByEnoder(10));
+    //addSequential(new MoveByEnoder(50));
+    //addSequential(new TurnByGyro(90));
+    //addSequential(new FixPosition();
+    //addSequential(new TurnByGyro(-90));
+    //addSequential(new PistonOutput();
+    //
+
   }
 }
