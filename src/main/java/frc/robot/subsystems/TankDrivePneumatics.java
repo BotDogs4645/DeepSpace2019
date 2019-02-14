@@ -22,13 +22,13 @@ public class TankDrivePneumatics extends Subsystem {
 	//Creates solenoid object
     
         //back left piston
-		DoubleSolenoid solenoid1 = new DoubleSolenoid(1, RobotMap.backLeftPiston1, RobotMap.backLeftPiston2);
+		DoubleSolenoid solenoid1 = new DoubleSolenoid(0, RobotMap.backLeftPiston1, RobotMap.backLeftPiston2);
         //back right piston
-        DoubleSolenoid solenoid2 = new DoubleSolenoid(1, RobotMap.backRightPiston1, RobotMap.backRightPiston2);
+        DoubleSolenoid solenoid2 = new DoubleSolenoid(0, RobotMap.backRightPiston1, RobotMap.backRightPiston2);
         //front left piston
-        DoubleSolenoid solenoid3= new DoubleSolenoid(1, RobotMap.frontLeftPiston3, RobotMap.frontLeftPiston4);
+        DoubleSolenoid solenoid3= new DoubleSolenoid(0, RobotMap.frontLeftPiston3, RobotMap.frontLeftPiston4);
         //front right piston
-        DoubleSolenoid solenoid4= new DoubleSolenoid(1, RobotMap.frontRightPiston3, RobotMap.frontRightPiston4);
+        DoubleSolenoid solenoid4= new DoubleSolenoid(0, RobotMap.frontRightPiston3, RobotMap.frontRightPiston4);
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -58,15 +58,15 @@ public void outBack()
     
     public void inBack() 
     {
-    	solenoid1.set(DoubleSolenoid.Value.kReverse);
-    	solenoid2.set(DoubleSolenoid.Value.kReverse);
+    	//solenoid1.set(DoubleSolenoid.Value.kReverse);
+    	//solenoid2.set(DoubleSolenoid.Value.kReverse);
     	SmartDashboard.putString("Pnuematics Back","In");
     }
     
     
     public void rest() {
-    	//solenoid3.set(DoubleSolenoid.Value.kOff);
-    	//solenoid4.set(DoubleSolenoid.Value.kOff);
+    	solenoid3.set(DoubleSolenoid.Value.kOff);
+    	solenoid4.set(DoubleSolenoid.Value.kOff);
     }
 
 }
