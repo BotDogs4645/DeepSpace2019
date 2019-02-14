@@ -45,8 +45,8 @@ public class Robot extends TimedRobot {
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
   UsbCamera deepSpaceCamera = CameraServer.getInstance().startAutomaticCapture(0);
-  //boolean resolutionSet = deepSpaceCamera.setResolution(5000, 300);
   
+
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
