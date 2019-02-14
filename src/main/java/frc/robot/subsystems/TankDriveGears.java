@@ -18,10 +18,10 @@ import frc.robot.RobotMap;
 public class TankDriveGears extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  /*
-  Solenoid solenoid7 = new Solenoid(2, RobotMap.gearPiston7);
-  Solenoid solenoid8 = new Solenoid(2, RobotMap.gearPiston8);
-  */
+
+  Solenoid solenoid7 = new Solenoid(1, RobotMap.gearPiston7);
+  Solenoid solenoid8 = new Solenoid(1, RobotMap.gearPiston8);
+
 
   @Override
   public void initDefaultCommand() {
@@ -30,26 +30,29 @@ public class TankDriveGears extends Subsystem {
   }
 
 public void out() {
-  /*
   solenoid7.set(true);
   solenoid8.set(true);
+
   SmartDashboard.putString("Pnuematics","Out");
-  */
+  
 }
 
-/*public void in() 
+public void in() 
 {
+  /*
   solenoid5.set(DoubleSolenoid.Value.kReverse);
   solenoid6.set(DoubleSolenoid.Value.kReverse);
   SmartDashboard.putString("Pnuematics","In");
+  */
+  
 }
-*/
+
 
 public void rest() {
-  /*
+  
   solenoid7.set(false);
   solenoid8.set(false);
-  */
+  
 }
 
 }

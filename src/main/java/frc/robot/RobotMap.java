@@ -52,6 +52,6 @@ public static int rightPiston8 = 4;
 public static int gearPiston7 = 5;
 public static int gearPiston8 = 6;
 
-public static int intakeMotorPort = 1;
+public static int intakeMotorPort = 5;
 
 }

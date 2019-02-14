@@ -41,10 +41,10 @@ public class IntakeMotorSubsystem extends Subsystem {
   }
 
   public void motorForward(){
-    intakeMotor.set(0.5);
+    intakeMotor.set(0.3);
   }
   public void motorBackward(){
-    intakeMotor.set(-0.5);
+    intakeMotor.set(-0.3);
   }
 
 public void motorStop(){

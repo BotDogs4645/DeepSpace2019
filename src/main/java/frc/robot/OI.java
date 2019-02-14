@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.Joystick;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.MoveMotorBackward;
+import frc.robot.commands.MoveMotorForward;
 import frc.robot.commands.PneumaticsCommandInBack;
 import frc.robot.commands.PneumaticsCommandInFront;
 import frc.robot.commands.PneumaticsCommandOut;
@@ -63,6 +65,10 @@ public class OI {
   Button buttonBOut = new JoystickButton(joyRight, 4);//not real button #, TBD
   Button buttonBIn = new JoystickButton(joyRight, 2);//not real button #, TBD
   Button intakeButton = new JoystickButton(gamepad, 1); //change later
+  Button ButtonIntakeIn = new JoystickButton(gamepad, 2);
+  Button ButtonIntakeOut = new JoystickButton(gamepad, 3);
+
+  
   
 /*
   Button buttonnFOut = new JoystickButton(rightStick, 5);//not real button #, TBD
@@ -78,6 +84,8 @@ public class OI {
 
     buttonBOut.whenPressed(new PneumaticsCommandOutBack());
     buttonBIn.whenPressed(new PneumaticsCommandInBack());
+    ButtonIntakeIn.whileHeld(new MoveMotorForward());
+    ButtonIntakeOut.whileHeld(new MoveMotorBackward());
 
   }
   
