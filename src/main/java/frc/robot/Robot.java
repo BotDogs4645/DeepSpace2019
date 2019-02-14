@@ -21,6 +21,8 @@ import frc.robot.subsystems.Ultrasonic;
 import frc.robot.subsystems.ColorSensor;
 import frc.robot.subsystems.Encoder;
 import frc.robot.subsystems.Gyro;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.CameraServer;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -41,6 +43,9 @@ public class Robot extends TimedRobot {
   public static final Ultrasonic kDistenceSenor = new Ultrasonic();
   public static final Pneumatics kPneumatics = new Pneumatics();
   public static final Gyro kGyro = new Gyro();
+
+  UsbCamera deepSpaceCamera = CameraServer.getInstance().startAutomaticCapture(0);
+  //boolean resolutionSet = deepSpaceCamera.setResolution(5000, 300);
 
   /**
    * This function is run when the robot is first started up and should be
