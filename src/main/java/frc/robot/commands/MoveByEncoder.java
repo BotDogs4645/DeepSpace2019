@@ -12,7 +12,7 @@ import frc.robot.Robot;
 
 public class MoveByEncoder extends Command {
   private double distance;
-  private double startPosition;
+  private double originalPoition;
 
   public MoveByEncoder(double pDistance) {
     // Use requires() here to declare subsystem dependencies
@@ -25,21 +25,21 @@ public class MoveByEncoder extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    startPosition = Robot.kEncoder.getPosition();
+    originalPoition = Robot.kEncoder.getPosition();
+    Robot.kTankDrive.setDistance(distance);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.kTankDrive.driveForward();
+    //Robot.kTankDrive.driveForward();
+    
   }
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(distance <= (Robot.kEncoder.getPosition() - startPosition)){
-      //Robot.kTankDrive.stop();
+    if(Robot.kEncoder.getPosition() > (originalPoition + distance - 2))//subtracting to acount for posible error(not nessesary)
       return true;
-    }
     return false;
   }
 

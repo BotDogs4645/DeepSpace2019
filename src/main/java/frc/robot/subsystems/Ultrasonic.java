@@ -26,7 +26,7 @@ public class Ultrasonic extends Subsystem {
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
-    setDefaultCommand(new MoveByUltrasonic(.5));
+    //setDefaultCommand(new MoveByUltrasonic());
   }
 
   public double getDistance()

@@ -10,33 +10,37 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class TurnByEncoder extends Command {
+public class TurnByGyro extends Command {
+  private double endAngle;
   private double degrees;
-  private double stopPoint;
-  public TurnByEncoder(double pDegrees) {
+  private boolean isLeft;
+  public TurnByGyro(double pDegrees) {
+    endAngle = Robot.kGyro.getAngle() + pDegrees;
+    degrees = pDegrees;
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    degrees = pDegrees;
-    requires(Robot.kEncoder);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    stopPoint = Robot.kEncoder.turnToAngle(degrees);
-
+    if(degrees < 0){
+      isLeft = true;
+    }else{
+      isLeft = false;
+    }
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.kTankDrive.turnInPlace(isLeft);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if (Robot.kEncoder.getPosition() >= stopPoint){ 
-      Robot.kTankDrive.stop(); 
+    if( (Robot.kGyro.getAngle() < (endAngle + 4)) && (Robot.kGyro.getAngle() > (endAngle - 5))){
       return true;
     }
     return false;

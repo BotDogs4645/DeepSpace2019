@@ -39,34 +39,39 @@ public class Autonomous extends CommandGroup {
 
 
     //addSequential(new MoveByColor(true, .5));
-    addSequential(new MoveByEncoder(1));//input actual distance once we get it
+    //*/
+    addSequential(new MoveByEncoder(40));//input actual distance once we get 
     addSequential(new FixPosition());
-    addSequential(new MoveByEncoder(1));//input actual distance once we get it 
+    addSequential(new MoveByEncoder(200));//input actual distance once we get it 
     if(driver.getLocation() == 1){
-      addSequential(new TurnByEncoder(90));
+      addSequential(new TurnByGyro(90));
     }else{
-      addSequential(new TurnByEncoder(-90));
+      addSequential(new TurnByGyro(-90));
     }
+
     //addSequential(new MoveByEncoder()); if to close to cargoship
+    // MAKE SURE ITS NOT T00 CLOSE TO THE CARGO SHIP. MIGHT BREAK SOMETHING IF SO
     addSequential(new PistonOutput());
-    addSequential(new MoveByEncoder(1));//input actual distance once we get it 
+    addSequential(new MoveByEncoder(12));//input actual distance once we get it 
     if(driver.getLocation() == 1){
-      addSequential(new TurnByEncoder(90));
+      addSequential(new TurnByGyro(90));
     }else{
-      addSequential(new TurnByEncoder(-90));
+      addSequential(new TurnByGyro(-90));
     }
-    addSequential(new MoveByEncoder(1));//input actual distance once we get it
+    addSequential(new MoveByEncoder(190));//input actual distance once we get it
     if(driver.getLocation() == 1){
-      addSequential(new TurnByEncoder(90));
+      addSequential(new TurnByGyro(90));
     }else{
-      addSequential(new TurnByEncoder(-90));
+      addSequential(new TurnByGyro(-90));
     }
-    addSequential(new MoveByUltrasonic(.5));
+    addSequential(new MoveByUltrasonic());
     if(driver.getLocation() == 1){
-      addSequential(new TurnByEncoder(-90));
+      addSequential(new TurnByGyro(-90));
     }else{
-      addSequential(new TurnByEncoder(90));
+      addSequential(new TurnByGyro(90));
     }
-    addSequential(new MoveByUltrasonic(.5));
+    addSequential(new MoveByUltrasonic());
+    //*/
+    //addSequential(new MoveByUltrasonic());
   }
 }

@@ -11,11 +11,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class FixPosition extends Command {
+  private boolean isLeft;
+  private double angleToTurn;
   public FixPosition() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.kTankDrive);
-    requires(Robot.kEncoder);
     requires(Robot.kGyro);
   }
 
@@ -23,30 +24,39 @@ public class FixPosition extends Command {
   @Override
   protected void initialize() {
     
-    double angleToTurn = -(Robot.kGyro.getAngle());
-    Robot.kEncoder.turnToAngle(angleToTurn);
-
+    angleToTurn = -(Robot.kGyro.getAngle());
+    if(angleToTurn < 0){
+      isLeft = true;
+    }else{
+      isLeft = false;
+    }
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.kTankDrive.turnInPlace(isLeft);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    if(Robot.kGyro.getAngle() > -4 && Robot.kGyro.getAngle() < 4){
+      return true;
+    }
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.kTankDrive.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    Robot.kTankDrive.stop();
   }
 }

@@ -12,20 +12,19 @@ import frc.robot.Robot;
 
 public class MoveByUltrasonic extends Command {
 
-  private double speed;
+  
 
-  public MoveByUltrasonic(double pSpeed) {
+  public MoveByUltrasonic() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    speed = pSpeed;
     requires(Robot.kDistenceSenor);
-    requires(Robot.kMotor);
+    requires(Robot.kTankDrive);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.kMotor.move(speed);
+    Robot.kTankDrive.driveForward();
     
   }
 
@@ -37,7 +36,7 @@ public class MoveByUltrasonic extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.kDistenceSenor.getDistance() <= 31){
+    if(Robot.kDistenceSenor.getDistance() <= 51){// 31 cms
       return true;
     }
     return false;
@@ -46,13 +45,13 @@ public class MoveByUltrasonic extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.kMotor.stop();
+    Robot.kTankDrive.stop();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.kMotor.stop();
+    Robot.kTankDrive.stop();
   }
 }
