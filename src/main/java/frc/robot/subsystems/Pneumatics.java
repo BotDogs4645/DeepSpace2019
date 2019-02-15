@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.RobotMap;
 
 
 public class Pneumatics extends Subsystem {
@@ -18,8 +19,8 @@ public class Pneumatics extends Subsystem {
   // here. Call these from Commands.
   //Creates solenoid object
   
-    DoubleSolenoid solenoid1 = new DoubleSolenoid(2, 1);
-    DoubleSolenoid solenoid2 = new DoubleSolenoid(3, 4);
+    DoubleSolenoid solenoid1 = new DoubleSolenoid(RobotMap.RIGHT_PISTON_1, RobotMap.RIGHT_PISTON_2);
+    DoubleSolenoid solenoid2 = new DoubleSolenoid(RobotMap.LEFT_PISTON_1, RobotMap.LEFT_PISTON_2);
 
     /*
     DoubleSolenoid solenoid1 = new DoubleSolenoid(RobotMap.LEFT_PISTON_1, RobotMap.LEFT_PISTON_2);

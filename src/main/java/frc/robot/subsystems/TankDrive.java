@@ -14,31 +14,27 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.OI;
+import frc.robot.RobotMap;
 
 public class TankDrive extends PIDSubsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
- 
-  public WPI_TalonSRX topLeft = new WPI_TalonSRX(3); //ports subject to change (16)
-  public WPI_TalonSRX middleLeft = new WPI_TalonSRX(4); //15
-  public WPI_TalonSRX rearLeft = new WPI_TalonSRX(10); //14
+  /*
+  public WPI_TalonSRX topLeft = new WPI_TalonSRX(3); 
+  public WPI_TalonSRX middleLeft = new WPI_TalonSRX(4); 
+  public WPI_TalonSRX rearLeft = new WPI_TalonSRX(10); 
+  */
   public double dis;
   /*
   public WPI_TalonSRX topLeft = new WPI_TalonSRX(RobotMap.TANK_DRIVE_TOP_LEFT); //ports subject to change (16)
   public WPI_TalonSRX middleLeft = new WPI_TalonSRX(RobotMap.TANK_DRIVE_MIDDLE_LEFT); 
   public WPI_TalonSRX rearLeft = new WPI_TalonSRX(RobotMap.TANK_DRIVE_REAR_LEFT);
   */
-  SpeedControllerGroup leftSide = new SpeedControllerGroup(topLeft, middleLeft, rearLeft);
+  SpeedControllerGroup leftSide = new SpeedControllerGroup(RobotMap.TANK_DRIVE_TOP_LEFT, RobotMap.TANK_DRIVE_MIDDLE_LEFT, RobotMap.TANK_DRIVE_REAR_LEFT);
 
-  public WPI_TalonSRX topRight = new WPI_TalonSRX(5); //ports subject to change' (12)
-  public WPI_TalonSRX middleRight = new WPI_TalonSRX(13); //13
-  public WPI_TalonSRX rearRight = new WPI_TalonSRX(1); //10
-  /*
-  public WPI_TalonSRX topRight = new WPI_TalonSRX(RobotMap.TANK_DRIVE_TOP_RIGHT); //ports subject to change (16)
-  public WPI_TalonSRX middleRight = new WPI_TalonSRX(RobotMap.TANK_DRIVE_MIDDLE_RIGHT); 
-  public WPI_TalonSRX rearRight = new WPI_TalonSRX(RobotMap.TANK_DRIVE_REAR_RIGHT);
-  */
-  SpeedControllerGroup rightSide = new SpeedControllerGroup(topRight, middleRight, rearRight);
+
+
+  SpeedControllerGroup rightSide = new SpeedControllerGroup(RobotMap.TANK_DRIVE_TOP_RIGHT, RobotMap.TANK_DRIVE_MIDDLE_RIGHT, RobotMap.TANK_DRIVE_REAR_RIGHT);
 
   DifferentialDrive difDrive = new DifferentialDrive(leftSide, rightSide);
 
@@ -57,17 +53,18 @@ public class TankDrive extends PIDSubsystem {
 
 
   public void init() { // middleLeft and middleRight motor must go in opposite directions from the rest of the motors.
-    middleLeft.follow(topLeft);
-    rearLeft.follow(topLeft);
+    RobotMap.TANK_DRIVE_MIDDLE_LEFT.follow(RobotMap.TANK_DRIVE_TOP_LEFT);
+    RobotMap.TANK_DRIVE_REAR_LEFT.follow(RobotMap.TANK_DRIVE_TOP_LEFT);
 
-    middleLeft.setInverted(true); // inverted reverses the direction = goes in the opposite direction
-    rearLeft.setInverted(true);
+    RobotMap.TANK_DRIVE_MIDDLE_LEFT.setInverted(true);
+    RobotMap.TANK_DRIVE_REAR_LEFT.setInverted(true);
 
-    middleRight.follow(topRight);
-    rearRight.follow(topRight); 
+    RobotMap.TANK_DRIVE_MIDDLE_RIGHT.follow(RobotMap.TANK_DRIVE_TOP_RIGHT);
+    RobotMap.TANK_DRIVE_REAR_RIGHT.follow(RobotMap.TANK_DRIVE_TOP_RIGHT);
+    
 
-    middleRight.setInverted(true);
-    rearRight.setInverted(true);
+    RobotMap.TANK_DRIVE_MIDDLE_RIGHT.setInverted(true);
+    RobotMap.TANK_DRIVE_REAR_RIGHT.setInverted(true);
   }
 
   public void setDistance(double pDistance)
@@ -94,13 +91,14 @@ public class TankDrive extends PIDSubsystem {
     if(Math.abs(rightSpeed) > 0.8)
       rightSpeed = 0.8;*/
 
-    SmartDashboard.putNumber("Front Left Motor:", topLeft.get());
-    SmartDashboard.putNumber("Middle Left Motor:", middleLeft.get());
-    SmartDashboard.putNumber("Rear Left Motor:", rearLeft.get());
+    SmartDashboard.putNumber("Front Left Motor:", RobotMap.TANK_DRIVE_TOP_LEFT.get());
+    SmartDashboard.putNumber("Middle Left Motor:", RobotMap.TANK_DRIVE_MIDDLE_LEFT.get());
+    SmartDashboard.putNumber("Rear Left Motor:", RobotMap.TANK_DRIVE_REAR_LEFT.get());
 
-    SmartDashboard.putNumber("Front Right Motor:", topRight.get());
-    SmartDashboard.putNumber("Middle Right Motor:", middleRight.get());
-    SmartDashboard.putNumber("Rear Right Motor:", rearRight.get());
+
+    SmartDashboard.putNumber("Front Right Motor:", RobotMap.TANK_DRIVE_TOP_RIGHT.get());
+    SmartDashboard.putNumber("Middle Right Motor:", RobotMap.TANK_DRIVE_MIDDLE_RIGHT.get());
+    SmartDashboard.putNumber("Rear Right Motor:", RobotMap.TANK_DRIVE_REAR_RIGHT.get());
 
     difDrive.tankDrive(leftSpeed, rightSpeed);
   }
@@ -111,13 +109,15 @@ public class TankDrive extends PIDSubsystem {
     double rightSpeed = 0.2;
     difDrive.tankDrive(leftSpeed, rightSpeed);
 
-    SmartDashboard.putNumber("Front Left Motor:", topLeft.get());
-    SmartDashboard.putNumber("Middle Left Motor:", middleLeft.get());
-    SmartDashboard.putNumber("Rear Left Motor:", rearLeft.get());
+    SmartDashboard.putNumber("Front Left Motor:", RobotMap.TANK_DRIVE_TOP_LEFT.get());
+    SmartDashboard.putNumber("Middle Left Motor:", RobotMap.TANK_DRIVE_MIDDLE_LEFT.get());
+    SmartDashboard.putNumber("Rear Left Motor:", RobotMap.TANK_DRIVE_REAR_LEFT.get());
 
-    SmartDashboard.putNumber("Front Right Motor:", topRight.get());
-    SmartDashboard.putNumber("Middle Right Motor:", middleRight.get());
-    SmartDashboard.putNumber("Rear Right Motor:", rearRight.get());
+
+    SmartDashboard.putNumber("Front Right Motor:", RobotMap.TANK_DRIVE_TOP_RIGHT.get());
+    SmartDashboard.putNumber("Middle Right Motor:", RobotMap.TANK_DRIVE_MIDDLE_RIGHT.get());
+    SmartDashboard.putNumber("Rear Right Motor:", RobotMap.TANK_DRIVE_REAR_RIGHT.get());
+
   }
 
   public void driveToAngle(double angle) { // to be utilized when button 3 is pressed on Left Joystick (joyLeft)
@@ -133,23 +133,25 @@ public class TankDrive extends PIDSubsystem {
     }
     difDrive.tankDrive(leftSpeed, rightSpeed);
 
-    SmartDashboard.putNumber("Front Left Motor:", topLeft.get());
-    SmartDashboard.putNumber("Middle Left Motor:", middleLeft.get());
-    SmartDashboard.putNumber("Rear Left Motor:", rearLeft.get());
+    SmartDashboard.putNumber("Front Left Motor:", RobotMap.TANK_DRIVE_TOP_LEFT.get());
+    SmartDashboard.putNumber("Middle Left Motor:", RobotMap.TANK_DRIVE_MIDDLE_LEFT.get());
+    SmartDashboard.putNumber("Rear Left Motor:", RobotMap.TANK_DRIVE_REAR_LEFT.get());
 
-    SmartDashboard.putNumber("Front Right Motor:", topRight.get());
-    SmartDashboard.putNumber("Middle Right Motor:", middleRight.get());
-    SmartDashboard.putNumber("Rear Right Motor:", rearRight.get());
+
+    SmartDashboard.putNumber("Front Right Motor:", RobotMap.TANK_DRIVE_TOP_RIGHT.get());
+    SmartDashboard.putNumber("Middle Right Motor:", RobotMap.TANK_DRIVE_MIDDLE_RIGHT.get());
+    SmartDashboard.putNumber("Rear Right Motor:", RobotMap.TANK_DRIVE_REAR_RIGHT.get());
+
   }
 
   public void stop() {
-    topLeft.stopMotor();
-    middleLeft.stopMotor();
-    rearLeft.stopMotor();
+    RobotMap.TANK_DRIVE_TOP_LEFT.stopMotor();
+    RobotMap.TANK_DRIVE_MIDDLE_LEFT.stopMotor();
+    RobotMap.TANK_DRIVE_REAR_LEFT.stopMotor();
 
-    topRight.stopMotor();
-    middleRight.stopMotor();
-    rearRight.stopMotor();
+    RobotMap.TANK_DRIVE_TOP_RIGHT.stopMotor();
+    RobotMap.TANK_DRIVE_MIDDLE_RIGHT.stopMotor();
+    RobotMap.TANK_DRIVE_REAR_RIGHT.stopMotor();
   }
   public void turnInPlace(boolean left){
     double leftSpeed, rightSpeed;
@@ -165,13 +167,13 @@ public class TankDrive extends PIDSubsystem {
 
   @Override
   protected double returnPIDInput() {
-    SmartDashboard.putNumber("PID input", topLeft.getSelectedSensorPosition(0));
-    return topLeft.getSelectedSensorPosition();
+    SmartDashboard.putNumber("PID input", RobotMap.TANK_DRIVE_TOP_LEFT.getSelectedSensorPosition(0));
+    return RobotMap.TANK_DRIVE_TOP_LEFT.getSelectedSensorPosition();
   }
 
   @Override
   protected void usePIDOutput(double output) {
-    topLeft.pidWrite(output);
+    RobotMap.TANK_DRIVE_TOP_LEFT.pidWrite(output);
     SmartDashboard.putNumber("PID", output);
   }
   

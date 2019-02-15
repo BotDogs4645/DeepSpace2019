@@ -12,10 +12,12 @@ import frc.robot.Robot;
 import edu.wpi.first.wpilibj.Timer;
 
 public class PistonOutput extends Command {
+  Timer timer = new Timer();
   public PistonOutput() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.kPneumatics);
+    timer.start();
   }
 
   // Called just before this Command runs the first time
@@ -33,8 +35,10 @@ public class PistonOutput extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    Timer.delay(.5);
-    return true;
+    if(timer.get() >= .5){
+      return true;
+    }
+    return false;
   }
 
   // Called once after isFinished returns true

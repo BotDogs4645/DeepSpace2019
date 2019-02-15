@@ -39,7 +39,8 @@ public class Autonomous extends CommandGroup {
 
 
     //addSequential(new MoveByColor(true, .5));
-    //*/
+    
+    /*
     addSequential(new MoveByEncoder(40));//input actual distance once we get 
     addSequential(new FixPosition());
     addSequential(new MoveByEncoder(200));//input actual distance once we get it 
@@ -72,19 +73,18 @@ public class Autonomous extends CommandGroup {
       addSequential(new TurnByGyro(90));
     }
     addSequential(new MoveByUltrasonic());
-    //*/
+    */
 
     //CODE FOR TESTING
     //test each line individually
 
-    //addSequential(new MoveByUltrasonic());
-    //addSequential(new MoveByEnoder(10));
-    //addSequential(new MoveByEnoder(50));
+    //addSequential(new MoveByEncoder(10));
     //addSequential(new TurnByGyro(90));
+    //addSequential(new MoveByEncoder(20));
     //addSequential(new FixPosition();
+    //addSequential(new MoveByUltrasonic());
     //addSequential(new TurnByGyro(-90));
     //addSequential(new PistonOutput();
-    //
-
+    //addSequential(new MoveByTimer(10));
   }
 }

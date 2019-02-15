@@ -8,38 +8,41 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.Timer;
 import frc.robot.Robot;
 
-public class MoveByEncoder extends Command {
-  private double distance;
-  private double originalPoition;
+public class MoveByTimer extends Command {
+  private double time;
+  private static Timer autoTimer = new Timer();
 
-  public MoveByEncoder(double pDistance) {
+  public MoveByTimer(double ptime) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    distance = pDistance;
-    requires(Robot.kEncoder);
+    time = ptime;
     requires(Robot.kTankDrive);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    originalPoition = Robot.kEncoder.getPosition();
-    Robot.kTankDrive.setDistance(distance);
+    //Robot.kTankDrive.driveForward();
+    autoTimer.start();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //Robot.kTankDrive.driveForward();
-    
+    Robot.kTankDrive.driveForward();
   }
+
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.kEncoder.getPosition() > (originalPoition + distance))//subtracting to acount for posible error(not nessesary)
+    if (autoTimer.get() >= time)
+    {
       return true;
+    }
+
     return false;
   }
 
