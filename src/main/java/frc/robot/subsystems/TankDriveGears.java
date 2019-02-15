@@ -30,19 +30,21 @@ public class TankDriveGears extends Subsystem {
   }
 
 public void out() {
-
   solenoid7.set(true);
   solenoid8.set(true);
 
   SmartDashboard.putString("Pnuematics","Out");
+  
 }
 
 public void in() 
-{/*
+{
+  /*
   solenoid5.set(DoubleSolenoid.Value.kReverse);
   solenoid6.set(DoubleSolenoid.Value.kReverse);
   SmartDashboard.putString("Pnuematics","In");
   */
+  
 }
 
 

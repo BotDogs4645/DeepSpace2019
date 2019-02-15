@@ -11,7 +11,8 @@ public class IntakePneumatics extends Subsystem {
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	//Creates solenoid object
+    //Creates solenoid object
+    
 	
 		DoubleSolenoid solenoid5 = new DoubleSolenoid(0, RobotMap.leftPiston5, RobotMap.leftPiston6);
 		DoubleSolenoid solenoid6 = new DoubleSolenoid(0, RobotMap.rightPiston7, RobotMap.rightPiston8);
@@ -21,10 +22,9 @@ public class IntakePneumatics extends Subsystem {
     }
     
     public void out() {
-        /*
+    
     	solenoid5.set(DoubleSolenoid.Value.kForward);
         solenoid6.set(DoubleSolenoid.Value.kForward);
-        */
     	SmartDashboard.putString("Pnuematics","Out");
     }
     

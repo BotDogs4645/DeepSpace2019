@@ -44,6 +44,7 @@ public class TankDrivePneumatics extends Subsystem {
 
     public void inFront() 
     {
+        
     	solenoid3.set(DoubleSolenoid.Value.kReverse);
     	solenoid4.set(DoubleSolenoid.Value.kReverse);
     	SmartDashboard.putString("Pnuematics Front","In");
