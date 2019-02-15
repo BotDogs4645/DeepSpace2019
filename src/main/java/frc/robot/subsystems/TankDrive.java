@@ -80,7 +80,7 @@ public class TankDrive extends PIDSubsystem {
   //TO BE TESTED
   public void driveForward() { // to be utilized when button 3 is pressed on Left Joystick (joyLeft)
     double leftSpeed = 0.5;
-    double rightSpeed = 0.5;
+    double rightSpeed = -0.5;
     difDrive.tankDrive(leftSpeed, rightSpeed);
 
     SmartDashboard.putNumber("Front Left Motor:", RobotMap.topLeft.get());
