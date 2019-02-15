@@ -25,6 +25,18 @@ public class RobotMap {
   // public static int rangefinderModule = 1;
   //pneumatics
 
+  //Tank drive motors
+  public static int topLeft = 3;
+  public static int middleLeft = 4;
+  public static int rearLeft =10;
+
+  public static int topRight = 5;
+  public static int middleRight = 13;
+  public static int rearRight =1;
+
+
+  
+
   //PDP side is the front side
 
   //Pistons in PCM #1

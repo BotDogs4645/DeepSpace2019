@@ -6,32 +6,29 @@
 /*----------------------------------------------------------------------------*/
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.OI;
+import frc.robot.RobotMap;
 import frc.robot.commands.DriveCommand;
 
-public class TankDrive extends Subsystem {
+public class TankDrive extends PIDSubsystem {
   // Put methods for controlling this subsystem
-  // here. Call these from Commands.
- 
-  public WPI_TalonSRX topLeft = new WPI_TalonSRX(3); //ports subject to change (16)
-  public WPI_TalonSRX middleLeft = new WPI_TalonSRX(4); //15
-  public WPI_TalonSRX rearLeft = new WPI_TalonSRX(10); //14
+  // here. Call these from Command
 
-  SpeedControllerGroup leftSide = new SpeedControllerGroup(topLeft, middleLeft, rearLeft);
+  SpeedControllerGroup leftSide = new SpeedControllerGroup(RobotMap.topLeft, RobotMap.middleLeft, RobotMap.rearLeft);
 
-  public WPI_TalonSRX topRight = new WPI_TalonSRX(5); //ports subject to change' (12)
-  public WPI_TalonSRX middleRight = new WPI_TalonSRX(13); //13
-  public WPI_TalonSRX rearRight = new WPI_TalonSRX(1); //10
-
-  SpeedControllerGroup rightSide = new SpeedControllerGroup(topRight, middleRight, rearRight);
+  SpeedControllerGroup rightSide = new SpeedControllerGroup(RobotMap.topRight, RobotMap.middleRight, RobotMap.rearRight);
 
   DifferentialDrive difDrive = new DifferentialDrive(leftSide, rightSide);
+
+  public TankDrive() {
+    super("TankDrive", 1, 2, 3);
+    setPercentTolerance(5);
+    getPIDController().setContinuous(false);  
+  }
 
   @Override
   public void initDefaultCommand() {
@@ -41,39 +38,41 @@ public class TankDrive extends Subsystem {
   }
 
   public void init() { // middleLeft and middleRight motor must go in opposite directions from the rest of the motors.
-    middleLeft.follow(topLeft);
-    rearLeft.follow(topLeft);
+    RobotMap.middleLeft.follow(RobotMap.topLeft);
+    RobotMap.rearLeft.follow(RobotMap.topLeft);
 
-    middleLeft.setInverted(true); // inverted reverses the direction = goes in the opposite direction
-    rearLeft.setInverted(true);
+    RobotMap.middleLeft.setInverted(true); // inverted reverses the direction = goes in the opposite direction
+    RobotMap.rearLeft.setInverted(true);
 
-    middleRight.follow(topRight);
-    rearRight.follow(topRight); 
+    RobotMap.middleRight.follow(RobotMap.topRight);
+    RobotMap.rearRight.follow(RobotMap.topRight); 
 
-    middleRight.setInverted(true);
-    rearRight.setInverted(true);
+    RobotMap.middleRight.setInverted(true);
+    RobotMap.rearRight.setInverted(true);
   }
 
   public void driveWithJoystick() {
-    double leftSpeed = OI.joyLeft.getY() * -0.8;
-    double rightSpeed = OI.joyRight.getY() * 0.8; //test forwards/backwards
+    double leftSpeed = OI.joyLeft.getY() * 0.8;
+    double rightSpeed = OI.joyRight.getY() * -0.8; //check forwards/backwards
 
-    /*if(Math.abs(leftSpeed) < 0.2) 
+   /* if(Math.abs(leftSpeed) < 0.2) 
       leftSpeed = 0;
+
     if(Math.abs(rightSpeed) < 0.2)
       rightSpeed = 0;
+
     /*if(Math.abs(leftSpeed) > 0.8)
       leftSpeed = 0.8;
     if(Math.abs(rightSpeed) > 0.8)
       rightSpeed = 0.8;*/
 
-    SmartDashboard.putNumber("Front Left Motor:", topLeft.get());
-    SmartDashboard.putNumber("Middle Left Motor:", middleLeft.get());
-    SmartDashboard.putNumber("Rear Left Motor:", rearLeft.get());
+    SmartDashboard.putNumber("Front Left Motor:", RobotMap.topLeft.get());
+    SmartDashboard.putNumber("Middle Left Motor:", RobotMap.middleLeft.get());
+    SmartDashboard.putNumber("Rear Left Motor:", RobotMap.rearLeft.get());
 
-    SmartDashboard.putNumber("Front Right Motor:", topRight.get());
-    SmartDashboard.putNumber("Middle Right Motor:", middleRight.get());
-    SmartDashboard.putNumber("Rear Right Motor:", rearRight.get());
+    SmartDashboard.putNumber("Front Right Motor:", RobotMap.topRight.get());
+    SmartDashboard.putNumber("Middle Right Motor:", RobotMap.middleRight.get());
+    SmartDashboard.putNumber("Rear Right Motor:", RobotMap.rearRight.get());
 
     difDrive.tankDrive(leftSpeed, rightSpeed);
   }
@@ -84,24 +83,35 @@ public class TankDrive extends Subsystem {
     double rightSpeed = 0.5;
     difDrive.tankDrive(leftSpeed, rightSpeed);
 
-    SmartDashboard.putNumber("Front Left Motor:", topLeft.get());
-    SmartDashboard.putNumber("Middle Left Motor:", middleLeft.get());
-    SmartDashboard.putNumber("Rear Left Motor:", rearLeft.get());
+    SmartDashboard.putNumber("Front Left Motor:", RobotMap.topLeft.get());
+    SmartDashboard.putNumber("Middle Left Motor:", RobotMap.middleLeft.get());
+    SmartDashboard.putNumber("Rear Left Motor:", RobotMap.rearLeft.get());
 
-    SmartDashboard.putNumber("Front Right Motor:", topRight.get());
-    SmartDashboard.putNumber("Middle Right Motor:", middleRight.get());
-    SmartDashboard.putNumber("Rear Right Motor:", rearRight.get());
+    SmartDashboard.putNumber("Front Right Motor:", RobotMap.topRight.get());
+    SmartDashboard.putNumber("Middle Right Motor:", RobotMap.middleRight.get());
+    SmartDashboard.putNumber("Rear Right Motor:", RobotMap.rearRight.get());
   }
 
 
   public void stop() {
-    topLeft.stopMotor();
-    middleLeft.stopMotor();
-    rearLeft.stopMotor();
+    RobotMap.topLeft.stopMotor();
+    RobotMap.middleLeft.stopMotor();
+    RobotMap.rearLeft.stopMotor();
 
-    topRight.stopMotor();
-    middleRight.stopMotor();
-    rearRight.stopMotor();
+    RobotMap.topRight.stopMotor();
+    RobotMap.middleRight.stopMotor();
+    RobotMap.rearRight.stopMotor();
   }
+
+  @Override
+  protected double returnPIDInput() {
+    return 0;
+  }
+
+  @Override
+  protected void usePIDOutput(double output) {
+
+  }
+}
 }
   
