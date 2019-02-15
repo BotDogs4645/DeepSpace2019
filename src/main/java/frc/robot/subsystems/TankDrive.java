@@ -55,8 +55,8 @@ public class TankDrive extends Subsystem {
   }
 
   public void driveWithJoystick() {
-    double leftSpeed = OI.joyLeft.getY() * 0.8;
-    double rightSpeed = OI.joyRight.getY() * -0.8; //test forwards/backwards
+    double leftSpeed = OI.joyLeft.getY() * -0.8;
+    double rightSpeed = OI.joyRight.getY() * 0.8; //test forwards/backwards
 
     /*if(Math.abs(leftSpeed) < 0.2) 
       leftSpeed = 0;

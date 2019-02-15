@@ -55,18 +55,23 @@ public class OI {
 
 
 
-  public static Joystick joyLeft = new Joystick(0); // port subject to change
+  public static Joystick joyLeft = new Joystick(0); 
   public static Joystick joyRight = new Joystick(1);
   public static Joystick gamepad = new Joystick(2);
  
 
-  Button buttonFOut = new JoystickButton(joyRight, 6);//not real button #, TBD
-  Button buttonFIn = new JoystickButton(joyRight, 7);//not real button #, TBD
-  Button buttonBOut = new JoystickButton(joyRight, 4);//not real button #, TBD
-  Button buttonBIn = new JoystickButton(joyRight, 2);//not real button #, TBD
-  Button intakeButton = new JoystickButton(gamepad, 1); //change later
-  Button ButtonIntakeIn = new JoystickButton(gamepad, 2);
-  Button ButtonIntakeOut = new JoystickButton(gamepad, 3);
+  Button buttonFOut = new JoystickButton(joyRight, 6);
+  Button buttonFIn = new JoystickButton(joyRight, 7);
+
+  Button buttonBIn = new JoystickButton(joyRight, 4);
+  Button buttonBOut = new JoystickButton(joyRight, 2);
+
+  Button pneumaticIntakeButton = new JoystickButton(gamepad, 1); //change later
+
+  Button ButtonIntakeIn = new JoystickButton(gamepad, 6);
+  Button ButtonIntakeOut = new JoystickButton(gamepad, 5);
+
+  Button switchGear = new JoystickButton(joyLeft, 2);
 
   
   
@@ -78,12 +83,14 @@ public class OI {
 */
   public OI(){
 
-    intakeButton.whileHeld(new  PneumaticsCommandOut());
+    pneumaticIntakeButton.whileHeld(new  PneumaticsCommandOut());
+
     buttonFOut.whenPressed(new PneumaticsCommandOutFront());
     buttonFIn.whenPressed(new PneumaticsCommandInFront());
 
     buttonBOut.whenPressed(new PneumaticsCommandOutBack());
     buttonBIn.whenPressed(new PneumaticsCommandInBack());
+
     ButtonIntakeIn.whileHeld(new MoveMotorForward());
     ButtonIntakeOut.whileHeld(new MoveMotorBackward());
 
