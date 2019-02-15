@@ -47,6 +47,7 @@ public class Robot extends TimedRobot {
   UsbCamera deepSpaceCamera = CameraServer.getInstance().startAutomaticCapture(0);
   
 
+
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
