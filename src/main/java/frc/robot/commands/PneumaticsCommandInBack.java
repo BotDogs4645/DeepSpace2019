@@ -13,6 +13,7 @@ public class PneumaticsCommandInBack extends Command
     // Called just before this Command runs the first time
     protected void initialize()
     {
+        Robot.pneumaticsOb.inBack();
 
     }
 
@@ -20,7 +21,6 @@ public class PneumaticsCommandInBack extends Command
     protected void execute()
     {
 
-        Robot.pneumaticsOb.inBack();
     }
 
     // Make this return true when this Command no longer needs to run execute()

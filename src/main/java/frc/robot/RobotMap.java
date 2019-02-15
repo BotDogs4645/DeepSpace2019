@@ -35,11 +35,11 @@ public class RobotMap {
   public static int backRightPiston2 = 3;
   
   
-  public static int frontRightPiston3= 4;//isn't real port, need to be decided
-  public static int frontRightPiston4= 5;//isn't real port, need to be decided
+  public static int frontRightPiston1= 4;//isn't real port, need to be decided
+  public static int frontRightPiston2= 5;//isn't real port, need to be decided
 
-  public static int frontLeftPiston3= 6;//isn't real port, need to be decided
-  public static int frontLeftPiston4= 7; //isn't real port, need to be decided 
+  public static int frontLeftPiston1= 6;//isn't real port, need to be decided
+  public static int frontLeftPiston2= 7; //isn't real port, need to be decided 
   
 
 //Pistons in PCM #2

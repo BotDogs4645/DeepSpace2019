@@ -20,7 +20,7 @@ public class PneumaticsCommandInFront extends Command
     // Called just before this Command runs the first time
     protected void initialize()
     {
-
+        Robot.pneumaticsOb.inFront();
     }
  
     
@@ -28,7 +28,7 @@ public class PneumaticsCommandInFront extends Command
     protected void execute()
     {
 
-        Robot.pneumaticsOb.inFront();
+        
     }
 
     // Make this return true when this Command no longer needs to run execute()

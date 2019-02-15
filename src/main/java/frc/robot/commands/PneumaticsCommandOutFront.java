@@ -13,14 +13,14 @@ public class PneumaticsCommandOutFront extends Command
     // Called just before this Command runs the first time
     protected void initialize()
     {
-
+        Robot.pneumaticsOb.outFront();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute()
     {
 
-        Robot.pneumaticsOb.outFront();
+        
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -32,14 +32,14 @@ public class PneumaticsCommandOutFront extends Command
     // Called once after isFinished returns true
     protected void end()
     {
-        Robot.pneumaticsOb.inFront();
+        //Robot.pneumaticsOb.inFront();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted()
     {
-        Robot.pneumaticsOb.inFront();
+        //Robot.pneumaticsOb.inFront();
     }
 
 

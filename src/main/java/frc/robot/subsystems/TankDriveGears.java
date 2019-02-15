@@ -19,8 +19,8 @@ public class TankDriveGears extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  Solenoid solenoid7 = new Solenoid(1, RobotMap.gearPiston7);
-  Solenoid solenoid8 = new Solenoid(1, RobotMap.gearPiston8);
+  Solenoid solenoid7 = new Solenoid(0, RobotMap.gearPiston7);
+  Solenoid solenoid8 = new Solenoid(0, RobotMap.gearPiston8);
 
 
   @Override

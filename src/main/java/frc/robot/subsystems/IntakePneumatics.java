@@ -13,8 +13,8 @@ public class IntakePneumatics extends Subsystem {
     // here. Call these from Commands.
 	//Creates solenoid object
 	
-		DoubleSolenoid solenoid5 = new DoubleSolenoid(1, RobotMap.leftPiston5, RobotMap.leftPiston6);
-		DoubleSolenoid solenoid6 = new DoubleSolenoid(1, RobotMap.rightPiston7, RobotMap.rightPiston8);
+		DoubleSolenoid solenoid5 = new DoubleSolenoid(0, RobotMap.leftPiston5, RobotMap.leftPiston6);
+		DoubleSolenoid solenoid6 = new DoubleSolenoid(0, RobotMap.rightPiston7, RobotMap.rightPiston8);
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
