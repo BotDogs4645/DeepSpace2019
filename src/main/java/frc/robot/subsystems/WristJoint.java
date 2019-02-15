@@ -24,7 +24,7 @@ public class WristJoint extends PIDSubsystem {
     super("WristJoint", 1, 2, 3);
     setPercentTolerance(5);
     getPIDController().setContinuous(false);
-    RobotMap.wristJointMotorLeft.follow(RobotMap.wristJointMototRight);
+    RobotMap.wristJointMotorLeft.follow(RobotMap.wristJointMotorRight);
     enable();
     // Use these to get going:
     // setSetpoint() - Sets where the PID controller should move the system
@@ -46,6 +46,24 @@ public class WristJoint extends PIDSubsystem {
       wristMovingWithTrigger = false;
       setSetpoint(RobotMap.wristJointMotorLeft.getSelectedSensorPosition());
     }
+  }
+
+  public void moveWristUp()
+  {
+    RobotMap.wristJointMotorLeft.set(0.3);
+    RobotMap.wristJointMotorRight.set(-0.3);
+  }
+
+  public void moveWristDown()
+  {
+    RobotMap.wristJointMotorLeft.set(-0.3);
+    RobotMap.wristJointMotorRight.set(0.3);
+  }
+
+  public void stopWristMovement()
+  {
+    RobotMap.wristJointMotorLeft.set(0);
+    RobotMap.wristJointMotorRight.set(0);
   }
 
   public void setTargetPosition(double angle) { //rotate by a certain angle

@@ -73,6 +73,23 @@ public class ElbowJoint extends PIDSubsystem {
     }
   }
 
+  public void moveArmUp()
+  {
+    RobotMap.armJointMotorLeft.set(0.3);
+    RobotMap.armJointMotorRight.set(-0.3);
+  }
+
+  public void moveArmDown()
+  {
+    RobotMap.armJointMotorLeft.set(-0.3);
+    RobotMap.armJointMotorRight.set(0.3);
+  }
+
+  public void stopArmMovement()
+  {
+    RobotMap.armJointMotorLeft.set(0);
+    RobotMap.armJointMotorRight.set(0);
+  }
 
   public void setTargetPosition(double pHeight) {
     double y = 42.875 - pHeight;
