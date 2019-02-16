@@ -57,11 +57,13 @@ public class RobotMap {
   
 
 //Pistons in PCM #2
-public static int leftPiston5 = 1;
-public static int leftPiston6 = 2;
 
-public static int rightPiston7 = 3;
-public static int rightPiston8 = 4;
+//intake pistons
+public static int intakeLeftPiston5 = 4;
+public static int intakeLeftPiston6 = 5;
+
+public static int intakeRightPiston7 = 6;
+public static int intakeRightPiston8 = 7;
 
 public static int gearPiston7 = 5;
 public static int gearPiston8 = 6;
