@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
 import frc.robot.commands.GoToAngle;
 
-public class Gyroscope extends Subsystem {
+public class Gyroscope extends Subsystem { //yet to be tested
 
   int count = 0;
   public double finalAngle;

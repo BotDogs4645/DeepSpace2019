@@ -19,17 +19,17 @@ public class TankDrive extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
  
-  public WPI_TalonSRX topLeft = new WPI_TalonSRX(3); //ports subject to change (16)
-  public WPI_TalonSRX middleLeft = new WPI_TalonSRX(4); //15
-  public WPI_TalonSRX rearLeft = new WPI_TalonSRX(10); //14
+  public WPI_TalonSRX topLeft = new WPI_TalonSRX(3); 
+  public WPI_TalonSRX middleLeft = new WPI_TalonSRX(4); 
+  public WPI_TalonSRX rearLeft = new WPI_TalonSRX(10); 
 
-  SpeedControllerGroup leftSide = new SpeedControllerGroup(topLeft, middleLeft, rearLeft);
+  SpeedControllerGroup leftSide = new SpeedControllerGroup(topLeft, middleLeft, rearLeft); // controls the left side motors of tank drive
 
-  public WPI_TalonSRX topRight = new WPI_TalonSRX(5); //ports subject to change' (12)
-  public WPI_TalonSRX middleRight = new WPI_TalonSRX(13); //13
-  public WPI_TalonSRX rearRight = new WPI_TalonSRX(1); //10
+  public WPI_TalonSRX topRight = new WPI_TalonSRX(5); 
+  public WPI_TalonSRX middleRight = new WPI_TalonSRX(13); 
+  public WPI_TalonSRX rearRight = new WPI_TalonSRX(1); 
 
-  SpeedControllerGroup rightSide = new SpeedControllerGroup(topRight, middleRight, rearRight);
+  SpeedControllerGroup rightSide = new SpeedControllerGroup(topRight, middleRight, rearRight); //controls the right side motors of tank drive
 
   DifferentialDrive difDrive = new DifferentialDrive(leftSide, rightSide);
 
@@ -55,7 +55,7 @@ public class TankDrive extends Subsystem {
   }
 
   public void driveWithJoystick() {
-    double leftSpeed = OI.joyLeft.getY() * 0.8;
+    double leftSpeed = OI.joyLeft.getY() * 0.8; // motors cannot exceed 80%
     double rightSpeed = OI.joyRight.getY() * 0.8;
 
     if(Math.abs(leftSpeed) < 0.2) 
@@ -81,7 +81,7 @@ public class TankDrive extends Subsystem {
     difDrive.tankDrive(leftSpeed, rightSpeed);
   }
 
-  public void driveForward() { // to be utilized when button 3 is pressed on Left Joystick (joyLeft)
+  public void driveForward() { 
     double leftSpeed = 0.5;
     double rightSpeed = -0.5;
     difDrive.tankDrive(leftSpeed, rightSpeed);
@@ -95,7 +95,7 @@ public class TankDrive extends Subsystem {
     SmartDashboard.putNumber("Rear Right Motor:", rearRight.get());
   }
 
-  public void driveToAngle(double angle) { // to be utilized when button 3 is pressed on Left Joystick (joyLeft)
+  public void driveToAngle(double angle) { 
     double leftSpeed, rightSpeed;
     //the speedcontroller changes depending on what angle
     if(angle < 180.0) { //denotes it turning right. left side tank drive speed will be faster.

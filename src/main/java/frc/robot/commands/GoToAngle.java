@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
-public class GoToAngle extends Command {
+public class GoToAngle extends Command { //yet to be tested
 
   public double finalAngle;
   public double finalAngle1;
@@ -19,7 +19,6 @@ public class GoToAngle extends Command {
  
   public GoToAngle(double pfinalAngle1, double pfinalAngle2, double pSpecifiedAngle) {
     requires(Robot.gyroSub);
-
   }
 
   // Called just before this Command runs the first time
@@ -40,7 +39,7 @@ public class GoToAngle extends Command {
   @Override
   protected boolean isFinished() {
     SmartDashboard.putBoolean("finished", (Robot.gyroSub.gyro.getAngle() >= finalAngle  && Robot.gyroSub.gyro.getAngle() <= finalAngle1));
-    return (Robot.gyroSub.gyro.getAngle() >= finalAngle && Robot.gyroSub.gyro.getAngle() <= finalAngle1);
+    return (Robot.gyroSub.gyro.getAngle() >= finalAngle && Robot.gyroSub.gyro.getAngle() <= finalAngle1); 
   }
 
   // Called once after isFinished returns true

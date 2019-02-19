@@ -10,7 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class AutonDriveCommand extends Command {
+public class AutonDriveCommand extends Command { // yet to be tested
   public AutonDriveCommand() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.pidSub);
@@ -29,7 +29,7 @@ public class AutonDriveCommand extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.pidSub.encoderPID.onTarget();
+    return Robot.pidSub.encoderPID.onTarget(); // stop when PID reads that we've met designated position. onTarget() will == true
   }
 
   // Called once after isFinished returns true
