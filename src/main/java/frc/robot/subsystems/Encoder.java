@@ -13,12 +13,13 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 /**
  * Add your docs here.
  */
 public class Encoder extends Subsystem {
-  public WPI_TalonSRX talon = new WPI_TalonSRX(15);
+  public WPI_TalonSRX talon = RobotMap.TANK_DRIVE_REAR_RIGHT;
 
   public Encoder() {
       talon.setSensorPhase(true);

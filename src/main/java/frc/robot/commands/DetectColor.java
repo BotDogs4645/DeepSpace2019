@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DetectColor extends Command {
+public class DetectColor extends Command {//not used
 
   public DetectColor() {
       // Use requires() here to declare subsystem dependencies

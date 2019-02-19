@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
@@ -156,11 +155,11 @@ public class TankDrive extends PIDSubsystem {
   public void turnInPlace(boolean left){
     double leftSpeed, rightSpeed;
     if(left){
-      leftSpeed = -.5;
-      rightSpeed = .5;
+      leftSpeed = -.2;
+      rightSpeed = .2;
     }else{
-      leftSpeed = .5;
-      rightSpeed = -.5;
+      leftSpeed = .2;
+      rightSpeed = -.2;
     }
     difDrive.tankDrive(leftSpeed, rightSpeed);
   }

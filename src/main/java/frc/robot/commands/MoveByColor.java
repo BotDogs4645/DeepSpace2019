@@ -9,7 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-public class MoveByColor extends Command {
+public class MoveByColor extends Command {//not used
 
   private boolean black;
   private double speed;

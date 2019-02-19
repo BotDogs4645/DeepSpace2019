@@ -39,9 +39,11 @@ public class Autonomous extends CommandGroup {
 
 
     //addSequential(new MoveByColor(true, .5));
-    
+
+    //uncomment the next chunk to run autonomous 
+
     /*
-    addSequential(new MoveByEncoder(40));//input actual distance once we get 
+    addSequential(new MoveByEncoder(40));//input actual distance once we get all gestimations
     addSequential(new FixPosition());
     addSequential(new MoveByEncoder(200));//input actual distance once we get it 
     if(driver.getLocation() == 1){
@@ -53,7 +55,8 @@ public class Autonomous extends CommandGroup {
     //addSequential(new MoveByEncoder()); if to close to cargoship
     //Make sure the arm is inline with the was cargo ship
     //MAKE SURE ITS NOT T00 CLOSE TO THE CARGO SHIP. MIGHT BREAK SOMETHING IF SO
-    addSequential(new PistonOutput());
+
+    //addSequential(new PistonOutput());
     addSequential(new MoveByEncoder(12));//input actual distance once we get it 
     if(driver.getLocation() == 1){
       addSequential(new TurnByGyro(90));
@@ -75,10 +78,12 @@ public class Autonomous extends CommandGroup {
     addSequential(new MoveByUltrasonic());
     */
 
+
+
     //CODE FOR TESTING
     //test each line individually
 
-    //addSequential(new MoveByEncoder(10));
+    addSequential(new MoveByEncoder(10));
     //addSequential(new TurnByGyro(90));
     //addSequential(new MoveByEncoder(20));
     //addSequential(new FixPosition();
