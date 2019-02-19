@@ -52,6 +52,8 @@ public class OI {
 
 
   Joystick rightStick = new Joystick(0);//not real port or side, TBD
+  public static Joystick joyLeft = new Joystick(0); // port subject to change
+  public static Joystick joyRight = new Joystick(1);
  
   Button buttonnFOut = new JoystickButton(rightStick, 6);//not real button #, TBD
   Button buttonFIn = new JoystickButton(rightStick, 7);//not real button #, TBD
@@ -77,7 +79,4 @@ public class OI {
   
 }
 
-  public static Joystick joyLeft = new Joystick(0); // port subject to change
-  public static Joystick joyRight = new Joystick(1);
-}
-
+  
