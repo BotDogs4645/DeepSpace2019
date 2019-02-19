@@ -29,7 +29,7 @@ public class ElbowJoint extends PIDSubsystem {
   public ElbowJoint() {
     // Intert a subsystem name and PID values here
     super("ElbowJoint", 1, 2, 3);
-    setPercentTolerance(5);
+    setPercentTolerance(5); //Error must be within 5 percent
     getPIDController().setContinuous(false);
     setOutputRange(-0.5, 0.5); //test if this is necessary
     RobotMap.armJointMotorLeft.follow(RobotMap.armJointMotorRight); //slave which motor does not have encoder
@@ -91,13 +91,13 @@ public class ElbowJoint extends PIDSubsystem {
     RobotMap.armJointMotorRight.set(0);
   }
 
-  public void setTargetPosition(double pHeight) {
+  public void setTargetPosition(double pHeight) { //Uses a formula that figures out the arclength based on the desired height for the tip of the arm to be at
     double y = 42.875 - pHeight;
     double r = 47.75;
     double angle = Math.acos(y/r) - Math.acos(42.875/r);
     double arcLength = (angle / (2 * Math.PI)) * (95.5 * Math.PI);
     SmartDashboard.putNumber("Arc Length", arcLength);
-    setSetpoint(arcLength);
+    setSetpoint(arcLength); //Setpoint becomes the arclength that the tip of the arm moves
   }
 
   @Override
