@@ -16,7 +16,7 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class SetTargets extends Command {
-  public SetTargets(double elbowTarget, double wristTarget) {
+  public SetTargets(double elbowTarget, double wristTarget) { //sets setpoints for the elbow and wrist
     // Use requires() here to declare subsystem dependencies
     requires(Robot.wristJointSub);
     requires(Robot.elbowJointSub);
