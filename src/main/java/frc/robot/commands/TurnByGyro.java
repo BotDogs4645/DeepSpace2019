@@ -34,13 +34,15 @@ public class TurnByGyro extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.kTankDrive.turnInPlace(isLeft);
+    Robot.kTankDrive.turnInPlace(isLeft);//this might not work
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if( (Robot.kGyro.getAngle() < (endAngle + 4)) && (Robot.kGyro.getAngle() > (endAngle - 5))){
+    if( (Robot.kGyro.getAngle() < (endAngle + 1)) && (Robot.kGyro.getAngle() > (endAngle - 1))){
+    //trying to acount for error probably not nessesary, may even cause problems
+    //if( Robot.kGyro.getAngle() == endAngle){
       return true;
     }
     return false;

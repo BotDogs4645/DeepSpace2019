@@ -47,7 +47,7 @@ public class Autonomous extends CommandGroup {
     addSequential(new FixPosition());
     addSequential(new MoveByEncoder(200));//input actual distance once we get it 
     if(driver.getLocation() == 1){
-      addSequential(new TurnByGyro(90));
+      addSequential(new TurnByGyro(90));//make sure this is the right direction to turn should be right(the direction)
     }else{
       addSequential(new TurnByGyro(-90));
     }
@@ -83,7 +83,7 @@ public class Autonomous extends CommandGroup {
     //CODE FOR TESTING
     //test each line individually
 
-    addSequential(new MoveByEncoder(10));
+    //addSequential(new MoveByEncoder(10));
     //addSequential(new TurnByGyro(90));
     //addSequential(new MoveByEncoder(20));
     //addSequential(new FixPosition();

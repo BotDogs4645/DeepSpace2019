@@ -31,20 +31,19 @@ public class Pneumatics extends Subsystem {
       //setDefaultCommand(new MySpecialCommand());
   }
   
-  public void out() {
+  public void out() {//for intake
       solenoid1.set(DoubleSolenoid.Value.kForward);
       solenoid2.set(DoubleSolenoid.Value.kForward);
       SmartDashboard.putString("Pnuematics","Out");
   }
   
-  public void in() 
-  {
+  public void in() {//for intake
       solenoid1.set(DoubleSolenoid.Value.kReverse);
       solenoid2.set(DoubleSolenoid.Value.kReverse);
       SmartDashboard.putString("Pnuematics","In");
   }
   
-  public void rest() {
+  public void rest() {//for intake
       solenoid1.set(DoubleSolenoid.Value.kOff);
       solenoid2.set(DoubleSolenoid.Value.kOff);
   }

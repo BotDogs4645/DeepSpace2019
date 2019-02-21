@@ -35,13 +35,14 @@ public class FixPosition extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.kTankDrive.turnInPlace(isLeft);
+    Robot.kTankDrive.turnInPlace(isLeft);//this method might not work
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.kGyro.getAngle() > -4 && Robot.kGyro.getAngle() < 4){
+    if(Robot.kGyro.getAngle() > -2 && Robot.kGyro.getAngle() < 2){// the greater than and less than 
+      //checks are in case of error not nessessary if it messes with stoping in the correct place
       return true;
     }
     return false;

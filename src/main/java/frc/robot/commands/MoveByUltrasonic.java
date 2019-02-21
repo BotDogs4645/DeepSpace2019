@@ -36,7 +36,7 @@ public class MoveByUltrasonic extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(Robot.kDistenceSenor.getDistance() <= 51){// 31 cms
+    if(Robot.kDistenceSenor.getDistance() <= 51){// should be 31 cms, it is 51 simply for testing
       return true;
     }
     return false;

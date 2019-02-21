@@ -47,5 +47,5 @@ public class RobotMap {
   public static int RIGHT_PISTON_1 = 3;
   public static int RIGHT_PISTON_2 = 4;
 
-  
+  //missing climbing pneunantics
 }

@@ -42,7 +42,7 @@ public class TankDrive extends PIDSubsystem {
     super("TankDrive", 1, 2, 3);
     setPercentTolerance(5);
     getPIDController().setContinuous(false);
-    setPercentTolerance(5);
+    //setPercentTolerance(5);// might need this might not
     enable();
   }
   public void initDefaultCommand() {
@@ -104,7 +104,7 @@ public class TankDrive extends PIDSubsystem {
 
 
   public void driveForward() { // to be utilized when button 3 is pressed on Left Joystick (joyLeft)
-    double leftSpeed = 0.2;
+    double leftSpeed = 0.2;//you can speed it up, it is simply .2 for testing reasons
     double rightSpeed = 0.2;
     difDrive.tankDrive(leftSpeed, rightSpeed);
 
@@ -123,12 +123,12 @@ public class TankDrive extends PIDSubsystem {
     double leftSpeed, rightSpeed;
     //the speedcontroller changes depending on what angle
     if(angle < 0.0) { //denotes it turning right. left side tank drive speed will be faster.
-      leftSpeed = 0.5;
-      rightSpeed = 0.5;
+      leftSpeed = 0.6;
+      rightSpeed = 0.4;
     }
     else { //denotes it turning left. right side tank drive will be faster
-      rightSpeed = 0.5;
-      leftSpeed = 0.5;
+      rightSpeed = 0.6;
+      leftSpeed = 0.4;
     }
     difDrive.tankDrive(leftSpeed, rightSpeed);
 
@@ -152,10 +152,11 @@ public class TankDrive extends PIDSubsystem {
     RobotMap.TANK_DRIVE_MIDDLE_RIGHT.stopMotor();
     RobotMap.TANK_DRIVE_REAR_RIGHT.stopMotor();
   }
-  public void turnInPlace(boolean left){
+  public void turnInPlace(boolean left){//have not tested at all
+    //should just turn in place without moving forwards or backwards
     double leftSpeed, rightSpeed;
     if(left){
-      leftSpeed = -.2;
+      leftSpeed = -.2;//you can speed this up, its .2 only because of safty reasons
       rightSpeed = .2;
     }else{
       leftSpeed = .2;
