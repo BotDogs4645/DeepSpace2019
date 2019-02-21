@@ -65,8 +65,11 @@ public static int intakeLeftPiston6 = 5;
 public static int intakeRightPiston7 = 6;
 public static int intakeRightPiston8 = 7;
 
-public static int gearPiston7 = 5;
-public static int gearPiston8 = 6;
+public static int leftGearPiston1 = 5;
+public static int leftGearPiston2 = 6;
+
+public static int rightGearPiston1= 1;//not real TBD
+public static int rightGearPiston2=2;//not real TBD
 
 public static int intakeMotorPort = 5;
 

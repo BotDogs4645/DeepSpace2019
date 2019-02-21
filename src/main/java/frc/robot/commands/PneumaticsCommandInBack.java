@@ -7,13 +7,13 @@ public class PneumaticsCommandInBack extends Command
 {
     public PneumaticsCommandInBack()
     {
-       requires(Robot.pneumaticsOb);
+       requires(Robot.climbingPneumaticsOb);
     }
 
     // Called just before this Command runs the first time
     protected void initialize()
     {
-        Robot.pneumaticsOb.inBack();
+        Robot.climbingPneumaticsOb.inBack();
 
     }
 

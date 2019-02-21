@@ -10,8 +10,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ChangingGears extends Command {
-  public ChangingGears() {
+public class GearsOut extends Command {
+  public GearsOut() {
     // Use requires() here to declare subsystem dependencies
       requires(Robot.tankDriveGears);
   }

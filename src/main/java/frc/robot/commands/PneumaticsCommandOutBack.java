@@ -7,13 +7,13 @@ public class PneumaticsCommandOutBack extends Command
 {
     public PneumaticsCommandOutBack()
     {
-        requires(Robot.pneumaticsOb);
+        requires(Robot.climbingPneumaticsOb);
     }
 
     // Called just before this Command runs the first time
     protected void initialize()
     {
-        Robot.pneumaticsOb.outBack();
+        Robot.climbingPneumaticsOb.outBack();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -39,7 +39,7 @@ public class PneumaticsCommandOutBack extends Command
     // subsystems is scheduled to run
     protected void interrupted()
     {
-        Robot.pneumaticsOb.inBack();
+        Robot.climbingPneumaticsOb.inBack();
     }
 
 

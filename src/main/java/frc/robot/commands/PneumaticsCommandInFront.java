@@ -14,13 +14,13 @@ public class PneumaticsCommandInFront extends Command
 {
     public PneumaticsCommandInFront()
     {
-       requires(Robot.pneumaticsOb);
+       requires(Robot.climbingPneumaticsOb);
     }
 
     // Called just before this Command runs the first time
     protected void initialize()
     {
-        Robot.pneumaticsOb.inFront();
+        Robot.climbingPneumaticsOb.inFront();
     }
  
     

@@ -15,8 +15,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import frc.robot.commands.PneumaticsCommandInFront;
+import frc.robot.subsystems.ClimbingPneumatics;
 import frc.robot.subsystems.IntakeMotorSubsystem;
 import frc.robot.subsystems.IntakePneumatics;
+import frc.robot.subsystems.RevAirPressureSensor;
 import frc.robot.subsystems.TankDrive;
 import frc.robot.subsystems.TankDriveGears;
 import frc.robot.subsystems.TankDrivePneumatics;
@@ -38,8 +40,9 @@ public class Robot extends TimedRobot {
   public static IntakePneumatics pneumaticsSubsystem = new IntakePneumatics();
   public static IntakeMotorSubsystem motorSub = new IntakeMotorSubsystem();
   public static TankDriveGears tankDriveGears = new TankDriveGears();
-
-
+  public static ClimbingPneumatics climbingPneumaticsOb = new ClimbingPneumatics();
+  
+  public static RevAirPressureSensor revAirPressureOb= new RevAirPressureSensor(3);//not real channel
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();

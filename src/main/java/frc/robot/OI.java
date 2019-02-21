@@ -18,6 +18,7 @@ import frc.robot.commands.PneumaticsCommandInFront;
 import frc.robot.commands.PneumaticsCommandOut;
 import frc.robot.commands.PneumaticsCommandOutBack;
 import frc.robot.commands.PneumaticsCommandOutFront;
+import frc.robot.commands.readAnalogueGauge;
 
 
 /**
@@ -73,6 +74,8 @@ public class OI {
 
   Button switchGear = new JoystickButton(joyLeft, 2);
 
+  Button analogGauge = new JoystickButton(joyLeft, 3);
+
   
   
 /*
@@ -93,6 +96,8 @@ public class OI {
 
     ButtonIntakeIn.whileHeld(new MoveMotorForward());
     ButtonIntakeOut.whileHeld(new MoveMotorBackward());
+
+    analogGauge.whenPressed(new readAnalogueGauge() );
 
   }
   
