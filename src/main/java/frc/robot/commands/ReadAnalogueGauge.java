@@ -11,23 +11,22 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
-public class DriveCommand extends Command {
-  public DriveCommand() {
+public class ReadAnalogueGauge extends Command {
+  public ReadAnalogueGauge() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.tankDriveSubsystem);
+    requires(Robot.revAirPressureOb);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.tankDriveSubsystem.init();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.tankDriveSubsystem.driveWithJoystick();
+    SmartDashboard.putNumber("Analog Gauge", Robot.revAirPressureOb.getAirPressure());
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -45,8 +44,5 @@ public class DriveCommand extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.tankDriveSubsystem.stop();
-  
   }
 }
-

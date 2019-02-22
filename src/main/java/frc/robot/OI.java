@@ -11,10 +11,14 @@ import edu.wpi.first.wpilibj.Joystick;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.MoveMotorBackward;
+import frc.robot.commands.MoveMotorForward;
 import frc.robot.commands.PneumaticsCommandInBack;
 import frc.robot.commands.PneumaticsCommandInFront;
+import frc.robot.commands.PneumaticsCommandOut;
 import frc.robot.commands.PneumaticsCommandOutBack;
 import frc.robot.commands.PneumaticsCommandOutFront;
+import frc.robot.commands.readAnalogueGauge;
 
 
 /**
@@ -51,12 +55,28 @@ public class OI {
   // button.whenReleased(new ExampleCommand());
 
 
-  Joystick rightStick = new Joystick(0);//not real port or side, TBD
+
+  public static Joystick joyLeft = new Joystick(0); 
+  public static Joystick joyRight = new Joystick(1);
+  public static Joystick gamepad = new Joystick(2);
  
-  Button buttonnFOut = new JoystickButton(rightStick, 6);//not real button #, TBD
-  Button buttonFIn = new JoystickButton(rightStick, 7);//not real button #, TBD
-  Button buttonBOut = new JoystickButton(rightStick, 4);//not real button #, TBD
-  Button buttonBIn = new JoystickButton(rightStick, 2);//not real button #, TBD
+
+  Button buttonFOut = new JoystickButton(joyRight, 6);
+  Button buttonFIn = new JoystickButton(joyRight, 7);
+
+  Button buttonBIn = new JoystickButton(joyRight, 4);
+  Button buttonBOut = new JoystickButton(joyRight, 2);
+
+  Button pneumaticIntakeButton = new JoystickButton(gamepad, 1); //change later
+
+  Button ButtonIntakeIn = new JoystickButton(gamepad, 6);
+  Button ButtonIntakeOut = new JoystickButton(gamepad, 5);
+
+  Button switchGear = new JoystickButton(joyLeft, 2);
+
+  Button analogGauge = new JoystickButton(joyLeft, 3);
+
+  
   
 /*
   Button buttonnFOut = new JoystickButton(rightStick, 5);//not real button #, TBD
@@ -66,18 +86,21 @@ public class OI {
 */
   public OI(){
 
-    buttonnFOut.whenPressed(new PneumaticsCommandOutFront());
+    pneumaticIntakeButton.whileHeld(new  PneumaticsCommandOut());
+
+    buttonFOut.whenPressed(new PneumaticsCommandOutFront());
     buttonFIn.whenPressed(new PneumaticsCommandInFront());
 
     buttonBOut.whenPressed(new PneumaticsCommandOutBack());
     buttonBIn.whenPressed(new PneumaticsCommandInBack());
 
+    ButtonIntakeIn.whileHeld(new MoveMotorForward());
+    ButtonIntakeOut.whileHeld(new MoveMotorBackward());
+
+    analogGauge.whenPressed(new readAnalogueGauge() );
+
   }
   
   
-}
-=======
-  public static Joystick joyLeft = new Joystick(0); // port subject to change
-  public static Joystick joyRight = new Joystick(1);
 }
 
