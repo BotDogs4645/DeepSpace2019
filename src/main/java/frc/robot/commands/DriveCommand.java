@@ -7,37 +7,28 @@
 
 package frc.robot.commands;
 
-
-
-import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-public class SetTargets extends Command {
-  public SetTargets(double elbowTarget, double wristTarget) { //sets setpoints for the elbow and wrist
+public class DriveCommand extends Command {
+  public DriveCommand() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.wristJointSub);
-    requires(Robot.elbowJointSub);
-    Robot.elbowJointSub.setTargetPosition(elbowTarget);
-    Robot.wristJointSub.setTargetPosition(wristTarget);
-    PIDController wristPID = Robot.wristJointSub.getPIDController();
+    // eg. requires(chassis);
+    requires(Robot.tankDriveSubsystem);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.tankDriveSubsystem.init();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    SmartDashboard.putNumber("Position", RobotMap.wristJointMotorLeft.getSelectedSensorPosition());
-
+    Robot.tankDriveSubsystem.driveWithJoystick();
   }
-
-
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
@@ -54,5 +45,6 @@ public class SetTargets extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    Robot.tankDriveSubsystem.stop();
   }
 }

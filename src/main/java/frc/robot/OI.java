@@ -42,4 +42,8 @@ public class OI {
   // until it is finished as determined by it's isFinished method.
   // button.whenReleased(new ExampleCommand());
   public static Joystick gamepad = new Joystick (RobotMap.gamepadPort);
+  public static Joystick joyLeft = new Joystick (RobotMap.joyLeft);
+  public static Joystick joyRight = new Joystick (RobotMap.joyRight);
+
+
 }

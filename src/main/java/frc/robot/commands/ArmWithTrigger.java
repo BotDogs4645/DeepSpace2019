@@ -14,8 +14,8 @@ import frc.robot.Robot;
 public class ArmWithTrigger extends Command {
   public ArmWithTrigger() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.elbowJoint);
-    PIDController elbowPID = Robot.elbowJoint.getPIDController();
+    requires(Robot.elbowJointSub);
+    PIDController elbowPID = Robot.elbowJointSub.getPIDController();
   }
 
   // Called just before this Command runs the first time
@@ -26,7 +26,7 @@ public class ArmWithTrigger extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.elbowJoint.moveArmWithTrigger();
+    Robot.elbowJointSub.moveArmWithTrigger();
   }
 
   // Make this return true when this Command no longer needs to run execute()
