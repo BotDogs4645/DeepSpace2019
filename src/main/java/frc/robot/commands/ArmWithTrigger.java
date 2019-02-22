@@ -10,7 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-
+ 
 public class ArmWithTrigger extends Command {
   public ArmWithTrigger() {
     // Use requires() here to declare subsystem dependencies
