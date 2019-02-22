@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.OI;
 import frc.robot.RobotMap;
+import frc.robot.commands.ArmWithTrigger;
 
 /**
  * Add your docs here.
@@ -22,9 +23,9 @@ public class ElbowJoint extends PIDSubsystem {
   /**
    * Add your docs here.
    */
-  Encoder armEnc = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+  //Encoder armEnc = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
   public boolean armMovingWithTrigger=false;
-
+  public double angle;
 
   public ElbowJoint() {
     // Intert a subsystem name and PID values here
@@ -32,9 +33,9 @@ public class ElbowJoint extends PIDSubsystem {
     setPercentTolerance(5); //Error must be within 5 percent
     getPIDController().setContinuous(false);
     setOutputRange(-0.5, 0.5); //test if this is necessary
-    RobotMap.armJointMotorLeft.follow(RobotMap.armJointMotorRight); //slave which motor does not have encoder
+    RobotMap.armJointMotorRight.follow(RobotMap.armJointMotorLeft); //slave which motor does not have encoder
     enable();
-    //setEncoderPosition(0);
+    //RobotMap.armJointMotorLeft.setSelectedSensorPosition(0, 0, 0);
     
     
     // Use these to get going:
@@ -47,7 +48,7 @@ public class ElbowJoint extends PIDSubsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new ArmWithTrigger());
   }
 
   public void init()
@@ -57,19 +58,19 @@ public class ElbowJoint extends PIDSubsystem {
 
   public void moveArmWithTrigger(){
     if (OI.gamepad.getPOV() == 0){ //could also be .getRawAxis
-      RobotMap.armJointMotorLeft.set(0.3); //test whether (+0.3) makes it go up or down
+      RobotMap.armJointMotorLeft.set(0.1); //test whether (+0.3) makes it go up or down
       armMovingWithTrigger = true;
     }
 
     else if(OI.gamepad.getPOV() == 180){
-      RobotMap.armJointMotorLeft.set(0.3); //test whether (-0.3) makes it go up or down
+      RobotMap.armJointMotorLeft.set(-0.1); //test whether (-0.3) makes it go up or down
       armMovingWithTrigger = true;
     }
 
     else if(OI.gamepad.getPOV() == -1){
       RobotMap.armJointMotorLeft.set(0);
       armMovingWithTrigger = false;
-      setSetpoint(RobotMap.armJointMotorLeft.getSelectedSensorPosition());
+      //setSetpoint(RobotMap.armJointMotorLeft.getSelectedSensorPosition());
     }
   }
 
@@ -94,9 +95,9 @@ public class ElbowJoint extends PIDSubsystem {
   public void setTargetPosition(double pHeight) { //Uses a formula that figures out the arclength based on the desired height for the tip of the arm to be at
     double y = 42.875 - pHeight;
     double r = 47.75;
-    double angle = Math.acos(y/r) - Math.acos(42.875/r);
+    angle = Math.acos(y/r) - Math.acos(42.875/r);
     double arcLength = (angle / (2 * Math.PI)) * (95.5 * Math.PI);
-    SmartDashboard.putNumber("Arc Length", arcLength);
+    //SmartDashboard.putNumber("Arc Length", arcLength);
     setSetpoint(arcLength); //Setpoint becomes the arclength that the tip of the arm moves
   }
 

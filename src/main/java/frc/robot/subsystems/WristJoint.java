@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.OI;
 import frc.robot.RobotMap;
+import frc.robot.commands.ArmWithTrigger;
 
 /**
  * Add your docs here.
@@ -21,11 +22,13 @@ public class WristJoint extends PIDSubsystem {
 
   public WristJoint() {
     // Intert a subsystem name and PID values here
-    super("WristJoint", 1, 2, 3);
+    super("WristJoint", 1, 0, 0);
     setPercentTolerance(5); //Error should be within 5 percent
     getPIDController().setContinuous(false); 
-    RobotMap.wristJointMotorLeft.follow(RobotMap.wristJointMotorRight);
+    setOutputRange(-0.3, 0.3); //test if this is necessary
+    //RobotMap.wristJointMotorRight.follow(RobotMap.wristJointMotorLeft);
     enable();
+
     // Use these to get going:
     // setSetpoint() - Sets where the PID controller should move the system
     // to
@@ -34,17 +37,17 @@ public class WristJoint extends PIDSubsystem {
 
   public void moveWristWithTrigger() {
     if (OI.gamepad.getPOV() == 90) { //If you press right on the d-pad, make the wrist move right
-      RobotMap.wristJointMotorLeft.set(0.3);
+      RobotMap.wristJointMotorLeft.set(0.1);
       wristMovingWithTrigger = true;
     }
     else if (OI.gamepad.getPOV() == 270) { //If you press left on the d-pad, make the wrist move left
-      RobotMap.wristJointMotorLeft.set(0.3);
+      RobotMap.wristJointMotorLeft.set(-0.1);
       wristMovingWithTrigger = true;
     }
     else if (OI.gamepad.getPOV() == -1) { //Stop the wrist when you release the d-pad
       RobotMap.wristJointMotorLeft.set(0);
       wristMovingWithTrigger = false;
-      setSetpoint(RobotMap.wristJointMotorLeft.getSelectedSensorPosition());
+      //setSetpoint(RobotMap.wristJointMotorLeft.getSelectedSensorPosition());
     }
   }
 
@@ -74,7 +77,7 @@ public class WristJoint extends PIDSubsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new ArmWithTrigger());
   }
 
   @Override
@@ -82,6 +85,7 @@ public class WristJoint extends PIDSubsystem {
     // Return your input value for the PID loop
     // e.g. a sensor, like a potentiometer:
     // yourPot.getAverageVoltage() / kYourMaxVoltage;
+    SmartDashboard.putNumber("PID input(wrist encoder)", RobotMap.wristJointMotorLeft.getSelectedSensorPosition(0));
     return RobotMap.wristJointMotorLeft.getSelectedSensorPosition();
   }
 

@@ -8,6 +8,9 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.SetTargets;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -44,6 +47,14 @@ public class OI {
   public static Joystick gamepad = new Joystick (RobotMap.gamepadPort);
   public static Joystick joyLeft = new Joystick (RobotMap.joyLeft);
   public static Joystick joyRight = new Joystick (RobotMap.joyRight);
+
+  Button level1 = new JoystickButton(gamepad, 4);
+
+  public OI(){
+
+    //level1.whenPressed(new SetTargets(10,10));
+
+  }
 
 
 }
