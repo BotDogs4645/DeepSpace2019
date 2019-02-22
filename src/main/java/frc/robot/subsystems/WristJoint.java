@@ -80,6 +80,8 @@ public class WristJoint extends PIDSubsystem {
     setDefaultCommand(new ArmWithTrigger());
   }
 
+  
+
   @Override
   protected double returnPIDInput() {
     // Return your input value for the PID loop

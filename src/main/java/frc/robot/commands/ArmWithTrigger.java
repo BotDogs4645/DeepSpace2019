@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-
+ 
 public class ArmWithTrigger extends Command {
   public ArmWithTrigger() {
     // Use requires() here to declare subsystem dependencies
