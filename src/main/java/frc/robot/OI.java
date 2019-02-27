@@ -11,14 +11,14 @@ import edu.wpi.first.wpilibj.Joystick;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.MoveMotorBackward;
+/*import frc.robot.commands.MoveMotorBackward;
 import frc.robot.commands.MoveMotorForward;
 import frc.robot.commands.PneumaticsCommandInBack;
 import frc.robot.commands.PneumaticsCommandInFront;
 import frc.robot.commands.PneumaticsCommandOut;
 import frc.robot.commands.PneumaticsCommandOutBack;
 import frc.robot.commands.PneumaticsCommandOutFront;
-import frc.robot.commands.ReadAnalogueGauge;
+import frc.robot.commands.ReadAnalogueGauge; */
 
 
 
@@ -86,8 +86,8 @@ public class OI {
   Button buttonBIn = new JoystickButton(rightStick, 4);//not real button #, TBD
 */
   public OI(){
-
-    pneumaticIntakeButton.whileHeld(new  PneumaticsCommandOut());
+   /* 
+    pneumaticIntakeButton.whileHeld(new PneumaticsCommandOut());
 
     buttonFOut.whenPressed(new PneumaticsCommandOutFront());
     buttonFIn.whenPressed(new PneumaticsCommandInFront());
@@ -99,7 +99,7 @@ public class OI {
     ButtonIntakeOut.whileHeld(new MoveMotorBackward());
 
     analogGauge.whenPressed(new ReadAnalogueGauge() );
-
+*/
   }
   
   
