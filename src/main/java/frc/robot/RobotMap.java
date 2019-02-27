@@ -32,6 +32,7 @@ public class RobotMap {
   static int gamepadPort = 2;
 
   //TANK DRIVE MOTORS
+  /*
   public static WPI_TalonSRX topLeft = new WPI_TalonSRX(3); 
   public static WPI_TalonSRX middleLeft = new WPI_TalonSRX(4); 
   public static WPI_TalonSRX rearLeft = new WPI_TalonSRX(10); 
@@ -39,6 +40,7 @@ public class RobotMap {
   public static WPI_TalonSRX topRight = new WPI_TalonSRX(5); 
   public static WPI_TalonSRX middleRight = new WPI_TalonSRX(13);
   public static WPI_TalonSRX rearRight = new WPI_TalonSRX(1); 
+  */
 
   //WRIST JOINT MOTORS
   public static WPI_TalonSRX wristJointMotorLeft = new WPI_TalonSRX(12); //port # yet to be determined

@@ -23,11 +23,14 @@ public class SetTargets extends Command {
     Robot.elbowJointSub.setTargetPosition(elbowTarget);
     Robot.wristJointSub.setTargetPosition(wristTarget);
     PIDController wristPID = Robot.wristJointSub.getPIDController();
+    SmartDashboard.putNumber("Arc Length", Robot.elbowJointSub.angle);
+
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    
   }
 
   // Called repeatedly when this Command is scheduled to run
