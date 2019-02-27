@@ -66,7 +66,8 @@ public class ElbowJoint extends PIDSubsystem {
       armMovingWithTrigger = true;
     }
 
-    else if(OI.gamepad.getPOV() == -1){
+    else if(OI.gamepad.getPOV() == -1)
+    {
       RobotMap.armJointMotorLeft.set(0);
       armMovingWithTrigger = false;
       setSetpoint(RobotMap.armJointMotorLeft.getSelectedSensorPosition());

@@ -41,11 +41,11 @@ public class RobotMap {
   public static WPI_TalonSRX rearRight = new WPI_TalonSRX(1); 
 
   //WRIST JOINT MOTORS
-  public static WPI_TalonSRX wristJointMotorLeft = new WPI_TalonSRX(6); //port # yet to be determined
-  public static WPI_TalonSRX wristJointMotorRight = new WPI_TalonSRX(7); //port # yet to be determined
+  public static WPI_TalonSRX wristJointMotorLeft = new WPI_TalonSRX(12); //port # yet to be determined
+  public static WPI_TalonSRX wristJointMotorRight = new WPI_TalonSRX(11); //port # yet to be determined
 
   //ELBOW JOINT MOTORS
-  public static WPI_TalonSRX armJointMotorLeft = new WPI_TalonSRX(8); //port # yet to be determined
-  public static WPI_TalonSRX armJointMotorRight = new WPI_TalonSRX(9); //port # yet to be determined
+  public static WPI_TalonSRX armJointMotorLeft = new WPI_TalonSRX(4); //port # yet to be determined
+  public static WPI_TalonSRX armJointMotorRight = new WPI_TalonSRX(10); //port # yet to be determined
 
 }
