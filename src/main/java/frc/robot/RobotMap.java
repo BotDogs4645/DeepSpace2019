@@ -28,17 +28,17 @@ public class RobotMap {
   //pneumatics
 
   //TANK DRIVE MOTORS
-  public static WPI_TalonSRX topLeft = new WPI_TalonSRX(3); 
+  public static WPI_TalonSRX topLeft = new WPI_TalonSRX(14); 
   //public static WPI_TalonSRX middleLeft = new WPI_TalonSRX(4); 
-  public static WPI_TalonSRX rearLeft = new WPI_TalonSRX(10); 
+  public static WPI_TalonSRX rearLeft = new WPI_TalonSRX(15); 
 
-  public static WPI_TalonSRX topRight = new WPI_TalonSRX(5); 
+  public static WPI_TalonSRX topRight = new WPI_TalonSRX(3); 
   //public static WPI_TalonSRX middleRight = new WPI_TalonSRX(13);
-  public static WPI_TalonSRX rearRight = new WPI_TalonSRX(1); 
+  public static WPI_TalonSRX rearRight = new WPI_TalonSRX(5); 
 
 
   
-
+ /*
   //PDP side is the front side
 
   //Pistons in PCM #1
@@ -72,5 +72,6 @@ public static int rightGearPiston1= 1;//not real TBD
 public static int rightGearPiston2=2;//not real TBD
 
 public static int intakeMotorPort = 5;
+*/
 
 }
