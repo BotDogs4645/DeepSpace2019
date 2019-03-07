@@ -14,16 +14,16 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import frc.robot.commands.PneumaticsCommandInFront;
+/*import frc.robot.commands.PneumaticsCommandInFront;
 import frc.robot.subsystems.ClimbingPneumatics;
 import frc.robot.subsystems.IntakeMotorSubsystem;
 import frc.robot.subsystems.IntakePneumatics;
-import frc.robot.subsystems.RevAirPressureSensor;
+import frc.robot.subsystems.RevAirPressureSensor; */
 import frc.robot.subsystems.TankDrive;
-import frc.robot.subsystems.TankDriveGears;
+/*import frc.robot.subsystems.TankDriveGears;
 import frc.robot.subsystems.TankDrivePneumatics;
 import edu.wpi.cscore.UsbCamera;
-import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.cameraserver.CameraServer; */
 
 
 /**
@@ -34,20 +34,20 @@ import edu.wpi.first.cameraserver.CameraServer;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static TankDrivePneumatics pneumaticsOb = new TankDrivePneumatics();
-  public static OI m_oi;
+  /*public static TankDrivePneumatics pneumaticsOb = new TankDrivePneumatics();
+  */public static OI m_oi; 
   public static TankDrive tankDriveSubsystem = new TankDrive();
-  public static IntakePneumatics pneumaticsSubsystem = new IntakePneumatics();
+  /*public static IntakePneumatics pneumaticsSubsystem = new IntakePneumatics();
   public static IntakeMotorSubsystem motorSub = new IntakeMotorSubsystem();
   public static TankDriveGears tankDriveGears = new TankDriveGears();
-  public static ClimbingPneumatics climbingPneumaticsOb = new ClimbingPneumatics();
+  public static ClimbingPneumatics climbingPneumaticsOb = new ClimbingPneumatics(); */
   
-  public static RevAirPressureSensor revAirPressureOb= new RevAirPressureSensor(3);//not real channel
+  //public static RevAirPressureSensor revAirPressureOb= new RevAirPressureSensor(3);//not real channel
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
-  UsbCamera deepSpaceCamera = CameraServer.getInstance().startAutomaticCapture(0);
+ // UsbCamera deepSpaceCamera = CameraServer.getInstance().startAutomaticCapture(0);
   
 
 

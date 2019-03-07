@@ -4,8 +4,7 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-
-package frc.robot.subsystems;
+/*package frc.robot.subsystems;
 
 
 
@@ -58,7 +57,7 @@ public void outBack()
         solenoid1.set(DoubleSolenoid.Value.kForward);
         solenoid2.set(DoubleSolenoid.Value.kForward);
         */
-    	SmartDashboard.putString("Pnuematics Back","Out");
+    	/*SmartDashboard.putString("Pnuematics Back","Out");
     }
     
     public void inBack() 
@@ -75,3 +74,4 @@ public void outBack()
     }
 
 }
+*/

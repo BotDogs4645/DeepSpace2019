@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+/*package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
@@ -50,4 +50,4 @@ public class MoveMotorForward extends Command {
   protected void interrupted() {
     Robot.motorSub.motorStop();
   }
-}
+} */
