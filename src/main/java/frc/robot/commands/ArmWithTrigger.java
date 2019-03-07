@@ -16,10 +16,10 @@ import frc.robot.RobotMap;
 public class ArmWithTrigger extends Command {
   public ArmWithTrigger() {
     // Use requires() here to declare subsystem dependencies
+    //requires(Robot.elbowJointSub);
     requires(Robot.elbowJointSub);
-    requires(Robot.wristJointSub);
-    PIDController elbowPID = Robot.elbowJointSub.getPIDController();
-    RobotMap.armJointMotorLeft.setInverted(true);
+    //PIDController elbowPID = Robot.elbowJointSub.getPIDController();
+    //RobotMap.armJointMotorLeft.setInverted(true);
   
   }
 
@@ -31,12 +31,12 @@ public class ArmWithTrigger extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    //Robot.elbowJointSub.moveArmWithTrigger();
     Robot.elbowJointSub.moveArmWithTrigger();
-    Robot.wristJointSub.moveWristWithTrigger();
     SmartDashboard.putNumber("left arm motor power", RobotMap.armJointMotorLeft.get());
     SmartDashboard.putNumber("current left arm econder value", RobotMap.armJointMotorLeft.getSelectedSensorPosition());
-    SmartDashboard.putNumber("left joint motor power", RobotMap.wristJointMotorLeft.get());
-    SmartDashboard.putNumber("current left joint encoder value", RobotMap.wristJointMotorLeft.getSelectedSensorPosition());
+    //SmartDashboard.putNumber("left joint motor power", RobotMap.wristJointMotorLeft.get());
+    //SmartDashboard.putNumber("current left joint encoder value", RobotMap.wristJointMotorLeft.getSelectedSensorPosition());
 
   }
 

@@ -7,41 +7,40 @@
 
 package frc.robot.commands;
 
-
-
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-
-public class SetTargets extends Command {
-  public SetTargets(double elbowTarget, double wristTarget) { //sets setpoints for the elbow and wrist
+ 
+public class WristWithTrigger extends Command {
+  /*
+  public WristWithTrigger() {
     // Use requires() here to declare subsystem dependencies
-    //requires(Robot.wristJointSub);
-    requires(Robot.elbowJointSub);
-    Robot.elbowJointSub.setTargetPosition(elbowTarget);
-    //Robot.wristJointSub.setTargetPosition(wristTarget);
-    //PIDController wristPID = Robot.wristJointSub.getPIDController();
-    SmartDashboard.putNumber("Arc Length", Robot.elbowJointSub.angle);
-
+    //requires(Robot.elbowJointSub);
+    requires(Robot.wristJointSub);
+    //PIDController elbowPID = Robot.elbowJointSub.getPIDController();
+    //RobotMap.armJointMotorLeft.setInverted(true);
+  
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    SmartDashboard.putNumber("Position", RobotMap.wristJointMotorLeft.getSelectedSensorPosition());
+    //Robot.elbowJointSub.moveArmWithTrigger();
+    Robot.wristJointSub.moveWristWithTrigger();
+    //SmartDashboard.putNumber("left arm motor power", RobotMap.armJointMotorLeft.get());
+    //SmartDashboard.putNumber("current left arm econder value", RobotMap.armJointMotorLeft.getSelectedSensorPosition());
+    SmartDashboard.putNumber("left joint motor power", RobotMap.wristJointMotorLeft.get());
+    SmartDashboard.putNumber("current left joint encoder value", RobotMap.wristJointMotorLeft.getSelectedSensorPosition());
 
   }
-
-
-
+  */
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
@@ -58,4 +57,6 @@ public class SetTargets extends Command {
   @Override
   protected void interrupted() {
   }
+  
 }
+

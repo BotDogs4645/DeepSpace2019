@@ -15,25 +15,37 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.OI;
 import frc.robot.RobotMap;
 import frc.robot.commands.ArmWithTrigger;
+import frc.robot.commands.WristWithTrigger;
 
 /**
  * Add your docs here.
  */
 public class ElbowJoint extends PIDSubsystem {
   /**
+   *
+   */
+
+ 
+  /**
    * Add your docs here.
    */
   //Encoder armEnc = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-  public boolean armMovingWithTrigger=false;
+  public boolean armMovingWithTrigger = false;
   public double angle;
+  
 
   public ElbowJoint() {
     // Intert a subsystem name and PID values here
-    super("ElbowJoint", 1, 2, 3);
-    setPercentTolerance(5); //Error must be within 5 percent
-    getPIDController().setContinuous(false);
-    setOutputRange(-0.5, 0.5); //test if this is necessary
-    RobotMap.armJointMotorRight.follow(RobotMap.armJointMotorLeft); //slave which motor does not have encoder
+    super("ElbowJoint", 0.04, 0.5, .04); //100000 //0.02, 0, .01
+    setPercentTolerance(20); //Error must be within 5 percent
+    getPIDController().setContinuous(false); 
+    setOutputRange(-0.3, 0.3); //test if this is necessary
+    //RobotMap.armJointMotorRight.follow(RobotMap.armJointMotorLeft); //slave which motor does not have encoder
+    RobotMap.armJointMotorLeft.setSelectedSensorPosition(0, 0, 0);
+    RobotMap.armJointMotorLeft.setSensorPhase(true);
+    setSetpoint(0);
+
+    //    setSetpoint(RobotMap.armJointMotorLeft.getSelectedSensorPosition());
     enable();
     //RobotMap.armJointMotorLeft.setSelectedSensorPosition(0, 0, 0);
     
@@ -45,35 +57,54 @@ public class ElbowJoint extends PIDSubsystem {
 
   }
 
+  public void moveArmWithTrigger(){
+    int target_value = RobotMap.armJointMotorLeft.getSelectedSensorPosition();
+    if (OI.gamepad.getPOV() == 0){ //could also be .getRawAxis
+      //RobotMap.armJointMotorLeft.set(0.3); //test whether (+0.3) makes it go up or down
+      armMovingWithTrigger = true;
+      setSetpoint(getSetpoint() + 1);
+
+    }
+
+    else if(OI.gamepad.getPOV() == 180){
+      //RobotMap.armJointMotorLeft.set(-0.1); //test whether (-0.3) makes it go up or down
+      armMovingWithTrigger = true;
+      setSetpoint(getSetpoint() - 1);
+
+    }
+
+    else if(OI.gamepad.getPOV() == -1){
+      //RobotMap.armJointMotorLeft.set(0);
+      armMovingWithTrigger = false;
+
+    }
+    SmartDashboard.putNumber("POV", OI.gamepad.getPOV());
+    SmartDashboard.putNumber("arm current value", target_value);
+    SmartDashboard.putNumber("arm setpoint value", getSetpoint());
+
+  }
+  /*
+  public void setTargetPosition(double pHeight) { //Uses a formula that figures out the arclength based on the desired height for the tip of the arm to be at
+    double y = 42.875 - pHeight; 
+    double r = 47.75;
+    angle = Math.acos(y/r) - Math.acos(42.875/r);
+    double arcLength = (angle / (2 * Math.PI)) * (95.5 * Math.PI);
+    //SmartDashboard.putNumber("Arc Length", arcLength);
+    setSetpoint(arcLength); //Setpoint becomes the arclength that the tip of the arm moves
+  }
+  */
+
+  public void setTargetPosition(double angle) { //rotate by a certain angle
+    double arcLength = (angle / 360) * (16 * Math.PI);
+    setSetpoint(arcLength); //setpoint is the arclength encoder moves
+  }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     setDefaultCommand(new ArmWithTrigger());
   }
-
-  public void init()
-  {
-    
-  }
-
-  public void moveArmWithTrigger(){
-    if (OI.gamepad.getPOV() == 0){ //could also be .getRawAxis
-      RobotMap.armJointMotorLeft.set(0.1); //test whether (+0.3) makes it go up or down
-      armMovingWithTrigger = true;
-    }
-
-    else if(OI.gamepad.getPOV() == 180){
-      RobotMap.armJointMotorLeft.set(-0.1); //test whether (-0.3) makes it go up or down
-      armMovingWithTrigger = true;
-    }
-
-    else if(OI.gamepad.getPOV() == -1){
-      RobotMap.armJointMotorLeft.set(0);
-      armMovingWithTrigger = false;
-      //setSetpoint(RobotMap.armJointMotorLeft.getSelectedSensorPosition());
-    }
-  }
-
+/*
   public void moveArmUp()
   {
     RobotMap.armJointMotorLeft.set(0.3);
@@ -91,15 +122,7 @@ public class ElbowJoint extends PIDSubsystem {
     RobotMap.armJointMotorLeft.set(0);
     RobotMap.armJointMotorRight.set(0);
   }
-
-  public void setTargetPosition(double pHeight) { //Uses a formula that figures out the arclength based on the desired height for the tip of the arm to be at
-    double y = 42.875 - pHeight;
-    double r = 47.75;
-    angle = Math.acos(y/r) - Math.acos(42.875/r);
-    double arcLength = (angle / (2 * Math.PI)) * (95.5 * Math.PI);
-    //SmartDashboard.putNumber("Arc Length", arcLength);
-    setSetpoint(arcLength); //Setpoint becomes the arclength that the tip of the arm moves
-  }
+*/
 
   @Override
   protected double returnPIDInput() {
