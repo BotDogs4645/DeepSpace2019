@@ -38,7 +38,7 @@ public class RobotMap {
 
 
   
- /*
+ 
   //PDP side is the front side
 
   //Pistons in PCM #1
@@ -72,6 +72,6 @@ public static int rightGearPiston1= 1;//not real TBD
 public static int rightGearPiston2=2;//not real TBD
 
 public static int intakeMotorPort = 5;
-*/
+
 
 }

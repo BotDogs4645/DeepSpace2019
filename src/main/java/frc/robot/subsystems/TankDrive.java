@@ -18,9 +18,9 @@ public class TankDrive extends PIDSubsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Command
 
-  SpeedControllerGroup leftSide = new SpeedControllerGroup(RobotMap.rearLeft, RobotMap.rearLeft);
+  SpeedControllerGroup leftSide = new SpeedControllerGroup(RobotMap.topLeft, RobotMap.rearLeft);//
 
-  SpeedControllerGroup rightSide = new SpeedControllerGroup(RobotMap.rearRight, RobotMap.rearRight);
+  SpeedControllerGroup rightSide = new SpeedControllerGroup(RobotMap.topRight, RobotMap.rearRight);//
 
   DifferentialDrive difDrive = new DifferentialDrive(leftSide, rightSide);
 
@@ -37,26 +37,51 @@ public class TankDrive extends PIDSubsystem {
     setDefaultCommand(new DriveCommand());
   }
 
+
+
   public void init() { // middleLeft and middleRight motor must go in opposite directions from the rest of the motors.
     RobotMap.rearLeft.follow(RobotMap.topLeft);
    
     RobotMap.rearRight.follow(RobotMap.topRight); 
   }
+  
 
   public void driveWithJoystick() {
+    //ONE JOYSTICK
+    //make sure throttle is at 1 or -1
+    double forward = (OI.joyRight.getY()*0.8)*OI.joyRight.getThrottle();
+    double turn = -(OI.joyRight.getZ()*0.8);
+
+
+    /*deadband*/
+    if ((Math.abs(forward)<0.30) && (Math.abs(turn)<0.30))
+    {
+      stop();
+    }
+
+    else 
+    {
+      difDrive.arcadeDrive(forward, turn);
+    }
+
+    SmartDashboard.putNumber("tank drive motor power", RobotMap.topLeft.get());
+
+
+    //TWO JOYSTICKS
+    /*
     double leftSpeed = OI.joyLeft.getY() * 0.8;
     double rightSpeed = OI.joyRight.getY() * -0.8; //check forwards/backwards
-
-   /* if(Math.abs(leftSpeed) < 0.2) 
+    double turn = OI.joyLeft.getZ() * 0.8;
+    if(Math.abs(leftSpeed) < 0.2) 
       leftSpeed = 0;
 
-    if(Math.abs(rightSpeed) < 0.2)
+    if (Math.abs(rightSpeed) < 0.2)
       rightSpeed = 0;
 
-    /*if(Math.abs(leftSpeed) > 0.8)
+    if(Math.abs(leftSpeed) > 0.8)
       leftSpeed = 0.8;
     if(Math.abs(rightSpeed) > 0.8)
-      rightSpeed = 0.8;*/
+      rightSpeed = 0.8;
 
     SmartDashboard.putNumber("Front Left Motor:", RobotMap.topLeft.get());
     //SmartDashboard.putNumber("Middle Left Motor:", RobotMap.middleLeft.get());
@@ -67,6 +92,8 @@ public class TankDrive extends PIDSubsystem {
     SmartDashboard.putNumber("Rear Right Motor:", RobotMap.rearRight.get());
 
     difDrive.tankDrive(leftSpeed, rightSpeed);
+    //difDrive.arcadeDrive(leftSpeed, turn);
+    */
   }
 
   //TO BE TESTED
