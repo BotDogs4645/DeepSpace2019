@@ -18,9 +18,9 @@ public class TankDrive extends PIDSubsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Command
 
-  SpeedControllerGroup leftSide = new SpeedControllerGroup(RobotMap.topLeft, RobotMap.rearLeft);//
+  SpeedControllerGroup leftSide = new SpeedControllerGroup(RobotMap.topLeft, RobotMap.middleLeft, RobotMap.rearLeft);
 
-  SpeedControllerGroup rightSide = new SpeedControllerGroup(RobotMap.topRight, RobotMap.rearRight);//
+  SpeedControllerGroup rightSide = new SpeedControllerGroup(RobotMap.topRight, RobotMap.middleRight, RobotMap.rearRight);
 
   DifferentialDrive difDrive = new DifferentialDrive(leftSide, rightSide);
 
@@ -37,12 +37,20 @@ public class TankDrive extends PIDSubsystem {
     setDefaultCommand(new DriveCommand());
   }
 
-
+  //where middle motor is the top motor
 
   public void init() { // middleLeft and middleRight motor must go in opposite directions from the rest of the motors.
-    RobotMap.rearLeft.follow(RobotMap.topLeft);
-   
-    RobotMap.rearRight.follow(RobotMap.topRight); 
+    RobotMap.topLeft.follow(RobotMap.middleLeft);
+    RobotMap.rearLeft.follow(RobotMap.middleLeft);
+  
+    RobotMap.topLeft.setInverted(true);
+    RobotMap.rearLeft.setInverted(true);
+    
+    RobotMap.topRight.follow(RobotMap.middleRight);
+    RobotMap.rearRight.follow(RobotMap.middleRight); 
+
+    RobotMap.topRight.setInverted(true);
+    RobotMap.rearRight.setInverted(true);
   }
   
 
@@ -114,11 +122,11 @@ public class TankDrive extends PIDSubsystem {
 
   public void stop() {
     RobotMap.topLeft.stopMotor();
-    //RobotMap.middleLeft.stopMotor();
+    RobotMap.middleLeft.stopMotor();
     RobotMap.rearLeft.stopMotor();
 
     RobotMap.topRight.stopMotor();
-   // RobotMap.middleRight.stopMotor();
+    RobotMap.middleRight.stopMotor();
     RobotMap.rearRight.stopMotor();
   }
 
