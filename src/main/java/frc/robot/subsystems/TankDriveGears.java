@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-/*package frc.robot.subsystems;
+package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -18,8 +18,8 @@ public class TankDriveGears extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  DoubleSolenoid solenoid7 = new DoubleSolenoid(0, RobotMap.leftGearPiston1, RobotMap.leftGearPiston2);
-  DoubleSolenoid solenoid8 = new DoubleSolenoid(0, RobotMap.rightGearPiston1, RobotMap.rightGearPiston2);
+  DoubleSolenoid solenoid7 = new DoubleSolenoid(1, RobotMap.leftGearPiston1, RobotMap.leftGearPiston2);
+  DoubleSolenoid solenoid8 = new DoubleSolenoid(1, RobotMap.rightGearPiston1, RobotMap.rightGearPiston2);
   
 
 
@@ -55,4 +55,3 @@ public class TankDriveGears extends Subsystem {
       
   }
 }
-*/

@@ -1,4 +1,4 @@
- /*package frc.robot.subsystems;
+ package frc.robot.subsystems;
 
 
 
@@ -15,13 +15,13 @@ public class ClimbingPneumatics extends Subsystem {
 	//Creates solenoid object
     
         //back left piston
-		DoubleSolenoid solenoid1 = new DoubleSolenoid(RobotMap.backLeftPiston1, RobotMap.backLeftPiston2);
+		DoubleSolenoid solenoid1 = new DoubleSolenoid(0,RobotMap.backLeftPiston1, RobotMap.backLeftPiston2);
         //back right piston
-        DoubleSolenoid solenoid2 = new DoubleSolenoid(RobotMap.backRightPiston1, RobotMap.backRightPiston2);
+        DoubleSolenoid solenoid2 = new DoubleSolenoid(0,RobotMap.backRightPiston1, RobotMap.backRightPiston2);
         //front left piston
-        DoubleSolenoid solenoid3= new DoubleSolenoid(RobotMap.frontLeftPiston1, RobotMap.frontLeftPiston2);
+        DoubleSolenoid solenoid3= new DoubleSolenoid(0,RobotMap.frontLeftPiston1, RobotMap.frontLeftPiston2);
         //front right piston
-        DoubleSolenoid solenoid4= new DoubleSolenoid(RobotMap.frontRightPiston1, RobotMap.frontRightPiston2);
+        DoubleSolenoid solenoid4= new DoubleSolenoid(0,RobotMap.frontRightPiston1, RobotMap.frontRightPiston2);
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -42,7 +42,7 @@ public class ClimbingPneumatics extends Subsystem {
     	SmartDashboard.putString("Pnuematics Front","In");
     }
     
-public void outBack()
+    public void outBack()
     {
         solenoid1.set(DoubleSolenoid.Value.kForward);
     	solenoid2.set(DoubleSolenoid.Value.kForward);
@@ -62,4 +62,4 @@ public void outBack()
     	//solenoid4.set(DoubleSolenoid.Value.kOff);
     }
 
-} */
+} 

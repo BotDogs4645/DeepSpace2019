@@ -12,7 +12,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
- /* package frc.robot.subsystems;
+package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -37,10 +37,10 @@ public class IntakeMotorSubsystem extends Subsystem {
   }
 
   public void motorForward(){
-    intakeMotor.set(0.3);
+    intakeMotor.set(0.5);
   }
   public void motorBackward(){
-    intakeMotor.set(-0.3);
+    intakeMotor.set(-0.5);
   }
 
 public void motorStop(){
@@ -49,4 +49,4 @@ public void motorStop(){
 
 
 }
- */
+ 
