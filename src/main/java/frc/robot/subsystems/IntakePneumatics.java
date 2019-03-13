@@ -1,4 +1,4 @@
-/*package frc.robot.subsystems;
+package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -14,8 +14,8 @@ public class IntakePneumatics extends Subsystem {
     //Creates solenoid object
     
 	
-		DoubleSolenoid solenoid5 = new DoubleSolenoid(0, RobotMap.intakeLeftPiston5, RobotMap.intakeLeftPiston6);
-		DoubleSolenoid solenoid6 = new DoubleSolenoid(0, RobotMap.intakeRightPiston7, RobotMap.intakeRightPiston8);
+		DoubleSolenoid solenoid5 = new DoubleSolenoid(1, RobotMap.intakeLeftPiston5, RobotMap.intakeLeftPiston6);
+		DoubleSolenoid solenoid6 = new DoubleSolenoid(1, RobotMap.intakeRightPiston7, RobotMap.intakeRightPiston8);
     
         public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -49,4 +49,3 @@ public class IntakePneumatics extends Subsystem {
     }
 
 }
-*/

@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-/*package frc.robot.commands;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
@@ -36,12 +36,13 @@ public class GearsOut extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.tankDriveGears.in();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.tankDriveGears.rest();
+    Robot.tankDriveGears.in();
   }
-} */
+} 

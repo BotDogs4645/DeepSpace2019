@@ -41,17 +41,17 @@ public class RobotMap {
 
   //Pistons in PCM #1
 	public static int backLeftPiston1 = 0;
-	public static int backLeftPiston2 = 1;
+	public static int backLeftPiston2 = 1;//1 
 
 	public static int backRightPiston1 = 2;
   public static int backRightPiston2 = 3;
   
   
-  public static int frontRightPiston1= 4;//isn't real port, need to be decided
-  public static int frontRightPiston2= 5;//isn't real port, need to be decided
+  public static int frontRightPiston1= 6;//4;//isn't real port, need to be decided
+  public static int frontRightPiston2= 7;//5;//isn't real port, need to be decided
 
-  public static int frontLeftPiston1= 6;//isn't real port, need to be decided
-  public static int frontLeftPiston2= 7; //isn't real port, need to be decided 
+  public static int frontLeftPiston1= 4;//;//isn't real port, need to be decided
+  public static int frontLeftPiston2= 5;//; //isn't real port, need to be decided 
   
 
 //Pistons in PCM #2
@@ -63,13 +63,21 @@ public static int intakeLeftPiston6 = 5;
 public static int intakeRightPiston7 = 6;
 public static int intakeRightPiston8 = 7;
 
-public static int leftGearPiston1 = 5;
-public static int leftGearPiston2 = 6;
+public static int leftGearPiston1 = 0;
+public static int leftGearPiston2 = 1;
 
-public static int rightGearPiston1= 1;//not real TBD
-public static int rightGearPiston2=2;//not real TBD
+public static int rightGearPiston1= 2;//not real TBD
+public static int rightGearPiston2=3;//not real TBD
 
-public static int intakeMotorPort = 5;
+public static int intakeMotorPort = 9;
+
+//WRIST JOINT MOTORS
+public static WPI_TalonSRX wristJointMotorLeft = new WPI_TalonSRX(10); //port # yet to be determined
+public static WPI_TalonSRX wristJointMotorRight = new WPI_TalonSRX(8); //port # yet to be determined
+
+//ELBOW JOINT MOTORS
+public static WPI_TalonSRX armJointMotorLeft = new WPI_TalonSRX(12); //port # yet to be determined
+public static WPI_TalonSRX armJointMotorRight = new WPI_TalonSRX(11); //port # yet to be determined
 
 
 }

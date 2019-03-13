@@ -11,14 +11,17 @@ import edu.wpi.first.wpilibj.Joystick;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-/*import frc.robot.commands.MoveMotorBackward;
+import frc.robot.commands.GearsOut;
+import frc.robot.commands.MoveMotorBackward;
 import frc.robot.commands.MoveMotorForward;
+//import frc.robot.commands.MoveMotorBackward;
+//import frc.robot.commands.MoveMotorForward;
 import frc.robot.commands.PneumaticsCommandInBack;
 import frc.robot.commands.PneumaticsCommandInFront;
 import frc.robot.commands.PneumaticsCommandOut;
 import frc.robot.commands.PneumaticsCommandOutBack;
 import frc.robot.commands.PneumaticsCommandOutFront;
-import frc.robot.commands.ReadAnalogueGauge; */
+//import frc.robot.commands.ReadAnalogueGauge; 
 
 
 
@@ -60,46 +63,56 @@ public class OI {
   public static Joystick joyLeft = new Joystick(0); 
   public static Joystick joyRight = new Joystick(1);
   public static Joystick gamepad = new Joystick(2);
- 
-
-  Button buttonFOut = new JoystickButton(joyRight, 6);
-  Button buttonFIn = new JoystickButton(joyRight, 7);
+  
+  Button buttonFOut = new JoystickButton(joyRight, 5);
+  Button buttonFIn = new JoystickButton(joyRight, 6);
 
   Button buttonBIn = new JoystickButton(joyRight, 4);
-  Button buttonBOut = new JoystickButton(joyRight, 2);
+  Button buttonBOut = new JoystickButton(joyRight, 3);
 
   Button pneumaticIntakeButton = new JoystickButton(gamepad, 1); //change later
 
-  Button ButtonIntakeIn = new JoystickButton(gamepad, 6);
-  Button ButtonIntakeOut = new JoystickButton(gamepad, 5);
+  Button ButtonIntakeIn = new JoystickButton(gamepad, 5);
+  Button ButtonIntakeOut = new JoystickButton(gamepad, 6);
 
-  Button switchGear = new JoystickButton(joyLeft, 2);
+  Button intakePositionOut = new JoystickButton(gamepad, 2);
+
+  Button switchGear = new JoystickButton(joyRight, 1);
 
   Button analogGauge = new JoystickButton(joyLeft, 3);
 
   
   
-/*
-  Button buttonnFOut = new JoystickButton(rightStick, 5);//not real button #, TBD
-  Button buttonFIn = new JoystickButton(rightStick, 6);//not real button #, TBD
-  Button buttonBOut = new JoystickButton(rightStick, 3);//not real button #, TBD
-  Button buttonBIn = new JoystickButton(rightStick, 4);//not real button #, TBD
-*/
+
+  //Button buttonnFOut = new JoystickButton(joyRight, 5);//not real button #, TBD
+  //Button buttonFIn = new JoystickButton(joyRight, 6);//not real button #, TBD
+  //Button buttonBOut = new JoystickButton(joyRight, 3);//not real button #, TBD
+  //Button buttonBIn = new JoystickButton(joyRight, 4);//not real button #, TBD
+
   public OI(){
-   /* 
+   
+    //intake pneumatics
     pneumaticIntakeButton.whileHeld(new PneumaticsCommandOut());
 
-    buttonFOut.whenPressed(new PneumaticsCommandOutFront());
-    buttonFIn.whenPressed(new PneumaticsCommandInFront());
+    //tankdrive 
+    
+    buttonFOut.whenPressed(new PneumaticsCommandOutFront()); //right 6
+    buttonFIn.whenPressed(new PneumaticsCommandInFront()); //right 7
 
-    buttonBOut.whenPressed(new PneumaticsCommandOutBack());
-    buttonBIn.whenPressed(new PneumaticsCommandInBack());
+    buttonBOut.whenPressed(new PneumaticsCommandOutBack()); //right 4
+    buttonBIn.whenPressed(new PneumaticsCommandInBack()); //right 2
+    
+
+    //gear pneumatics
+    switchGear.whileHeld(new GearsOut());
 
     ButtonIntakeIn.whileHeld(new MoveMotorForward());
     ButtonIntakeOut.whileHeld(new MoveMotorBackward());
 
-    analogGauge.whenPressed(new ReadAnalogueGauge() );
-*/
+
+    
+    //analogGauge.whenPressed(new ReadAnalogueGauge() );
+ 
   }
   
   

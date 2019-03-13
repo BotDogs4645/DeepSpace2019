@@ -7,36 +7,50 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
 
-public class MoveMotorForward extends Command {
-  public MoveMotorForward() {
-    
-      // Use requires() here to declare subsystem dependencies
-      requires(Robot.motorSub);
+
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Robot;
+import frc.robot.RobotMap;
+
+public class SetTargets extends Command {
+  double target;
+  public SetTargets(double wristTarget) { //sets setpoints for the elbow and wrist
+    target = wristTarget;
     // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+    requires(Robot.wristJointSub);
+    /*
+    requires(Robot.elbowJointSub);
+    Robot.elbowJointSub.setTargetPosition(elbowTarget);
+    //Robot.wristJointSub.setTargetPosition(wristTarget);
+    */
+    //PIDController wristPID = Robot.wristJointSub.getPIDController();
+    //SmartDashboard.putNumber("Arc Length", Robot.elbowJointSub.angle);
+
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    
+    Robot.wristJointSub.encoderTargetVal(0);
   }
 
   // Called repeatedly when this Command is scheduled to run
-  //@Override
-  protected void execute(){
-    Robot.motorSub.motorForward();
+  @Override
+  protected void execute() {
+    SmartDashboard.putNumber("Position", RobotMap.wristJointMotorLeft.getSelectedSensorPosition());
 
   }
+
 
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+
+    return true;
   }
 
   // Called once after isFinished returns true
@@ -48,6 +62,5 @@ public class MoveMotorForward extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.motorSub.motorStop();
   }
-} 
+}

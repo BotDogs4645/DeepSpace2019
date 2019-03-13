@@ -27,7 +27,7 @@ public class TankDrive extends PIDSubsystem {
   public TankDrive() {
     super("TankDrive", 1, 2, 3);
     setPercentTolerance(5);
-    getPIDController().setContinuous(false);  
+    getPIDController().setContinuous(false);
   }
 
   @Override
@@ -58,11 +58,12 @@ public class TankDrive extends PIDSubsystem {
     //ONE JOYSTICK
     //make sure throttle is at 1 or -1
     double forward = (OI.joyRight.getY()*0.8)*OI.joyRight.getThrottle();
-    double turn = -(OI.joyRight.getZ()*0.8);
+    double turn = (OI.joyRight.getZ()*0.8);
 
 
     /*deadband*/
-    if ((Math.abs(forward)<0.30) && (Math.abs(turn)<0.30))
+    
+    if ((Math.abs(forward)<0.10) && (Math.abs(turn)<0.10))
     {
       stop();
     }
@@ -72,7 +73,10 @@ public class TankDrive extends PIDSubsystem {
       difDrive.arcadeDrive(forward, turn);
     }
 
-    SmartDashboard.putNumber("tank drive motor power", RobotMap.topLeft.get());
+    SmartDashboard.putNumber("tank drive front left", RobotMap.topLeft.get());
+    SmartDashboard.putNumber("tank drive front right", RobotMap.topRight.get());
+    SmartDashboard.putNumber("tank drive back left", RobotMap.rearLeft.get());
+    SmartDashboard.putNumber("tank drive rear right", RobotMap.rearRight.get());
 
 
     //TWO JOYSTICKS
@@ -118,6 +122,11 @@ public class TankDrive extends PIDSubsystem {
     //SmartDashboard.putNumber("Middle Right Motor:", RobotMap.middleRight.get());
     SmartDashboard.putNumber("Rear Right Motor:", RobotMap.rearRight.get());
   }
+/*
+  public void testMotor(){
+    RobotMap.
+  }
+  */
 
 
   public void stop() {
