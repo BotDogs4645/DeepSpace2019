@@ -7,7 +7,6 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -17,41 +16,29 @@ import frc.robot.RobotMap;
 public class TankDriveGears extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-
-  DoubleSolenoid solenoid7 = new DoubleSolenoid(1, RobotMap.leftGearPiston1, RobotMap.leftGearPiston2);
-  DoubleSolenoid solenoid8 = new DoubleSolenoid(1, RobotMap.rightGearPiston1, RobotMap.rightGearPiston2);
+  Solenoid solenoid7 = new Solenoid(RobotMap.leftGearPiston1);
+  Solenoid solenoid8 = new Solenoid(RobotMap.rightGearPiston1);
   
-
-
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
   }
 
-  public void out() {
-    
-    solenoid7.set(DoubleSolenoid.Value.kForward);
-      solenoid8.set(DoubleSolenoid.Value.kForward);
-      SmartDashboard.putString("Pnuematics","Out");
-  
-
+  public void out() {  
+    solenoid7.set(true);
+    solenoid8.set(true);
+    SmartDashboard.putString("Pnuematics","Out");
   }
   
-  public void in() 
-  {
-  
-    solenoid7.set(DoubleSolenoid.Value.kReverse);
-    solenoid8.set(DoubleSolenoid.Value.kReverse);
-      SmartDashboard.putString("Pnuematics","In");
-  
+  public void in() {
+    solenoid7.set(false);
+    solenoid8.set(false);
+    SmartDashboard.putString("Pnuematics","In");
   }
   
   public void rest() {
-      
-    solenoid7.set(DoubleSolenoid.Value.kOff);
-      solenoid8.set(DoubleSolenoid.Value.kOff);
-      
-      
+    solenoid7.set(false);
+    solenoid8.set(false);  
   }
 }

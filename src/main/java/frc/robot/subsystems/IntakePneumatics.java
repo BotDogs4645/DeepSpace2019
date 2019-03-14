@@ -1,6 +1,5 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -8,44 +7,31 @@ import frc.robot.RobotMap;
 
 
 public class IntakePneumatics extends Subsystem {
-
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
     //Creates solenoid object
+
+	Solenoid solenoid5 = new Solenoid(RobotMap.intakeLeftPiston5);
+    Solenoid solenoid6 = new Solenoid(RobotMap.intakeRightPiston7);
     
-	
-		DoubleSolenoid solenoid5 = new DoubleSolenoid(1, RobotMap.intakeLeftPiston5, RobotMap.intakeLeftPiston6);
-		DoubleSolenoid solenoid6 = new DoubleSolenoid(1, RobotMap.intakeRightPiston7, RobotMap.intakeRightPiston8);
-    
-        public void initDefaultCommand() {
+    public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void out() {
-    
-    	solenoid5.set(DoubleSolenoid.Value.kForward);
-        solenoid6.set(DoubleSolenoid.Value.kForward);
+    public void out() {  
+    	solenoid5.set(true);
+        solenoid6.set(true);
         SmartDashboard.putString("Pnuematics","Out");
-    
-
     }
     
-    public void in() 
-    {
-    
-    	solenoid5.set(DoubleSolenoid.Value.kReverse);
-    	solenoid6.set(DoubleSolenoid.Value.kReverse);
+    public void in() {
+    	solenoid5.set(false);
+    	solenoid6.set(false);
         SmartDashboard.putString("Pnuematics","In");
-    
     }
     
-    public void rest() {
-        
-    	solenoid5.set(DoubleSolenoid.Value.kOff);
-        solenoid6.set(DoubleSolenoid.Value.kOff);
-        
-        
+    public void rest() {  
+    	/*solenoid5.set(false);
+        solenoid6.set(false);*/
     }
 
 }
