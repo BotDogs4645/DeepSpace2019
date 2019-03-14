@@ -1,5 +1,7 @@
 package frc.robot.subsystems;
 
+
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -7,16 +9,19 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
 public class ClimbingPneumatics extends Subsystem {
+
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
 	//Creates solenoid object
     
         //back left piston
-		DoubleSolenoid solenoid1 = new DoubleSolenoid(0,RobotMap.backLeftPiston1, RobotMap.backLeftPiston2);
+		Solenoid solenoidBL = new Solenoid(1);
         //back right piston
-        DoubleSolenoid solenoid2 = new DoubleSolenoid(0,RobotMap.backRightPiston1, RobotMap.backRightPiston2);
+        Solenoid solenoidBR = new Solenoid(0);
         //front left piston
-        DoubleSolenoid solenoid3= new DoubleSolenoid(0,RobotMap.frontLeftPiston1, RobotMap.frontLeftPiston2);
+        Solenoid solenoidFR= new Solenoid(2);
         //front right piston
-        DoubleSolenoid solenoid4= new DoubleSolenoid(0,RobotMap.frontRightPiston1, RobotMap.frontRightPiston2);
+        Solenoid solenoidFL= new Solenoid(3);
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -24,30 +29,31 @@ public class ClimbingPneumatics extends Subsystem {
     }
     
     
-    public void outFront() {
-    	solenoid3.set(DoubleSolenoid.Value.kForward);
-    	solenoid4.set(DoubleSolenoid.Value.kForward);
+    public void outFront() 
+    {
+    	solenoidFR.set(true);
+    	solenoidFL.set(true);
     	SmartDashboard.putString("Pnuematics Front","Out");
     }
 
     public void inFront() 
     {
-    	solenoid3.set(DoubleSolenoid.Value.kReverse);
-    	solenoid4.set(DoubleSolenoid.Value.kReverse);
+    	solenoidFR.set(false);
+    	solenoidFL.set(false);
     	SmartDashboard.putString("Pnuematics Front","In");
     }
     
-    public void outBack()
+public void outBack()
     {
-        solenoid1.set(DoubleSolenoid.Value.kForward);
-    	solenoid2.set(DoubleSolenoid.Value.kForward);
+        solenoidBL.set(true);
+    	solenoidBR.set(true);
     	SmartDashboard.putString("Pnuematics Back","Out");
     }
     
     public void inBack() 
     {
-    	solenoid1.set(DoubleSolenoid.Value.kReverse);
-    	solenoid2.set(DoubleSolenoid.Value.kReverse);
+    	solenoidBR.set(false);
+    	solenoidBL.set(false);
     	SmartDashboard.putString("Pnuematics Back","In");
     }
     
@@ -57,4 +63,4 @@ public class ClimbingPneumatics extends Subsystem {
     	//solenoid4.set(DoubleSolenoid.Value.kOff);
     }
 
-} 
+}

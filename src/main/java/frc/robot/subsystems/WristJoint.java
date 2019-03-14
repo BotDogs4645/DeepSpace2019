@@ -26,8 +26,8 @@ public class WristJoint extends PIDSubsystem {
     setPercentTolerance(15); //Error should be within 5 percent
     getPIDController().setContinuous(false); 
     setOutputRange(-0.3, 0.3); //test if this is necessary
-    //RobotMap.wristJointMotorLeft.setInverted(true);
-    //RobotMap.wristJointMotorLeft.follow(RobotMap.wristJointMotorRight);
+    RobotMap.wristJointMotorLeft.setInverted(true);
+    RobotMap.wristJointMotorLeft.follow(RobotMap.wristJointMotorRight);
     RobotMap.wristJointMotorRight.setSelectedSensorPosition(0, 0, 0);
     setSetpoint(RobotMap.wristJointMotorRight.getSelectedSensorPosition());
     enable();
@@ -41,19 +41,19 @@ public class WristJoint extends PIDSubsystem {
   public void moveWristWithTrigger() {
     int target_value = RobotMap.wristJointMotorRight.getSelectedSensorPosition();
     if (OI.gamepad.getPOV() == 90) { //If you press right on the d-pad, make the wrist move right
-      //RobotMap.wristJointMotorRight.set(0.1);
+      RobotMap.wristJointMotorRight.set(0.1);
       wristMovingWithTrigger = true;
-      //setSetpoint(target_value - 100);
+      setSetpoint(target_value - 100);
 
     }
     else if (OI.gamepad.getPOV() == 270) { //If you press left on the d-pad, make the wrist move left
-      //RobotMap.wristJointMotorRight.set(-0.1);
+      RobotMap.wristJointMotorRight.set(-0.1);
       wristMovingWithTrigger = true;
-      //setSetpoint(target_value + 100);
+      setSetpoint(target_value + 100);
 
     }
     else if (OI.gamepad.getPOV() == -1) { //Stop the wrist when you release the d-pad
-      //RobotMap.wristJointMotorRight.set(0);
+      RobotMap.wristJointMotorRight.set(0);
       wristMovingWithTrigger = false;
       
     }
@@ -63,24 +63,24 @@ public class WristJoint extends PIDSubsystem {
   public void moveWristUp()
   {
     RobotMap.wristJointMotorRight.set(0.3);
-    //RobotMap.wristJointMotorLeft.set(-0.3);
+    RobotMap.wristJointMotorLeft.set(-0.3);
   }
 
   public void moveWristDown()
   {
     RobotMap.wristJointMotorRight.set(-0.3);
-    //RobotMap.wristJointMotorLeft.set(0.3);
+    RobotMap.wristJointMotorLeft.set(0.3);
   }
 
   public void stopWristMovement()
   {
     RobotMap.wristJointMotorRight.set(0);
-   // RobotMap.wristJointMotorLeft.set(0);
+    RobotMap.wristJointMotorLeft.set(0);
   }
 
   public void setTargetPosition(double target) { //rotate by a certain angle
     
-    //SmartDashboard.putNumber("current right wrist joint encoder value", RobotMap.wristJointMotorRight.getSelectedSensorPosition());
+    SmartDashboard.putNumber("current right wrist joint encoder value", RobotMap.wristJointMotorRight.getSelectedSensorPosition());
     setSetpoint(target); //setpoint is the arclength encoder moves
   }
 
