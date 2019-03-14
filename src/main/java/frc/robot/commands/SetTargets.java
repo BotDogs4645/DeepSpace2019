@@ -19,8 +19,10 @@ public class SetTargets extends Command {
   double target;
   public SetTargets(double wristTarget) { //sets setpoints for the elbow and wrist
     target = wristTarget;
+    
     // Use requires() here to declare subsystem dependencies
     requires(Robot.wristJointSub);
+    
     /*
     requires(Robot.elbowJointSub);
     Robot.elbowJointSub.setTargetPosition(elbowTarget);
@@ -34,13 +36,16 @@ public class SetTargets extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.wristJointSub.encoderTargetVal(0);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    SmartDashboard.putNumber("Position", RobotMap.wristJointMotorLeft.getSelectedSensorPosition());
+    Robot.wristJointSub.setTargetPosition(target);
+
+    SmartDashboard.putNumber("Position", RobotMap.wristJointMotorRight.getSelectedSensorPosition());
+
+
 
   }
 
@@ -49,8 +54,10 @@ public class SetTargets extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-
-    return true;
+    if (Robot.wristJointSub.onTarget()) {
+      return true;
+    }
+    return false;
   }
 
   // Called once after isFinished returns true

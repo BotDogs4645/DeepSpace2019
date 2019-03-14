@@ -38,7 +38,7 @@ public class WristWithTrigger extends Command {
     //Robot.wristJointSub.moveWristWithTrigger();
     //SmartDashboard.putNumber("left arm motor power", RobotMap.armJointMotorLeft.get());
     //SmartDashboard.putNumber("current left arm econder value", RobotMap.armJointMotorLeft.getSelectedSensorPosition());
-    SmartDashboard.putNumber("left wrist joint motor power", RobotMap.wristJointMotorLeft.get());
+    //SmartDashboard.putNumber("left wrist joint motor power", RobotMap.wristJointMotorLeft.get());
     SmartDashboard.putNumber("right wrist joint motor power", RobotMap.wristJointMotorRight.get());
     SmartDashboard.putNumber("current right wrist joint encoder value", RobotMap.wristJointMotorRight.getSelectedSensorPosition());
 

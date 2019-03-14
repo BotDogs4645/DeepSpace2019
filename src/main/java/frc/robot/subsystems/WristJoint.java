@@ -11,8 +11,6 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.OI;
 import frc.robot.RobotMap;
-import frc.robot.commands.ArmWithTrigger;
-import frc.robot.commands.WristWithTrigger;
 
 /**
  * Add your docs here.
@@ -24,12 +22,12 @@ public class WristJoint extends PIDSubsystem {
 
   public WristJoint() {
     // Intert a subsystem name and PID values here
-    super("WristJoint", 0.1, 0, 0);
-    setPercentTolerance(20); //Error should be within 5 percent
+    super("WristJoint", .001, 0, 0);
+    setPercentTolerance(15); //Error should be within 5 percent
     getPIDController().setContinuous(false); 
-    setOutputRange(-0.2, 0.2); //test if this is necessary
-    RobotMap.wristJointMotorLeft.setInverted(true);
-    RobotMap.wristJointMotorLeft.follow(RobotMap.wristJointMotorRight);
+    setOutputRange(-0.3, 0.3); //test if this is necessary
+    //RobotMap.wristJointMotorLeft.setInverted(true);
+    //RobotMap.wristJointMotorLeft.follow(RobotMap.wristJointMotorRight);
     RobotMap.wristJointMotorRight.setSelectedSensorPosition(0, 0, 0);
     setSetpoint(RobotMap.wristJointMotorRight.getSelectedSensorPosition());
     enable();
@@ -65,24 +63,25 @@ public class WristJoint extends PIDSubsystem {
   public void moveWristUp()
   {
     RobotMap.wristJointMotorRight.set(0.3);
-    RobotMap.wristJointMotorLeft.set(-0.3);
+    //RobotMap.wristJointMotorLeft.set(-0.3);
   }
 
   public void moveWristDown()
   {
     RobotMap.wristJointMotorRight.set(-0.3);
-    RobotMap.wristJointMotorLeft.set(0.3);
+    //RobotMap.wristJointMotorLeft.set(0.3);
   }
 
   public void stopWristMovement()
   {
     RobotMap.wristJointMotorRight.set(0);
-    RobotMap.wristJointMotorLeft.set(0);
+   // RobotMap.wristJointMotorLeft.set(0);
   }
 
-  public void setTargetPosition(double angle) { //rotate by a certain angle
-    double arcLength = (angle / 360) * (16 * Math.PI);
-    setSetpoint(arcLength); //setpoint is the arclength encoder moves
+  public void setTargetPosition(double target) { //rotate by a certain angle
+    
+    //SmartDashboard.putNumber("current right wrist joint encoder value", RobotMap.wristJointMotorRight.getSelectedSensorPosition());
+    setSetpoint(target); //setpoint is the arclength encoder moves
   }
 
   public void encoderTargetVal(double val) { //rotate by a certain angle
@@ -93,7 +92,6 @@ public class WristJoint extends PIDSubsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    setDefaultCommand(new WristWithTrigger());
   }
 
   
