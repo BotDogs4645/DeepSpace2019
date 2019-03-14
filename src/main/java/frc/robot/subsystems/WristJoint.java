@@ -22,8 +22,8 @@ public class WristJoint extends PIDSubsystem {
 
   public WristJoint() {
     // Intert a subsystem name and PID values here
-    super("WristJoint", .001, 0, 0);
-    setPercentTolerance(15); //Error should be within 5 percent
+    super("WristJoint", .00055, 0, 0.0001);
+    setPercentTolerance(10); //Error should be within 5 percent
     getPIDController().setContinuous(false); 
     setOutputRange(-0.3, 0.3); //test if this is necessary
     RobotMap.wristJointMotorLeft.setInverted(true);

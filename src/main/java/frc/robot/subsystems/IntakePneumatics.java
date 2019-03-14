@@ -30,8 +30,8 @@ public class IntakePneumatics extends Subsystem {
     }
     
     public void rest() {  
-    	/*solenoid5.set(false);
-        solenoid6.set(false);*/
+    	solenoid5.set(false);
+        solenoid6.set(false);
     }
 
 }
