@@ -22,6 +22,7 @@ import frc.robot.commands.PneumaticsCommandOut;
 import frc.robot.commands.PneumaticsCommandOutBack;
 import frc.robot.commands.PneumaticsCommandOutFront;
 //import frc.robot.commands.ReadAnalogueGauge; 
+import frc.robot.commands.SetTargets;
 
 
 
@@ -72,7 +73,7 @@ public class OI {
 
   Button pneumaticIntakeButton = new JoystickButton(gamepad, 1); //change later
 
-  Button ButtonIntakeIn = new JoystickButton(gamepad, 5);
+  Button ButtonIntakeIn = new JoystickButton(gamepad, 5); 
   Button ButtonIntakeOut = new JoystickButton(gamepad, 6);
 
   Button intakePositionOut = new JoystickButton(gamepad, 2);
@@ -81,6 +82,11 @@ public class OI {
 
   Button analogGauge = new JoystickButton(joyLeft, 3);
 
+  
+  
+  Button wristTargetButton = new JoystickButton(gamepad, 2);
+  
+  Button wristTargetReset = new JoystickButton(gamepad, 1);
   
   
 
@@ -108,11 +114,13 @@ public class OI {
 
     ButtonIntakeIn.whileHeld(new MoveMotorForward());
     ButtonIntakeOut.whileHeld(new MoveMotorBackward());
-
-
     
     //analogGauge.whenPressed(new ReadAnalogueGauge() );
- 
+    
+
+    wristTargetButton.whenPressed(new SetTargets(5000));
+    wristTargetReset.whenPressed(new SetTargets(0));
+    
   }
   
   

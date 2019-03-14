@@ -74,7 +74,7 @@ public static int rightGearPiston2=3;//not real TBD
 public static int intakeMotorPort = 9;
 
 //WRIST JOINT MOTORS
-public static WPI_TalonSRX wristJointMotorLeft = new WPI_TalonSRX(10); //port # yet to be determined
+//public static WPI_TalonSRX wristJointMotorLeft = new WPI_TalonSRX(10); //port # yet to be determined
 public static WPI_TalonSRX wristJointMotorRight = new WPI_TalonSRX(8); //port # yet to be determined
 
 //ELBOW JOINT MOTORS
