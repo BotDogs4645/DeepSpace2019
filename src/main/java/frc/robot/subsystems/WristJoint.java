@@ -25,7 +25,7 @@ public class WristJoint extends PIDSubsystem {
     super("WristJoint", .00055, 0, 0.0001);
     setPercentTolerance(10); //Error should be within 5 percent
     getPIDController().setContinuous(false); 
-    setOutputRange(-0.3, 0.3); //test if this is necessary
+    setOutputRange(-0.4, 0.4); //test if this is necessary
     RobotMap.wristJointMotorLeft.setInverted(true);
     RobotMap.wristJointMotorLeft.follow(RobotMap.wristJointMotorRight);
     RobotMap.wristJointMotorRight.setSelectedSensorPosition(0, 0, 0);

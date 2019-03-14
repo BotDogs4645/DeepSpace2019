@@ -15,17 +15,29 @@ public class ClimbingPneumatics extends Subsystem {
 	//Creates solenoid object
     
         //back left piston
-		Solenoid solenoidBL = new Solenoid(1);
+		Solenoid solenoidBL = new Solenoid(RobotMap.backLeftPiston);
         //back right piston
-        Solenoid solenoidBR = new Solenoid(0);
+        Solenoid solenoidBR = new Solenoid(RobotMap.backRightPiston);
         //front left piston
-        Solenoid solenoidFR= new Solenoid(2);
+        Solenoid solenoidFR= new Solenoid(RobotMap.frontRightPiston);
         //front right piston
-        Solenoid solenoidFL= new Solenoid(3);
+        Solenoid solenoidFL= new Solenoid(RobotMap.frontLeftPiston);
+
+
+        
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    }
+
+    public void startPosition()
+    {
+        solenoidFR.set(false);
+        solenoidFL.set(false);
+
+        solenoidBL.set(false);
+    	solenoidBR.set(false);
     }
     
     
@@ -33,7 +45,9 @@ public class ClimbingPneumatics extends Subsystem {
     {
     	solenoidFR.set(true);
     	solenoidFL.set(true);
-    	SmartDashboard.putString("Pnuematics Front","Out");
+        SmartDashboard.putString("Pnuematics Front","Out");
+        
+
     }
 
     public void inFront() 
