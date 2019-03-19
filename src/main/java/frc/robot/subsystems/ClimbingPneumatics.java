@@ -24,7 +24,10 @@ public class ClimbingPneumatics extends Subsystem {
         Solenoid solenoidFL= new Solenoid(RobotMap.frontLeftPiston);
 
 
-        
+     public ClimbingPneumatics()
+     {
+         startPosition();
+     }   
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
