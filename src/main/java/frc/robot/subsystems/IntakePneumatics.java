@@ -9,12 +9,16 @@ import frc.robot.RobotMap;
 public class IntakePneumatics extends Subsystem {
     //Creates solenoid object
 
-	Solenoid solenoid5 = new Solenoid(RobotMap.intakeLeftPiston5);
-    Solenoid solenoid6 = new Solenoid(RobotMap.intakeRightPiston7);
+	Solenoid solenoid5 = new Solenoid(RobotMap.intakeLeftPiston);
+    Solenoid solenoid6 = new Solenoid(RobotMap.intakeRightPiston);
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    }
+
+    public IntakePneumatics() {
+        in();
     }
     
     public void out() {  

@@ -16,13 +16,17 @@ import frc.robot.RobotMap;
 public class TankDriveGears extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  Solenoid solenoid7 = new Solenoid(RobotMap.leftGearPiston1);
-  Solenoid solenoid8 = new Solenoid(RobotMap.rightGearPiston1);
+  Solenoid solenoid7 = new Solenoid(RobotMap.leftGearPiston);
+  Solenoid solenoid8 = new Solenoid(RobotMap.rightGearPiston);
   
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
     // setDefaultCommand(new MySpecialCommand());
+  }
+
+  public TankDriveGears() {
+    in();
   }
 
   public void out() {  

@@ -52,14 +52,11 @@ public class RobotMap {
 //Pistons in PCM #2
 
 //intake pistons
-public static int intakeLeftPiston5 = 4;
-public static int intakeLeftPiston6 = 5;
+public static int intakeLeftPiston = 7;
+public static int intakeRightPiston = 6;
 
-public static int intakeRightPiston7 = 6;
-public static int intakeRightPiston8 = 7;
-
-public static int leftGearPiston1 = 0;
-public static int rightGearPiston1= 2;//not real TBD
+public static int leftGearPiston = 5;
+public static int rightGearPiston = 4;//not real TBD
 
 public static int intakeMotorPort = 9;
 
