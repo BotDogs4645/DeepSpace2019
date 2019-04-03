@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
+import frc.robot.commands.DisplayPneumatics;
 
 public class ClimbingPneumatics extends Subsystem {
 
@@ -31,7 +32,7 @@ public class ClimbingPneumatics extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new DisplayPneumatics());
     }
 
     public void startPosition()
@@ -48,7 +49,7 @@ public class ClimbingPneumatics extends Subsystem {
     {
     	solenoidFR.set(true);
     	solenoidFL.set(true);
-        SmartDashboard.putString("Pnuematics Front","Out");
+        //SmartDashboard.putString("Pnuematics Front","Out");
         
 
     }
@@ -57,27 +58,40 @@ public class ClimbingPneumatics extends Subsystem {
     {
     	solenoidFR.set(false);
     	solenoidFL.set(false);
-    	SmartDashboard.putString("Pnuematics Front","In");
+    	//SmartDashboard.putString("Pnuematics Front","In");
     }
     
 public void outBack()
     {
         solenoidBL.set(true);
     	solenoidBR.set(true);
-    	SmartDashboard.putString("Pnuematics Back","Out");
+    	//SmartDashboard.putString("Pnuematics Back","Out");
     }
     
     public void inBack() 
     {
     	solenoidBR.set(false);
     	solenoidBL.set(false);
-    	SmartDashboard.putString("Pnuematics Back","In");
+    	//SmartDashboard.putString("Pnuematics Back","In");
     }
     
     
     public void rest() {
     	//solenoid3.set(DoubleSolenoid.Value.kOff);
     	//solenoid4.set(DoubleSolenoid.Value.kOff);
+    }
+
+    public boolean getBL() {
+        return solenoidBL.get();
+    }
+    public boolean getBR() {
+        return solenoidBR.get();
+    }
+    public boolean getFL() {
+        return solenoidFL.get();
+    }
+    public boolean getFR() {
+        return solenoidFR.get();
     }
 
 }

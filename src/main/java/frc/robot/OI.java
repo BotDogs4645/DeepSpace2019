@@ -69,8 +69,9 @@ public class OI {
   Button buttonFOut = new JoystickButton(joyRight, 5);
   Button buttonFIn = new JoystickButton(joyRight, 6);
 
-  Button buttonBIn = new JoystickButton(joyRight, 4);
+  
   Button buttonBOut = new JoystickButton(joyRight, 3);
+  Button buttonBIn = new JoystickButton(joyRight, 4);
 
   Button pneumaticIntakeButton = new JoystickButton(gamepad, 1); //change later
 
@@ -81,13 +82,13 @@ public class OI {
 
   Button switchGear = new JoystickButton(joyRight, 1);
 
-  Button analogGauge = new JoystickButton(joyLeft, 3);
+  Button analogGauge = new JoystickButton(joyRight, 12);
 
   
   
   Button wristTargetButton = new JoystickButton(gamepad, 2);
   
-  Button wristTargetReset = new JoystickButton(gamepad, 1);
+  Button wristTargetReset = new JoystickButton(gamepad, 3);
   
   
 
@@ -116,11 +117,11 @@ public class OI {
     ButtonIntakeIn.whileHeld(new MoveMotorForward());
     ButtonIntakeOut.whileHeld(new MoveMotorBackward());
     
-    analogGauge.whenPressed(new ReadAnalogueGauge() );
+    //analogGauge.whenPressed(new ReadAnalogueGauge() );
     
 
-    wristTargetButton.whenPressed(new SetTargets(5000));
-    wristTargetReset.whenPressed(new SetTargets(0));
+    //wristTargetButton.whenPressed(new SetTargets(1000));
+    //wristTargetReset.whenPressed(new SetTargets(0));
     
   }
   

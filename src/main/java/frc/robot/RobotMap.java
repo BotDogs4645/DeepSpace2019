@@ -8,6 +8,7 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -28,13 +29,13 @@ public class RobotMap {
   //pneumatics
 
   //TANK DRIVE MOTORS
-  public static WPI_TalonSRX topLeft = new WPI_TalonSRX(14); 
-  public static WPI_TalonSRX middleLeft = new WPI_TalonSRX(4); 
-  public static WPI_TalonSRX rearLeft = new WPI_TalonSRX(15); 
+  public static WPI_TalonSRX topLeft = new WPI_TalonSRX(5); 
+  public static WPI_TalonSRX middleLeft = new WPI_TalonSRX(12); 
+  public static WPI_TalonSRX rearLeft = new WPI_TalonSRX(3); 
 
-  public static WPI_TalonSRX topRight = new WPI_TalonSRX(3); 
-  public static WPI_TalonSRX middleRight = new WPI_TalonSRX(13);
-  public static WPI_TalonSRX rearRight = new WPI_TalonSRX(5); 
+  public static WPI_TalonSRX topRight = new WPI_TalonSRX(4); 
+  public static WPI_TalonSRX middleRight = new WPI_TalonSRX(11);
+  public static WPI_VictorSPX rearRight = new WPI_VictorSPX(6); 
 
 
   //PDP side is the front side
@@ -42,24 +43,19 @@ public class RobotMap {
   //Pistons in PCM #1
 	public static int backRightPiston = 0;
 	public static int backLeftPiston = 1;
-
+ 
 	public static int frontRightPiston = 2;
   public static int frontLeftPiston = 3;
-  
-  
- 
-
-//Pistons in PCM #2
 
 //intake pistons
 public static int intakeLeftPiston = 7;
 public static int intakeRightPiston = 6;
 
 public static int leftGearPiston = 5;
-public static int rightGearPiston = 4;//not real TBD
+public static int rightGearPiston = 4;// real TBD
 
-public static int intakeMotorPort = 9;
-
+public static int intakeMotorPort = 10;
+//waddup its me print("womp womp")
 //WRIST JOINT MOTORS
 public static WPI_TalonSRX wristJointMotorLeft = new WPI_TalonSRX(10); //port # yet to be determined
 public static WPI_TalonSRX wristJointMotorRight = new WPI_TalonSRX(8); //port # yet to be determined
@@ -68,5 +64,7 @@ public static WPI_TalonSRX wristJointMotorRight = new WPI_TalonSRX(8); //port # 
 public static WPI_TalonSRX armJointMotorLeft = new WPI_TalonSRX(12); //port # yet to be determined
 public static WPI_TalonSRX armJointMotorRight = new WPI_TalonSRX(11); //port # yet to be determined
 
+//ANALOG
+public static int analogGauge = 0; //Only voltage
 
 }

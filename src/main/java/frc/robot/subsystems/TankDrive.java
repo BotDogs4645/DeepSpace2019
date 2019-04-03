@@ -58,12 +58,12 @@ public class TankDrive extends PIDSubsystem {
     //ONE JOYSTICK
     //make sure throttle is at 1 or -1
     double forward = (OI.joyRight.getY()*0.8)*OI.joyRight.getThrottle();
-    double turn = (OI.joyRight.getZ()*0.8);
+    double turn = (OI.joyRight.getZ()*-0.8);
 
 
     /*deadband*/
     
-    if ((Math.abs(forward)<0.10) && (Math.abs(turn)<0.10))
+    if ((Math.abs(forward)<0.05) && (Math.abs(turn)<0.05))
     {
       stop();
     }
@@ -72,7 +72,8 @@ public class TankDrive extends PIDSubsystem {
     {
       difDrive.arcadeDrive(forward, turn);
     }
-
+    
+    //difDrive.arcadeDrive(forward, turn);
     SmartDashboard.putNumber("tank drive front left", RobotMap.topLeft.get());
     SmartDashboard.putNumber("tank drive front right", RobotMap.topRight.get());
     SmartDashboard.putNumber("tank drive back left", RobotMap.rearLeft.get());

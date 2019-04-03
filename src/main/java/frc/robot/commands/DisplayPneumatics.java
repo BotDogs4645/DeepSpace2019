@@ -7,46 +7,33 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
- 
-public class WristWithTrigger extends Command {
-  
-  public WristWithTrigger() {
+import frc.robot.subsystems.ClimbingPneumatics;
+
+public class DisplayPneumatics extends Command {
+  public DisplayPneumatics() {
     // Use requires() here to declare subsystem dependencies
-    //requires(Robot.elbowJointSub);
-    requires(Robot.wristJointSub);
-    //PIDController elbowPID = Robot.elbowJointSub.getPIDController();
-    //RobotMap.armJointMotorLeft.setInverted(true);
-  
+    // eg. requires(chassis);
+    requires(Robot.climbingPneumaticsOb);
   }
-
-
+//\\alexa suckskjsd hg uigldfgi ulfd hgu relhwre
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    RobotMap.wristJointMotorLeft.setInverted(true);
-    RobotMap.wristJointMotorLeft.follow(RobotMap.wristJointMotorRight);
   }
-
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-    //Robot.elbowJointSub.moveArmWithTrigger();
-    Robot.wristJointSub.moveWristWithTrigger();
-    //SmartDashboard.putNumber("left arm motor power", RobotMap.armJointMotorLeft.get());
-    //SmartDashboard.putNumber("current left arm econder value", RobotMap.armJointMotorLeft.getSelectedSensorPosition());
-    //SmartDashboard.putNumber("left wrist joint motor power", RobotMap.wristJointMotorLeft.get());
-    SmartDashboard.putNumber("right wrist joint motor power", RobotMap.wristJointMotorRight.get());
-    SmartDashboard.putNumber("current right wrist joint encoder value", RobotMap.wristJointMotorRight.getSelectedSensorPosition());
+      SmartDashboard.putBoolean("Pnuematics Front Left",Robot.climbingPneumaticsOb.getFL());
+      SmartDashboard.putBoolean("Pnuematics Front Right",Robot.climbingPneumaticsOb.getFR());
+      SmartDashboard.putBoolean("Pnuematics Back Left",Robot.climbingPneumaticsOb.getBL());
+      SmartDashboard.putBoolean("Pnuematics Back Right",Robot.climbingPneumaticsOb.getBR());
 
   }
-  
+
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
@@ -63,7 +50,4 @@ public class WristWithTrigger extends Command {
   @Override
   protected void interrupted() {
   }
-  
 }
-
-

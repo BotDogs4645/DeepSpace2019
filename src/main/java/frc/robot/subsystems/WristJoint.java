@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.OI;
 import frc.robot.RobotMap;
+import frc.robot.commands.WristWithTrigger;
 
 /**
  * Add your docs here.
@@ -22,12 +23,11 @@ public class WristJoint extends PIDSubsystem {
 
   public WristJoint() {
     // Intert a subsystem name and PID values here
-    super("WristJoint", .00055, 0, 0.0001);
+    super("WristJoint", .001, 0, 0);
     setPercentTolerance(10); //Error should be within 5 percent
     getPIDController().setContinuous(false); 
-    setOutputRange(-0.4, 0.4); //test if this is necessary
-    RobotMap.wristJointMotorLeft.setInverted(true);
-    RobotMap.wristJointMotorLeft.follow(RobotMap.wristJointMotorRight);
+    setOutputRange(-0.2, 0.2); //test if this is necessary
+
     RobotMap.wristJointMotorRight.setSelectedSensorPosition(0, 0, 0);
     setSetpoint(RobotMap.wristJointMotorRight.getSelectedSensorPosition());
     enable();
@@ -41,23 +41,29 @@ public class WristJoint extends PIDSubsystem {
   public void moveWristWithTrigger() {
     int target_value = RobotMap.wristJointMotorRight.getSelectedSensorPosition();
     if (OI.gamepad.getPOV() == 90) { //If you press right on the d-pad, make the wrist move right
-      RobotMap.wristJointMotorRight.set(0.1);
+      //RobotMap.wristJointMotorRight.set(0.1);
       wristMovingWithTrigger = true;
-      setSetpoint(target_value - 100);
-
+      setSetpoint(0);
+      //RobotMap.wristJointMotorRight.set(0.4);
+      //RobotMap.wristJointMotorLeft.set(-0.4);
     }
     else if (OI.gamepad.getPOV() == 270) { //If you press left on the d-pad, make the wrist move left
-      RobotMap.wristJointMotorRight.set(-0.1);
+      //RobotMap.wristJointMotorRight.set(-0.1);
       wristMovingWithTrigger = true;
-      setSetpoint(target_value + 100);
-
+      setSetpoint(1000);
+      //RobotMap.wristJointMotorRight.set(-0.4);
+      //RobotMap.wristJointMotorLeft.set(0.4);
     }
     else if (OI.gamepad.getPOV() == -1) { //Stop the wrist when you release the d-pad
-      RobotMap.wristJointMotorRight.set(0);
+      //RobotMap.wristJointMotorRight.set(0);
       wristMovingWithTrigger = false;
-      
-    }
-    SmartDashboard.putNumber("wrist target value", target_value);
+      //RobotMap.wristJointMotorRight.set(0);
+      //RobotMap.wristJointMotorLeft.set(0);
+    }                 
+    SmartDashboard.putNumber("wrist encode value", target_value);
+    SmartDashboard.putNumber("wrist target value", getSetpoint());
+
+    SmartDashboard.putNumber("pov", OI.gamepad.getPOV() );
   }
 
   public void moveWristUp()
@@ -92,6 +98,7 @@ public class WristJoint extends PIDSubsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
+    setDefaultCommand(new WristWithTrigger());
   }
 
   

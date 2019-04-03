@@ -45,7 +45,7 @@ public class Robot extends TimedRobot {
   public static TankDriveGears tankDriveGears = new TankDriveGears();
   public static ClimbingPneumatics climbingPneumaticsOb = new ClimbingPneumatics(); 
   
-  public static RevAirPressureSensor revAirPressureOb= new RevAirPressureSensor(3);//not real channel
+  public static RevAirPressureSensor revAirPressureOb= new RevAirPressureSensor();//not real channel
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
