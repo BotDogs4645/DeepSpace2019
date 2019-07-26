@@ -30,11 +30,11 @@ public class RobotMap {
 
   //TANK DRIVE MOTORS
   public static WPI_TalonSRX topLeft = new WPI_TalonSRX(5); 
-  public static WPI_TalonSRX middleLeft = new WPI_TalonSRX(12); 
+  public static WPI_TalonSRX middleLeft = new WPI_TalonSRX(122); 
   public static WPI_TalonSRX rearLeft = new WPI_TalonSRX(3); 
 
-  public static WPI_TalonSRX topRight = new WPI_TalonSRX(4); 
-  public static WPI_TalonSRX middleRight = new WPI_TalonSRX(11);
+  public static WPI_TalonSRX topRight = new WPI_TalonSRX(23); 
+  public static WPI_TalonSRX middleRight = new WPI_TalonSRX(99);//11
   public static WPI_VictorSPX rearRight = new WPI_VictorSPX(6); 
 
 

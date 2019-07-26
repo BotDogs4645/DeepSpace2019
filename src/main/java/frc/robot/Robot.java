@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import frc.robot.subsystems.ElbowJoint;
 import frc.robot.commands.PneumaticsCommandInFront;
 import frc.robot.subsystems.ClimbingPneumatics;
+import frc.robot.subsystems.ElbowJoint;
 import frc.robot.subsystems.IntakePneumatics;
 import frc.robot.subsystems.RevAirPressureSensor; 
 import frc.robot.subsystems.TankDrive;
@@ -38,7 +39,7 @@ import frc.robot.subsystems.IntakeMotorSubsystem;
 public class Robot extends TimedRobot {
   public static OI m_oi; 
   public static TankDrive tankDriveSubsystem = new TankDrive();
-  //public static ElbowJoint elbowJointSub = new ElbowJoint();
+  public static ElbowJoint elbowJointSub = new ElbowJoint();
   public static WristJoint wristJointSub = new WristJoint();
   public static IntakePneumatics pneumaticsSubsystem = new IntakePneumatics();
   public static IntakeMotorSubsystem motorSub = new IntakeMotorSubsystem();
