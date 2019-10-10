@@ -7,13 +7,22 @@
 
 package frc.robot;
 
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.commands.Autonomous;
+import frc.robot.subsystems.Motor;
+import frc.robot.subsystems.Pneumatics;
+import frc.robot.subsystems.TankDrive;
+import frc.robot.subsystems.Ultrasonic;
+import frc.robot.subsystems.ColorSensor;
+import frc.robot.subsystems.Encoder;
+import frc.robot.subsystems.Gyro;
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.cameraserver.CameraServer;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,11 +32,20 @@ import frc.robot.subsystems.ExampleSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static OI m_oi;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
+  public static final TankDrive kTankDrive = new TankDrive();
+  public static final ColorSensor kColorSensor = new ColorSensor();
+  public static final Motor kMotor = new Motor();
+  public static final Encoder kEncoder = new Encoder();
+  public static final Ultrasonic kDistenceSenor = new Ultrasonic();
+  public static final Pneumatics kPneumatics = new Pneumatics();
+  public static final Gyro kGyro = new Gyro();
+
+  UsbCamera deepSpaceCamera = CameraServer.getInstance().startAutomaticCapture(0);
+  //boolean resolutionSet = deepSpaceCamera.setResolution(5000, 300);
 
   /**
    * This function is run when the robot is first started up and should be
@@ -36,8 +54,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_oi = new OI();
-    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-    // chooser.addOption("My Auto", new MyAutoCommand());
+    m_chooser.addObject("Auto", new Autonomous());
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 
